@@ -1,0 +1,20 @@
+{
+    "type": "forge:ore_shaped",
+    "pattern": [
+        "AAA",
+        "A A",
+        "A#A"
+    ],
+    "key": {
+        "#": {
+            "item": "foodcraftreloaded:machine_casing"
+        },
+        "A": {
+            "type": "forge:ore_dict",
+            "ore": "plankWood"
+        }
+    },
+    "result": {
+        "item": "foodcraftreloaded:chopping_board"
+    }
+}

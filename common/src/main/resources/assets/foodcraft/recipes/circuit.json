@@ -1,0 +1,25 @@
+{
+    "type": "forge:ore_shaped",
+    "pattern": [
+        "AAA",
+        "CBC",
+        "AAA"
+    ],
+    "key": {
+        "C": {
+            "type": "forge:ore_dict",
+            "ore": "dustRedstone"
+        },
+        "B": {
+            "type": "forge:ore_dict",
+            "ore": "ingotIron"
+        },
+        "A": {
+            "type": "forge:ore_dict",
+            "ore": "circuitIngredient"
+        }
+    },
+    "result": {
+        "item": "foodcraftreloaded:circuit"
+    }
+}

@@ -1,0 +1,31 @@
+{
+    "type": "forge:ore_shaped",
+    "pattern": [
+        "ABA",
+        "D#D",
+        " C "
+    ],
+    "key": {
+        "#": {
+            "item": "foodcraftreloaded:machine_casing"
+        },
+        "A": {
+            "type": "forge:ore_dict",
+            "ore": "dustRedstone"
+        },
+        "B": {
+            "item": "minecraft:ice"
+        },
+        "C": {
+            "type": "forge:ore_dict",
+            "ore": "circuitBasic"
+        },
+        "D": {
+            "type": "forge:ore_dict",
+            "ore": "dyeBrown"
+        }
+    },
+    "result": {
+        "item": "foodcraftreloaded:beverage_making"
+    }
+}

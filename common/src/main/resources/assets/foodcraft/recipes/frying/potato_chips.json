@@ -1,5 +1,5 @@
 {
-    "type": "foodcraftreloaded:frying",
+    "type": "foodcraft:frying",
     "ingredient": {
         "type": "forge:ore_dict",
         "ore": "slicePotato"
@@ -9,7 +9,7 @@
         "amount": 333
     },
     "result": {
-        "item": "foodcraftreloaded:potato_chips",
+        "item": "foodcraft:potato_chips",
         "count": 1
     }
 }

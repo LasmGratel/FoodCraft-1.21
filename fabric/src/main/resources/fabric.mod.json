@@ -15,11 +15,14 @@
   "icon": "assets/foodcraft/icon.png",
   "environment": "*",
   "entrypoints": {
+    "fabric-datagen": [
+      "dev.lasm.foodcraft.fabric.gen.StapleDataGenerator"
+    ],
     "main": [
-      "dev.lasm.foodcraft.fabric.ExampleModFabric"
+      "dev.lasm.foodcraft.fabric.FoodCraftFabric"
     ],
     "client": [
-      "dev.lasm.foodcraft.fabric.client.ExampleModFabricClient"
+      "dev.lasm.foodcraft.fabric.client.FoodCraftFabricClient"
     ]
   },
   "mixins": [

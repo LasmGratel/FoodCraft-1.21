@@ -1,5 +1,5 @@
 {
-    "type": "foodcraftreloaded:brewing",
+    "type": "foodcraft:brewing",
     "ingredients": [
         {
             "type": "forge:ore_dict",
@@ -19,7 +19,7 @@
         "amount": 1000
     },
     "result": {
-        "item": "foodcraftreloaded:soy_sauce",
+        "item": "foodcraft:soy_sauce",
         "count": 16
     }
 }

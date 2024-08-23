@@ -1,5 +1,5 @@
 {
-    "type": "foodcraftreloaded:brewing",
+    "type": "foodcraft:brewing",
     "ingredients": [
         {
             "item": "minecraft:golden_apple",
@@ -19,7 +19,7 @@
         "amount": 1000
     },
     "result": {
-        "item": "foodcraftreloaded:golden_apple_liqueur",
+        "item": "foodcraft:golden_apple_liqueur",
         "count": 3
     }
 }

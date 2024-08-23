@@ -1,14 +1,14 @@
 {
-    "type": "foodcraftreloaded:brewing",
+    "type": "foodcraft:brewing",
     "ingredients": [
         {
-            "item": "foodcraftreloaded:golden_grape"
+            "item": "foodcraft:golden_grape"
         },
         {
-            "item": "foodcraftreloaded:golden_grape"
+            "item": "foodcraft:golden_grape"
         },
         {
-            "item": "foodcraftreloaded:golden_grape"
+            "item": "foodcraft:golden_grape"
         }
     ],
     "fluidInput": {
@@ -16,7 +16,7 @@
         "amount": 1000
     },
     "result": {
-        "item": "foodcraftreloaded:golden_grape_liqueur",
+        "item": "foodcraft:golden_grape_liqueur",
         "count": 3
     }
 }

@@ -1,5 +1,5 @@
 {
-    "type": "foodcraftreloaded:beverage_making",
+    "type": "foodcraft:beverage_making",
     "ingredient": {
         "type": "forge:ore_dict",
         "ore": "foodChocolatebar"
@@ -10,6 +10,6 @@
         "amount": 1000
     },
     "result": {
-        "item": "foodcraftreloaded:chocolate_milk"
+        "item": "foodcraft:chocolate_milk"
     }
 }

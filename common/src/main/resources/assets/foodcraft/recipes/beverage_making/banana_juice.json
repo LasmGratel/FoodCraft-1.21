@@ -1,1 +1,1 @@
-{"type":"foodcraftreloaded:beverage_making","ingredient":{"type":"forge:ore_dict","ore":"cropBanana"},"cool":true,"fluidInput":{"fluid":"water","amount":1000},"result":{"item":"foodcraftreloaded:banana_juice"}}
+{"type":"foodcraft:beverage_making","ingredient":{"type":"forge:ore_dict","ore":"cropBanana"},"cool":true,"fluidInput":{"fluid":"water","amount":1000},"result":{"item":"foodcraft:banana_juice"}}

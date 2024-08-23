@@ -1,5 +1,5 @@
 {
-    "type": "foodcraftreloaded:frying",
+    "type": "foodcraft:frying",
     "ingredient": {
         "type": "forge:ore_dict",
         "ore": "foodFlour"
@@ -9,7 +9,7 @@
         "amount": 333
     },
     "result": {
-        "item": "foodcraftreloaded:youtiao",
+        "item": "foodcraft:youtiao",
         "count": 1
     }
 }

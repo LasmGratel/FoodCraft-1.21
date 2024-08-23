@@ -1,11 +1,11 @@
 {
-    "type": "foodcraftreloaded:milling",
+    "type": "foodcraft:milling",
     "ingredient": {
         "type": "forge:ore_dict",
         "ore": "dyeBrown"
     },
     "result": {
-        "item": "foodcraftreloaded:chocolate_dust",
+        "item": "foodcraft:chocolate_dust",
         "count": 1
     }
 }

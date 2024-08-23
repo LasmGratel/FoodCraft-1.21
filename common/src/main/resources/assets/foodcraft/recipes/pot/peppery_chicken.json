@@ -1,5 +1,5 @@
 {
-    "type": "foodcraftreloaded:pot",
+    "type": "foodcraft:pot",
     "minTime": 350,
     "maxTime": 450,
     "staples": [
@@ -35,7 +35,7 @@
         }
     ],
     "result": {
-        "item": "foodcraftreloaded:peppery_chicken",
+        "item": "foodcraft:peppery_chicken",
         "count": 1
     }
 }

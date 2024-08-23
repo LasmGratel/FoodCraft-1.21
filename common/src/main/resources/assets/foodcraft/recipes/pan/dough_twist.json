@@ -1,11 +1,11 @@
 {
-    "type": "foodcraftreloaded:pan",
+    "type": "foodcraft:pan",
     "ingredient": {
         "type": "forge:ore_dict",
         "ore": "shredDough"
     },
     "result": {
-        "item": "foodcraftreloaded:dough_twist"
+        "item": "foodcraft:dough_twist"
     },
     "minTime": 300,
     "maxTime": 380

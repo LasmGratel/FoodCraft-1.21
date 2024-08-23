@@ -1,5 +1,5 @@
 {
-    "type": "foodcraftreloaded:frying",
+    "type": "foodcraft:frying",
     "ingredient": {
         "type": "forge:ore_dict",
         "ore": "foodSausage"
@@ -9,7 +9,7 @@
         "amount": 333
     },
     "result": {
-        "item": "foodcraftreloaded:fried_sausage",
+        "item": "foodcraft:fried_sausage",
         "count": 1
     }
 }

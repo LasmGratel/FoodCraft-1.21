@@ -1,11 +1,11 @@
 {
-    "type": "foodcraftreloaded:pan",
+    "type": "foodcraft:pan",
     "ingredient": {
         "type": "forge:ore_dict",
         "ore": "foodPotatochips"
     },
     "result": {
-        "item": "foodcraftreloaded:fried_potato_chips"
+        "item": "foodcraft:fried_potato_chips"
     },
     "minTime": 225,
     "maxTime": 325

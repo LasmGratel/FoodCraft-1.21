@@ -9,7 +9,7 @@
             "entries": [
                 {
                     "type": "item",
-                    "name": "foodcraftreloaded:pixian_watercress",
+                    "name": "foodcraft:pixian_watercress",
                     "weight": 16,
 					"conditions": [],
                     "functions": [
@@ -24,7 +24,7 @@
                 },
                 {
                     "type": "item",
-                    "name": "foodcraftreloaded:zongye",
+                    "name": "foodcraft:zongye",
                     "weight": 16,
 					"conditions": [],
                     "functions": [
@@ -39,7 +39,7 @@
                 },
                 {
                     "type": "item",
-                    "name": "foodcraftreloaded:coffee",
+                    "name": "foodcraft:coffee",
                     "weight": 10,
 					"conditions": [],
                     "functions": [
@@ -54,7 +54,7 @@
                 },
                 {
                     "type": "item",
-                    "name": "foodcraftreloaded:curry",
+                    "name": "foodcraft:curry",
                     "weight": 16,
 					"conditions": [],
                     "functions": [
@@ -69,7 +69,7 @@
                 },
                 {
                     "type": "item",
-                    "name": "foodcraftreloaded:walnut_shortbread",
+                    "name": "foodcraft:walnut_shortbread",
                     "weight": 16,
 					"conditions": [],
                     "functions": [
@@ -84,7 +84,7 @@
                 },
                 {
                     "type": "item",
-                    "name": "foodcraftreloaded:sausage",
+                    "name": "foodcraft:sausage",
                     "weight": 16,
 					"conditions": [],
                     "functions": [
@@ -99,7 +99,7 @@
                 },
                 {
                     "type": "item",
-                    "name": "foodcraftreloaded:lawei_flavor",
+                    "name": "foodcraft:lawei_flavor",
                     "weight": 16,
 					"conditions": [],
                     "functions": [

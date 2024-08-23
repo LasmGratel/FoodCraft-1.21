@@ -1,5 +1,5 @@
 {
-    "type": "foodcraftreloaded:beverage_making",
+    "type": "foodcraft:beverage_making",
     "ingredient": {
         "type": "forge:ore_dict",
         "ore": "cropSoybean"
@@ -10,6 +10,6 @@
         "amount": 1000
     },
     "result": {
-        "item": "foodcraftreloaded:soybean_milk"
+        "item": "foodcraft:soybean_milk"
     }
 }

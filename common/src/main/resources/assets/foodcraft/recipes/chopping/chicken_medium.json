@@ -1,13 +1,13 @@
 {
-    "type": "foodcraftreloaded:chopping",
+    "type": "foodcraft:chopping",
     "pattern": " X ",
     "key": {
         "X": {
-            "item": "foodcraftreloaded:chicken_large"
+            "item": "foodcraft:chicken_large"
         }
     },
     "result": {
-        "item": "foodcraftreloaded:chicken_medium",
+        "item": "foodcraft:chicken_medium",
         "count": 2
     }
 }

@@ -1,6 +1,6 @@
 {
     "name": "锅",
-    "icon": "foodcraftreloaded:pot",
+    "icon": "foodcraft:pot",
     "category": "machines",
     "pages": [
         {
@@ -9,7 +9,7 @@
         },
         {
             "type": "crafting",
-            "recipe": "foodcraftreloaded:pot"
+            "recipe": "foodcraft:pot"
         }
     ]
 }

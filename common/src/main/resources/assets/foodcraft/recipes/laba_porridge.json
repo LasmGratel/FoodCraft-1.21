@@ -2,7 +2,7 @@
     "type": "forge:ore_shapeless",
     "ingredients": [
         {
-            "item": "foodcraftreloaded:rice_porridge"
+            "item": "foodcraft:rice_porridge"
         },
         {
             "type": "forge:ore_dict",
@@ -21,13 +21,13 @@
             "ore": "cropSoybean"
         },
         {
-            "item": "foodcraftreloaded:bacon"
+            "item": "foodcraft:bacon"
         },
         {
-            "item": "foodcraftreloaded:sticky_rice"
+            "item": "foodcraft:sticky_rice"
         },
         {
-            "item": "foodcraftreloaded:bolongna"
+            "item": "foodcraft:bolongna"
         },
         {
             "type": "forge:ore_dict",
@@ -35,6 +35,6 @@
         }
     ],
     "result": {
-        "item": "foodcraftreloaded:laba_porridge"
+        "item": "foodcraft:laba_porridge"
     }
 }

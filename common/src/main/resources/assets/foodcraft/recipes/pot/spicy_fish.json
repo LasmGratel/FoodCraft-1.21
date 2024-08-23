@@ -1,5 +1,5 @@
 {
-    "type": "foodcraftreloaded:pot",
+    "type": "foodcraft:pot",
     "minTime": 350,
     "maxTime": 450,
     "staples": [
@@ -31,7 +31,7 @@
         }
     ],
     "result": {
-        "item": "foodcraftreloaded:spicy_fish",
+        "item": "foodcraft:spicy_fish",
         "count": 1
     }
 }

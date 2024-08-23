@@ -1,5 +1,5 @@
 {
-    "type": "foodcraftreloaded:pot",
+    "type": "foodcraft:pot",
     "minTime": 450,
     "maxTime": 500,
     "staples": [
@@ -19,7 +19,7 @@
         }
     ],
     "result": {
-        "item": "foodcraftreloaded:sliced_cold_chicken",
+        "item": "foodcraft:sliced_cold_chicken",
         "count": 1
     }
 }

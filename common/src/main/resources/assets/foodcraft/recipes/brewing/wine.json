@@ -1,14 +1,14 @@
 {
-    "type": "foodcraftreloaded:brewing",
+    "type": "foodcraft:brewing",
     "ingredients": [
         {
-            "item": "foodcraftreloaded:grape_liqueur"
+            "item": "foodcraft:grape_liqueur"
         },
         {
-            "item": "foodcraftreloaded:grape_liqueur"
+            "item": "foodcraft:grape_liqueur"
         },
         {
-            "item": "foodcraftreloaded:grape_liqueur"
+            "item": "foodcraft:grape_liqueur"
         }
     ],
     "fluidInput": {
@@ -16,7 +16,7 @@
         "amount": 1000
     },
     "result": {
-        "item": "foodcraftreloaded:wine",
+        "item": "foodcraft:wine",
         "count": 9
     }
 }

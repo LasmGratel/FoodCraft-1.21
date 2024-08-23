@@ -1,5 +1,5 @@
 {
-    "type": "foodcraftreloaded:pot",
+    "type": "foodcraft:pot",
     "minTime": 350,
     "maxTime": 400,
     "staples": [
@@ -26,11 +26,11 @@
             "ore": "dustSalt"
         },
         {
-            "item": "foodcraftreloaded:starches"
+            "item": "foodcraft:starches"
         }
     ],
     "result": {
-        "item": "foodcraftreloaded:boiled_beef",
+        "item": "foodcraft:boiled_beef",
         "count": 1
     }
 }

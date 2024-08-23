@@ -1,6 +1,6 @@
 {
     "name": "Mill",
-    "icon": "foodcraftreloaded:mill",
+    "icon": "foodcraft:mill",
     "category": "machines",
     "pages": [
         {
@@ -9,7 +9,7 @@
         },
         {
             "type": "crafting",
-            "recipe": "foodcraftreloaded:mill"
+            "recipe": "foodcraft:mill"
         }
     ]
 }

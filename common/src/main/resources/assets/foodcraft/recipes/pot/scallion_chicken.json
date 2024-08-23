@@ -1,5 +1,5 @@
 {
-    "type": "foodcraftreloaded:pot",
+    "type": "foodcraft:pot",
     "minTime": 400,
     "maxTime": 500,
     "staples": [
@@ -31,7 +31,7 @@
         }
     ],
     "result": {
-        "item": "foodcraftreloaded:scallion_chicken",
+        "item": "foodcraft:scallion_chicken",
         "count": 1
     }
 }

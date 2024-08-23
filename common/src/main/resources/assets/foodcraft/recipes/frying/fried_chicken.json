@@ -1,14 +1,14 @@
 {
-    "type": "foodcraftreloaded:frying",
+    "type": "foodcraft:frying",
     "ingredient": {
-        "item": "foodcraftreloaded:chicken_medium"
+        "item": "foodcraft:chicken_medium"
     },
     "fluidInput": {
         "fluid": "cooking_oil",
         "amount": 333
     },
     "result": {
-        "item": "foodcraftreloaded:fried_chicken",
+        "item": "foodcraft:fried_chicken",
         "count": 1
     }
 }

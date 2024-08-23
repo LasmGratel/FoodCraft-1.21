@@ -1,5 +1,5 @@
 {
-    "type": "foodcraftreloaded:chopping",
+    "type": "foodcraft:chopping",
     "pattern": " X ",
     "key": {
         "X": {
@@ -8,7 +8,7 @@
         }
     },
     "result": {
-        "item": "foodcraftreloaded:squid_slice",
+        "item": "foodcraft:squid_slice",
         "count": 2
     }
 }

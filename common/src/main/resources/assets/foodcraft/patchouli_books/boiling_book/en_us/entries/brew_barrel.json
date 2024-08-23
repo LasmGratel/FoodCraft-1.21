@@ -1,6 +1,6 @@
 {
     "name": "Brew Barrel",
-    "icon": "foodcraftreloaded:brew_barrel",
+    "icon": "foodcraft:brew_barrel",
     "category": "machines",
     "pages": [
         {
@@ -9,7 +9,7 @@
         },
         {
             "type": "crafting",
-            "recipe": "foodcraftreloaded:brew_barrel"
+            "recipe": "foodcraft:brew_barrel"
         }
     ]
 }

@@ -1,10 +1,10 @@
 {
-    "type": "foodcraftreloaded:blasting",
+    "type": "foodcraft:blasting",
     "ingredient": {
         "type": "forge:ore_dict",
         "ore": "listAllwater"
     },
-    "result": "foodcraftreloaded:salt",
+    "result": "foodcraft:salt",
     "experience": 0.4,
     "cookingtime": 100
 }

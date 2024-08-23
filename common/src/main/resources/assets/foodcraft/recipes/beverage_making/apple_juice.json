@@ -1,5 +1,5 @@
 {
-    "type": "foodcraftreloaded:beverage_making",
+    "type": "foodcraft:beverage_making",
     "ingredient": {
         "item": "minecraft:apple"
     },
@@ -9,7 +9,7 @@
         "amount": 1000
     },
     "result": {
-        "item": "foodcraftreloaded:apple_juice",
+        "item": "foodcraft:apple_juice",
         "count": 1
     }
 }

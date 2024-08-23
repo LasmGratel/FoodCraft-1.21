@@ -7,7 +7,7 @@
     ],
     "key": {
         "#": {
-            "item": "foodcraftreloaded:machine_casing"
+            "item": "foodcraft:machine_casing"
         },
         "A": {
             "type": "forge:ore_dict",
@@ -15,6 +15,6 @@
         }
     },
     "result": {
-        "item": "foodcraftreloaded:chopping_board"
+        "item": "foodcraft:chopping_board"
     }
 }

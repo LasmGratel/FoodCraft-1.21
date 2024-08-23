@@ -1,5 +1,5 @@
 {
-    "type": "foodcraftreloaded:pot",
+    "type": "foodcraft:pot",
     "minTime": 450,
     "maxTime": 500,
     "staples": [
@@ -34,11 +34,11 @@
             "ore": "foodSoysauce"
         },
         {
-            "item": "foodcraftreloaded:starches"
+            "item": "foodcraft:starches"
         }
     ],
     "result": {
-        "item": "foodcraftreloaded:boiled_fish_with_pickled_cabbage",
+        "item": "foodcraft:boiled_fish_with_pickled_cabbage",
         "count": 1
     }
 }

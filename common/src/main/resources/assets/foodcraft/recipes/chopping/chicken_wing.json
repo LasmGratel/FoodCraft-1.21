@@ -1,5 +1,5 @@
 {
-    "type": "foodcraftreloaded:chopping",
+    "type": "foodcraft:chopping",
     "pattern": " X ",
     "key": {
         "X": {
@@ -7,7 +7,7 @@
         }
     },
     "result": {
-        "item": "foodcraftreloaded:chicken_wing",
+        "item": "foodcraft:chicken_wing",
         "count": 2
     }
 }

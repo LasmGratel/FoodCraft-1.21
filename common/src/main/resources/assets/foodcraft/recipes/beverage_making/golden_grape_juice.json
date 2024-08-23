@@ -1,7 +1,7 @@
 {
-    "type": "foodcraftreloaded:beverage_making",
+    "type": "foodcraft:beverage_making",
     "ingredient": {
-        "item": "foodcraftreloaded:golden_grape"
+        "item": "foodcraft:golden_grape"
     },
     "cool": true,
     "fluidInput": {
@@ -9,6 +9,6 @@
         "amount": 1000
     },
     "result": {
-        "item": "foodcraftreloaded:golden_grape_juice"
+        "item": "foodcraft:golden_grape_juice"
     }
 }

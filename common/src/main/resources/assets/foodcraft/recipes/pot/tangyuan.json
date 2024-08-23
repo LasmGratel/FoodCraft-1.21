@@ -1,5 +1,5 @@
 {
-    "type": "foodcraftreloaded:pot",
+    "type": "foodcraft:pot",
     "minTime": 400,
     "maxTime": 500,
     "staples": [
@@ -15,7 +15,7 @@
         }
     ],
     "result": {
-        "item": "foodcraftreloaded:tangyuan",
+        "item": "foodcraft:tangyuan",
         "count": 1
     }
 }

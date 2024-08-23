@@ -1,14 +1,14 @@
 {
-    "type": "foodcraftreloaded:frying",
+    "type": "foodcraft:frying",
     "ingredient": {
-        "item": "foodcraftreloaded:chicken_small"
+        "item": "foodcraft:chicken_small"
     },
     "fluidInput": {
         "fluid": "cooking_oil",
         "amount": 333
     },
     "result": {
-        "item": "foodcraftreloaded:popcorn_chicken",
+        "item": "foodcraft:popcorn_chicken",
         "count": 1
     }
 }

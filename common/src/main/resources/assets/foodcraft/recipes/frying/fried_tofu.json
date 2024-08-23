@@ -1,5 +1,5 @@
 {
-    "type": "foodcraftreloaded:frying",
+    "type": "foodcraft:frying",
     "ingredient": {
         "type": "forge:ore_dict",
         "ore": "foodSilkentofu"
@@ -9,7 +9,7 @@
         "amount": 333
     },
     "result": {
-        "item": "foodcraftreloaded:fried_tofu",
+        "item": "foodcraft:fried_tofu",
         "count": 1
     }
 }

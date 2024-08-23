@@ -1,10 +1,10 @@
 {
-    "type": "foodcraftreloaded:pot",
+    "type": "foodcraft:pot",
     "minTime": 350,
     "maxTime": 450,
     "staples": [
         {
-            "item": "foodcraftreloaded:cooked_rice"
+            "item": "foodcraft:cooked_rice"
         },
         {
             "type": "forge:ore_dict",
@@ -38,7 +38,7 @@
         }
     ],
     "result": {
-        "item": "foodcraftreloaded:shredded_pork_rice",
+        "item": "foodcraft:shredded_pork_rice",
         "count": 1
     }
 }

@@ -1,11 +1,11 @@
 {
-    "type": "foodcraftreloaded:milling",
+    "type": "foodcraft:milling",
     "ingredient": {
         "type": "forge:ore_dict",
         "ore": "cropSoybean"
     },
     "result": {
-        "item": "foodcraftreloaded:soymilk",
+        "item": "foodcraft:soymilk",
         "count": 1
     }
 }

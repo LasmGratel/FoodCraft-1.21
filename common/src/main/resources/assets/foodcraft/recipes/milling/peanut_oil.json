@@ -1,11 +1,11 @@
 {
-    "type": "foodcraftreloaded:milling",
+    "type": "foodcraft:milling",
     "ingredient": {
         "type": "forge:ore_dict",
         "ore": "cropPeanut"
     },
     "result": {
-        "item": "foodcraftreloaded:peanut_oil",
+        "item": "foodcraft:peanut_oil",
         "count": 1
     }
 }

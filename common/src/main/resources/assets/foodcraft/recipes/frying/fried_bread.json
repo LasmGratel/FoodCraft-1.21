@@ -1,5 +1,5 @@
 {
-    "type": "foodcraftreloaded:frying",
+    "type": "foodcraft:frying",
     "ingredient": {
         "type": "forge:ore_dict",
         "ore": "foodBread"
@@ -9,7 +9,7 @@
         "amount": 333
     },
     "result": {
-        "item": "foodcraftreloaded:fried_bread",
+        "item": "foodcraft:fried_bread",
         "count": 1
     }
 }

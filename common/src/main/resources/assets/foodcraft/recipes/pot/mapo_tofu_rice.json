@@ -1,17 +1,17 @@
 {
-    "type": "foodcraftreloaded:pot",
+    "type": "foodcraft:pot",
     "minTime": 350,
     "maxTime": 450,
     "staples": [
         {
-            "item": "foodcraftreloaded:cooked_rice"
+            "item": "foodcraft:cooked_rice"
         },
         {
             "type": "forge:ore_dict",
             "ore": "foodSilkentofu"
         },
         {
-            "item": "foodcraftreloaded:pixian_watercress"
+            "item": "foodcraft:pixian_watercress"
         }
     ],
     "ingredients": [
@@ -24,11 +24,11 @@
             "ore": "dustSalt"
         },
         {
-            "item": "foodcraftreloaded:starches"
+            "item": "foodcraft:starches"
         }
     ],
     "result": {
-        "item": "foodcraftreloaded:mapo_tofu_rice",
+        "item": "foodcraft:mapo_tofu_rice",
         "count": 1
     }
 }

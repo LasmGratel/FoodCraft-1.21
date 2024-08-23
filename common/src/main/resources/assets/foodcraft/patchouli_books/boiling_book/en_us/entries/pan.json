@@ -1,6 +1,6 @@
 {
     "name": "Pan",
-    "icon": "foodcraftreloaded:pan",
+    "icon": "foodcraft:pan",
     "category": "machines",
     "pages": [
         {
@@ -9,7 +9,7 @@
         },
         {
             "type": "crafting",
-            "recipe": "foodcraftreloaded:pan"
+            "recipe": "foodcraft:pan"
         }
     ]
 }

@@ -1,5 +1,5 @@
 {
-    "type": "foodcraftreloaded:pressure_cooking",
+    "type": "foodcraft:pressure_cooking",
     "ingredients": [
         {
             "type": "forge:ore_dict",
@@ -19,7 +19,7 @@
         "amount": 1000
     },
     "result": {
-        "item": "foodcraftreloaded:cooked_rice",
+        "item": "foodcraft:cooked_rice",
         "count": 1
     }
 }

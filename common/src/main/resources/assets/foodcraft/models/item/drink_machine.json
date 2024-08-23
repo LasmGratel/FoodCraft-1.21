@@ -1,5 +1,5 @@
 {
-    "parent": "foodcraftreloaded:block/drink_machine",
+    "parent": "foodcraft:block/drink_machine",
     "display": {
         "thirdperson": {
             "rotation": [ 10, -45, 170 ],

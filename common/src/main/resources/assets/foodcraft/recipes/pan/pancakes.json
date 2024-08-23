@@ -1,11 +1,11 @@
 {
-    "type": "foodcraftreloaded:pan",
+    "type": "foodcraft:pan",
     "ingredient": {
         "type": "forge:ore_dict",
         "ore": "foodFlour"
     },
     "result": {
-        "item": "foodcraftreloaded:pancakes"
+        "item": "foodcraft:pancakes"
     },
     "minTime": 250,
     "maxTime": 350

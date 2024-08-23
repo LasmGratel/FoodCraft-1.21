@@ -1,8 +1,8 @@
 {
     "parent": "block/orientable",
     "textures": {
-        "top": "foodcraftreloaded:blocks/mill_top",
-        "front": "foodcraftreloaded:blocks/mill_front_off",
-        "side": "foodcraftreloaded:blocks/machine_side"
+        "top": "foodcraft:blocks/mill_top",
+        "front": "foodcraft:blocks/mill_front_off",
+        "side": "foodcraft:blocks/machine_side"
     }
 }

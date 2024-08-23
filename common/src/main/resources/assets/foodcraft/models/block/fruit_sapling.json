@@ -2,8 +2,8 @@
     "parent": "block/cube",
     "ambientocclusion": false,
     "textures": {
-        "all": "foodcraftreloaded:blocks/fruit_sapling",
-        "overlay": "foodcraftreloaded:blocks/fruit_sapling_overlay",
+        "all": "foodcraft:blocks/fruit_sapling",
+        "overlay": "foodcraft:blocks/fruit_sapling_overlay",
         "particle": "#all"
     },
     "elements": [

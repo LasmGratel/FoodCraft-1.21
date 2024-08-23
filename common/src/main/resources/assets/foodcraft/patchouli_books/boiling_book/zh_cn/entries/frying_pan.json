@@ -1,6 +1,6 @@
 {
     "name": "油炸机",
-    "icon": "foodcraftreloaded:frying_pan",
+    "icon": "foodcraft:frying_pan",
     "category": "machines",
     "pages": [
         {
@@ -9,7 +9,7 @@
         },
         {
             "type": "crafting",
-            "recipe": "foodcraftreloaded:frying_pan"
+            "recipe": "foodcraft:frying_pan"
         }
     ]
 }

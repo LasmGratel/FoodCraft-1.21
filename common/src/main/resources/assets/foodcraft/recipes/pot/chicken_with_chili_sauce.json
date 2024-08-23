@@ -1,5 +1,5 @@
 {
-    "type": "foodcraftreloaded:pot",
+    "type": "foodcraft:pot",
     "minTime": 450,
     "maxTime": 500,
     "staples": [
@@ -30,11 +30,11 @@
             "ore": "listAllsugar"
         },
         {
-            "item": "foodcraftreloaded:pixian_watercress"
+            "item": "foodcraft:pixian_watercress"
         }
     ],
     "result": {
-        "item": "foodcraftreloaded:chicken_with_chili_sauce",
+        "item": "foodcraft:chicken_with_chili_sauce",
         "count": 1
     }
 }

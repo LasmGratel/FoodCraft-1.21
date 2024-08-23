@@ -1,11 +1,11 @@
 {
-    "type": "foodcraftreloaded:milling",
+    "type": "foodcraft:milling",
     "ingredient": {
         "type": "forge:ore_dict",
         "ore": "cropWheat"
     },
     "result": {
-        "item": "foodcraftreloaded:flour",
+        "item": "foodcraft:flour",
         "count": 2
     }
 }

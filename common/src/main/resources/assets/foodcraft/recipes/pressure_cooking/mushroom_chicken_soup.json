@@ -1,12 +1,12 @@
 {
-    "type": "foodcraftreloaded:pressure_cooking",
+    "type": "foodcraft:pressure_cooking",
     "ingredients": [
         {
             "type": "forge:ore_dict",
             "ore": "listAllmushroom"
         },
         {
-            "item": "foodcraftreloaded:chicken_leg"
+            "item": "foodcraft:chicken_leg"
         },
         {
             "type": "forge:ore_dict",
@@ -18,7 +18,7 @@
         "amount": 1000
     },
     "result": {
-        "item": "foodcraftreloaded:mushroom_chicken_soup",
+        "item": "foodcraft:mushroom_chicken_soup",
         "count": 1
     }
 }

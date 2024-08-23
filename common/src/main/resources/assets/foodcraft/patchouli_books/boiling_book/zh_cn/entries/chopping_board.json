@@ -1,6 +1,6 @@
 {
     "name": "菜板",
-    "icon": "foodcraftreloaded:chopping_board",
+    "icon": "foodcraft:chopping_board",
     "category": "machines",
     "pages": [
         {
@@ -9,7 +9,7 @@
         },
         {
             "type": "crafting",
-            "recipe": "foodcraftreloaded:chopping_board"
+            "recipe": "foodcraft:chopping_board"
         }
     ]
 }

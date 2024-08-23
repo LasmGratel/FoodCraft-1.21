@@ -1,6 +1,6 @@
 {
     "name": "Pressure Cooker",
-    "icon": "foodcraftreloaded:pressure_cooker",
+    "icon": "foodcraft:pressure_cooker",
     "category": "machines",
     "pages": [
         {
@@ -9,7 +9,7 @@
         },
         {
             "type": "crafting",
-            "recipe": "foodcraftreloaded:pressure_cooker"
+            "recipe": "foodcraft:pressure_cooker"
         }
     ]
 }

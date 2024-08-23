@@ -1,11 +1,11 @@
 {
-    "type": "foodcraftreloaded:milling",
+    "type": "foodcraft:milling",
     "ingredient": {
         "type": "forge:ore_dict",
         "ore": "cropRice"
     },
     "result": {
-        "item": "foodcraftreloaded:milled_rice",
+        "item": "foodcraft:milled_rice",
         "count": 1
     }
 }

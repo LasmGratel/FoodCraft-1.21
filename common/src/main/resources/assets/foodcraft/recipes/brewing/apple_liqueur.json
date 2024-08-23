@@ -1,5 +1,5 @@
 {
-    "type": "foodcraftreloaded:brewing",
+    "type": "foodcraft:brewing",
     "ingredients": [
         {
             "type": "forge:ore_dict",
@@ -19,7 +19,7 @@
         "amount": 1000
     },
     "result": {
-        "item": "foodcraftreloaded:apple_liqueur",
+        "item": "foodcraft:apple_liqueur",
         "count": 3
     }
 }

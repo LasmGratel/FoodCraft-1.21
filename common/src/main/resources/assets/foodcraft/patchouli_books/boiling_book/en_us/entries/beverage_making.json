@@ -1,6 +1,6 @@
 {
     "name": "Beverage Making",
-    "icon": "foodcraftreloaded:beverage_making",
+    "icon": "foodcraft:beverage_making",
     "category": "machines",
     "pages": [
         {
@@ -9,7 +9,7 @@
         },
         {
             "type": "crafting",
-            "recipe": "foodcraftreloaded:beverage_making"
+            "recipe": "foodcraft:beverage_making"
         }
     ]
 }

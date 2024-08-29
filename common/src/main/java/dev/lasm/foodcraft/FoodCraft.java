@@ -26,5 +26,7 @@ public final class FoodCraft {
     public static void init() {
         TABS.register();
         ModItems.ITEMS.register();
+
+
     }
 }

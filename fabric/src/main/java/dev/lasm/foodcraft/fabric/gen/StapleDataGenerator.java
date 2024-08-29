@@ -12,6 +12,5 @@ public class StapleDataGenerator implements DataGeneratorEntrypoint {
         // Adding a provider example:
         //
         // pack.addProvider(AdvancementsProvider::new);
-        ColorHandlerRegistry.registerItemColors();
     }
 }

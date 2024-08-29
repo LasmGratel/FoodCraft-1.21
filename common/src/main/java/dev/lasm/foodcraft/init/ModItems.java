@@ -158,5 +158,7 @@ public class ModItems {
         PEAR_JAM = ITEMS.register("pear_jam", () -> new Item(foodItem(FoodValues.FRUIT_JAM)));
         ORANGE_JAM = ITEMS.register("orange_jam", () -> new Item(foodItem(FoodValues.FRUIT_JAM)));
         DATE_JAM = ITEMS.register("date_jam", () -> new Item(foodItem(FoodValues.FRUIT_JAM)));
+
+
     }
 }

@@ -1,12 +1,12 @@
 {
     "variants": {
-        "facing=north,working=true": { "model": "foodcraft:working_stove" },
-        "facing=south,working=true": { "model": "foodcraft:working_stove", "y": 180 },
-        "facing=west,working=true":  { "model": "foodcraft:working_stove", "y": 270 },
-        "facing=east,working=true":  { "model": "foodcraft:working_stove", "y": 90 },
-        "facing=north,working=false": { "model": "foodcraft:stove" },
-        "facing=south,working=false": { "model": "foodcraft:stove", "y": 180 },
-        "facing=west,working=false":  { "model": "foodcraft:stove", "y": 270 },
-        "facing=east,working=false":  { "model": "foodcraft:stove", "y": 90 }
+        "facing=north,working=true": { "model": "foodcraft:block/working_stove" },
+        "facing=south,working=true": { "model": "foodcraft:block/working_stove", "y": 180 },
+        "facing=west,working=true":  { "model": "foodcraft:block/working_stove", "y": 270 },
+        "facing=east,working=true":  { "model": "foodcraft:block/working_stove", "y": 90 },
+        "facing=north,working=false": { "model": "foodcraft:block/stove" },
+        "facing=south,working=false": { "model": "foodcraft:block/stove", "y": 180 },
+        "facing=west,working=false":  { "model": "foodcraft:block/stove", "y": 270 },
+        "facing=east,working=false":  { "model": "foodcraft:block/stove", "y": 90 }
     }
 }

@@ -1,7 +1,7 @@
 {
     "textures": {
-		"particle": "foodcraft:blocks/pressure_cooker",
-        "0": "foodcraft:blocks/pressure_cooker"
+		"particle": "foodcraft:block/pressure_cooker",
+        "0": "foodcraft:block/pressure_cooker"
     },
     "elements": [
         {

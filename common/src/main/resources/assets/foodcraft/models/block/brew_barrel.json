@@ -1,9 +1,9 @@
 {
     "parent": "block/orientable",
     "textures": {
-        "top": "blocks/planks_oak",
-        "front": "foodcraft:blocks/brew_barrel_side",
-		"down": "blocks/planks_oak",
-        "side": "foodcraft:blocks/brew_barrel_side"
+        "top": "block/planks_oak",
+        "front": "foodcraft:block/brew_barrel_side",
+		"down": "block/planks_oak",
+        "side": "foodcraft:block/brew_barrel_side"
     }
 }

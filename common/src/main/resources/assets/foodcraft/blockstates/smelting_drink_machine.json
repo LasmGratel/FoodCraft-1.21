@@ -1,8 +1,8 @@
 {
     "variants": {
-        "facing=north": { "model": "foodcraft:drink_machine" },
-        "facing=south": { "model": "foodcraft:drink_machine", "y": 180 },
-        "facing=west":  { "model": "foodcraft:drink_machine", "y": 270 },
-        "facing=east":  { "model": "foodcraft:drink_machine", "y": 90 }
+        "facing=north": { "model": "foodcraft:block/drink_machine" },
+        "facing=south": { "model": "foodcraft:block/drink_machine", "y": 180 },
+        "facing=west":  { "model": "foodcraft:block/drink_machine", "y": 270 },
+        "facing=east":  { "model": "foodcraft:block/drink_machine", "y": 90 }
     }
 }

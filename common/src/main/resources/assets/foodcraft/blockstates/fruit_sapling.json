@@ -1,5 +1,5 @@
 {
     "variants": {
-        "normal": { "model": "foodcraft:fruit_sapling" }
+        "": { "model": "foodcraft:block/fruit_sapling" }
     }
 }

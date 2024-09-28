@@ -1,9 +1,9 @@
 {
     "parent": "block/block",
     "textures": {
-        "all": "foodcraft:blocks/fruit_leaves",
-        "overlay": "foodcraft:blocks/fruit_leaves_overlay",
-        "particle": "foodcraft:blocks/fruit_leaves"
+        "all": "foodcraft:block/fruit_leaves",
+        "overlay": "foodcraft:block/fruit_leaves_overlay",
+        "particle": "foodcraft:block/fruit_leaves"
     },
     "elements": [
         {   "from": [ 0, 0, 0 ],

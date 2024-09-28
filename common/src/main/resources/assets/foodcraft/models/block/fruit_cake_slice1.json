@@ -1,14 +1,14 @@
 {
     "parent": "block/block",
     "textures": {
-        "particle": "foodcraft:blocks/cake_side",
-        "bottom": "foodcraft:blocks/cake_bottom",
-        "top": "foodcraft:blocks/cake_top",
-        "side": "foodcraft:blocks/cake_side",
-        "side_overlay": "foodcraft:blocks/cake_side_overlay",
-        "inside": "foodcraft:blocks/cake_inner",
-        "inside_overlay": "foodcraft:blocks/cake_inner_overlay",
-        "overlay": "foodcraft:blocks/cake_overlay"
+        "particle": "foodcraft:block/cake_side",
+        "bottom": "foodcraft:block/cake_bottom",
+        "top": "foodcraft:block/cake_top",
+        "side": "foodcraft:block/cake_side",
+        "side_overlay": "foodcraft:block/cake_side_overlay",
+        "inside": "foodcraft:block/cake_inner",
+        "inside_overlay": "foodcraft:block/cake_inner_overlay",
+        "overlay": "foodcraft:block/cake_overlay"
     },
     "elements": [
         {   "from": [ 3, 0, 1 ],

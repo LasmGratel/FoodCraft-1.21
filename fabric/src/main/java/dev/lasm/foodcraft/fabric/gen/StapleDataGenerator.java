@@ -12,5 +12,6 @@ public class StapleDataGenerator implements DataGeneratorEntrypoint {
         // Adding a provider example:
         //
         // pack.addProvider(AdvancementsProvider::new);
+        pack.addProvider(TagGenerator::new);
     }
 }

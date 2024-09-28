@@ -1,6 +1,6 @@
 {
     "parent": "block/tinted_cross",
     "textures": {
-        "cross": "foodcraft:blocks/green_onion"
+        "cross": "foodcraft:block/green_onion"
     }
 }

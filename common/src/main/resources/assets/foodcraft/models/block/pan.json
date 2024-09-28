@@ -1,7 +1,7 @@
 {
     "textures": {
-		"particle": "foodcraft:blocks/pan",
-        "0": "foodcraft:blocks/pan"
+		"particle": "foodcraft:block/pan",
+        "0": "foodcraft:block/pan"
     },
     "elements": [
         {

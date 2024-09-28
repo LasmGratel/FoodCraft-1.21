@@ -1,6 +1,6 @@
 {
     "parent": "block/cube_all",
     "textures": {
-        "all": "foodcraft:blocks/mill_side"
+        "all": "foodcraft:block/mill_side"
     }
 }

@@ -1,5 +1,5 @@
 {
     "variants": {
-        "normal": { "model": "foodcraft:fruit_leaves" }
+        "": { "model": "foodcraft:block/fruit_leaves" }
     }
 }

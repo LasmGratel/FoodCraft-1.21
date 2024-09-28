@@ -1,12 +1,12 @@
 {
     "variants": {
-        "facing=north,working=false": { "model": "foodcraft:pan" },
-        "facing=south,working=false": { "model": "foodcraft:pan", "y": 180 },
-        "facing=west,working=false":  { "model": "foodcraft:pan", "y": 270 },
-        "facing=east,working=false":  { "model": "foodcraft:pan", "y": 90 },
-        "facing=north,working=true": { "model": "foodcraft:pan" },
-        "facing=south,working=true": { "model": "foodcraft:pan", "y": 180 },
-        "facing=west,working=true":  { "model": "foodcraft:pan", "y": 270 },
-        "facing=east,working=true":  { "model": "foodcraft:pan", "y": 90 }
+        "facing=north,working=false": { "model": "foodcraft:block/pan" },
+        "facing=south,working=false": { "model": "foodcraft:block/pan", "y": 180 },
+        "facing=west,working=false":  { "model": "foodcraft:block/pan", "y": 270 },
+        "facing=east,working=false":  { "model": "foodcraft:block/pan", "y": 90 },
+        "facing=north,working=true": { "model": "foodcraft:block/pan" },
+        "facing=south,working=true": { "model": "foodcraft:block/pan", "y": 180 },
+        "facing=west,working=true":  { "model": "foodcraft:block/pan", "y": 270 },
+        "facing=east,working=true":  { "model": "foodcraft:block/pan", "y": 90 }
     }
 }

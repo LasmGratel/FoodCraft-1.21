@@ -1,5 +1,5 @@
 {
     "variants": {
-        "normal": { "model": "foodcraft:machine_casing" }
+        "": { "model": "foodcraft:block/machine_casing" }
     }
 }

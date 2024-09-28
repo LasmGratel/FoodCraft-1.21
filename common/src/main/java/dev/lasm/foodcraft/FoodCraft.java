@@ -5,6 +5,7 @@ import dev.architectury.registry.CreativeTabRegistry;
 import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrarManager;
 import dev.architectury.registry.registries.RegistrySupplier;
+import dev.lasm.foodcraft.init.ModBlocks;
 import dev.lasm.foodcraft.init.ModItems;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -25,8 +26,7 @@ public final class FoodCraft {
 
     public static void init() {
         TABS.register();
+        ModBlocks.BLOCKS.register();
         ModItems.ITEMS.register();
-
-
     }
 }

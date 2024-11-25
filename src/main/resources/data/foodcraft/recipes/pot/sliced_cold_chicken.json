@@ -1,0 +1,22 @@
+{
+    "type": "foodcraft:pot",
+    "minTime": 450,
+    "maxTime": 500,
+    "staples": [
+        {
+            "tag": "forge:cooked_chicken"
+        },
+        {
+            "tag": "forge:crops/green_onion"
+        }
+    ],
+    "ingredients": [
+        {
+            "tag": "forge:sugar"
+        }
+    ],
+    "result": {
+        "item": "foodcraft:sliced_cold_chicken",
+        "count": 1
+    }
+}

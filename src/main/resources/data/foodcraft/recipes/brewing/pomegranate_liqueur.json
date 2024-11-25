@@ -1,0 +1,22 @@
+{
+    "type": "foodcraft:brewing",
+    "ingredients": [
+        {
+            "tag": "forge:crops/pomegranate"
+        },
+        {
+            "tag": "forge:crops/pomegranate"
+        },
+        {
+            "tag": "forge:crops/pomegranate"
+        }
+    ],
+    "fluidInput": {
+        "fluid": "minecraft:water",
+        "amount": 1000
+    },
+    "result": {
+        "item": "foodcraft:pomegranate_liqueur",
+        "count": 3
+    }
+}

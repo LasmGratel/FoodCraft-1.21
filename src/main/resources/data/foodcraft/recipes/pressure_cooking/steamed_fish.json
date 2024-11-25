@@ -1,0 +1,22 @@
+{
+    "type": "foodcraft:pressure_cooking",
+    "ingredients": [
+        {
+            "tag": "forge:listallfishcooked"
+        },
+        {
+            "tag": "forge:foodgreen_onion"
+        },
+        {
+            "tag": "forge:foodgreen_onion"
+        }
+    ],
+    "fluidInput": {
+        "fluid": "minecraft:water",
+        "amount": 1000
+    },
+    "result": {
+        "item": "foodcraft:steamed_fish",
+        "count": 1
+    }
+}

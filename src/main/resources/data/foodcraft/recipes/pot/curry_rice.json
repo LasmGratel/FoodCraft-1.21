@@ -1,0 +1,37 @@
+{
+    "type": "foodcraft:pot",
+    "minTime": 400,
+    "maxTime": 500,
+    "staples": [
+        {
+            "item": "foodcraft:cooked_rice"
+        },
+        {
+            "tag": "forge:foodcurry"
+        },
+        {
+            "tag": "forge:crops/potato"
+        },
+        {
+            "tag": "forge:cooked_chicken"
+        }
+    ],
+    "ingredients": [
+        {
+            "tag": "forge:cooking_oil"
+        },
+        {
+            "tag": "forge:salt"
+        },
+        {
+            "item": "foodcraft:starches"
+        },
+        {
+            "tag": "forge:soy_sauce"
+        }
+    ],
+    "result": {
+        "item": "foodcraft:curry_rice",
+        "count": 1
+    }
+}

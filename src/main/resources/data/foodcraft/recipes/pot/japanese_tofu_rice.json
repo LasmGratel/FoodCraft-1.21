@@ -1,0 +1,37 @@
+{
+    "type": "foodcraft:pot",
+    "minTime": 350,
+    "maxTime": 450,
+    "staples": [
+        {
+            "item": "foodcraft:cooked_rice"
+        },
+        {
+            "tag": "forge:egg"
+        },
+        {
+            "tag": "forge:crops/green_onion"
+        },
+        {
+            "tag": "forge:crops/facing_heaven_pepper"
+        }
+    ],
+    "ingredients": [
+        {
+            "tag": "forge:cooking_oil"
+        },
+        {
+            "tag": "forge:salt"
+        },
+        {
+            "tag": "forge:soy_sauce"
+        },
+        {
+            "item": "foodcraft:starches"
+        }
+    ],
+    "result": {
+        "item": "foodcraft:japanese_tofu_rice",
+        "count": 1
+    }
+}

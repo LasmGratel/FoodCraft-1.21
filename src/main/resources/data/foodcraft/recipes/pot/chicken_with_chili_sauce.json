@@ -1,0 +1,34 @@
+{
+    "type": "foodcraft:pot",
+    "minTime": 450,
+    "maxTime": 500,
+    "staples": [
+        {
+            "tag": "forge:crops/facing_heaven_pepper"
+        },
+        {
+            "tag": "forge:crops/green_onion"
+        },
+        {
+            "tag": "forge:cooked_chicken"
+        }
+    ],
+    "ingredients": [
+        {
+            "tag": "forge:cooking_oil"
+        },
+        {
+            "tag": "forge:salt"
+        },
+        {
+            "tag": "forge:sugar"
+        },
+        {
+            "item": "foodcraft:pixian_watercress"
+        }
+    ],
+    "result": {
+        "item": "foodcraft:chicken_with_chili_sauce",
+        "count": 1
+    }
+}

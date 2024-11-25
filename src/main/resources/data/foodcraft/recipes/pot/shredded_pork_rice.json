@@ -1,0 +1,37 @@
+{
+    "type": "foodcraft:pot",
+    "minTime": 350,
+    "maxTime": 450,
+    "staples": [
+        {
+            "item": "foodcraft:cooked_rice"
+        },
+        {
+            "tag": "forge:cooked_pork"
+        },
+        {
+            "tag": "forge:crops/green_pepper"
+        },
+        {
+            "tag": "forge:crops/carrot"
+        }
+    ],
+    "ingredients": [
+        {
+            "tag": "forge:cooking_oil"
+        },
+        {
+            "tag": "forge:salt"
+        },
+        {
+            "tag": "forge:sugar"
+        },
+        {
+            "tag": "forge:vinegar"
+        }
+    ],
+    "result": {
+        "item": "foodcraft:shredded_pork_rice",
+        "count": 1
+    }
+}

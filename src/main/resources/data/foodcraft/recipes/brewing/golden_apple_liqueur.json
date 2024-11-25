@@ -1,0 +1,22 @@
+{
+    "type": "foodcraft:brewing",
+    "ingredients": [
+        {
+            "item": "minecraft:golden_apple"
+        },
+        {
+            "item": "minecraft:golden_apple"
+        },
+        {
+            "item": "minecraft:golden_apple"
+        }
+    ],
+    "fluidInput": {
+        "fluid": "minecraft:water",
+        "amount": 1000
+    },
+    "result": {
+        "item": "foodcraft:golden_apple_liqueur",
+        "count": 3
+    }
+}

@@ -1,0 +1,13 @@
+{
+    "type": "foodcraft:pan",
+    "result": {
+        "item": "foodcraft:fried_potato_chips"
+    },
+    "minTime": 225,
+    "maxTime": 325,
+    "ingredients": [
+        {
+            "tag": "forge:foodpotatochips"
+        }
+    ]
+}

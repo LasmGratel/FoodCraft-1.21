@@ -1,0 +1,13 @@
+{
+    "type": "foodcraft:pan",
+    "result": {
+        "item": "foodcraft:dough_twist"
+    },
+    "minTime": 300,
+    "maxTime": 380,
+    "ingredients": [
+        {
+            "tag": "forge:shreddough"
+        }
+    ]
+}

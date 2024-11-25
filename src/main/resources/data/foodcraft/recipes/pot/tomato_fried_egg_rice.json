@@ -1,0 +1,31 @@
+{
+    "type": "foodcraft:pot",
+    "minTime": 400,
+    "maxTime": 500,
+    "staples": [
+        {
+            "item": "foodcraft:cooked_rice"
+        },
+        {
+            "tag": "forge:egg"
+        },
+        {
+            "tag": "forge:crops/tomato"
+        }
+    ],
+    "ingredients": [
+        {
+            "tag": "forge:cooking_oil"
+        },
+        {
+            "tag": "forge:salt"
+        },
+        {
+            "tag": "forge:sugar"
+        }
+    ],
+    "result": {
+        "item": "foodcraft:tomato_fried_egg_rice",
+        "count": 1
+    }
+}

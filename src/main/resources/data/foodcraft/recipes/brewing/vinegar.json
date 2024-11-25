@@ -1,0 +1,22 @@
+{
+    "type": "foodcraft:brewing",
+    "ingredients": [
+        {
+            "tag": "forge:crops/soybean"
+        },
+        {
+            "tag": "forge:crops/soybean"
+        },
+        {
+            "tag": "forge:listallsugar"
+        }
+    ],
+    "fluidInput": {
+        "fluid": "minecraft:water",
+        "amount": 1000
+    },
+    "result": {
+        "item": "foodcraft:vinegar",
+        "count": 16
+    }
+}

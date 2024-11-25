@@ -1,0 +1,31 @@
+{
+    "type": "foodcraft:pot",
+    "minTime": 400,
+    "maxTime": 500,
+    "staples": [
+        {
+            "tag": "forge:crops/green_pepper"
+        },
+        {
+            "tag": "forge:crops/green_onion"
+        },
+        {
+            "tag": "forge:cooked_chicken"
+        }
+    ],
+    "ingredients": [
+        {
+            "tag": "forge:cooking_oil"
+        },
+        {
+            "tag": "forge:salt"
+        },
+        {
+            "tag": "forge:soy_sauce"
+        }
+    ],
+    "result": {
+        "item": "foodcraft:scallion_chicken",
+        "count": 1
+    }
+}

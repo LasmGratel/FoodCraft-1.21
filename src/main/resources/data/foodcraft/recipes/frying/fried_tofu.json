@@ -1,0 +1,16 @@
+{
+    "type": "foodcraft:frying",
+    "fluidInput": {
+        "fluid": "minecraft:cooking_oil",
+        "amount": 333
+    },
+    "result": {
+        "item": "foodcraft:fried_tofu",
+        "count": 1
+    },
+    "ingredients": [
+        {
+            "tag": "forge:foodsilkentofu"
+        }
+    ]
+}

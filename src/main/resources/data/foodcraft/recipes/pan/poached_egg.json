@@ -1,0 +1,13 @@
+{
+    "type": "foodcraft:pan",
+    "result": {
+        "item": "foodcraft:poached_egg"
+    },
+    "minTime": 250,
+    "maxTime": 400,
+    "ingredients": [
+        {
+            "tag": "forge:listallegg"
+        }
+    ]
+}

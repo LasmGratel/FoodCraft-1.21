@@ -1,0 +1,16 @@
+{
+    "type": "foodcraft:frying",
+    "fluidInput": {
+        "fluid": "minecraft:cooking_oil",
+        "amount": 333
+    },
+    "result": {
+        "item": "foodcraft:popcorn_chicken",
+        "count": 1
+    },
+    "ingredients": [
+        {
+            "item": "foodcraft:chicken_small"
+        }
+    ]
+}

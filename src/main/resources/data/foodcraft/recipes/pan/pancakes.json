@@ -1,0 +1,13 @@
+{
+    "type": "foodcraft:pan",
+    "result": {
+        "item": "foodcraft:pancakes"
+    },
+    "minTime": 250,
+    "maxTime": 350,
+    "ingredients": [
+        {
+            "tag": "forge:flour"
+        }
+    ]
+}

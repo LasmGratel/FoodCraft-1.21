@@ -1,0 +1,16 @@
+{
+    "type": "foodcraft:beverage_making",
+    "cool": false,
+    "fluidInput": {
+        "fluid": "minecraft:milk",
+        "amount": 1000
+    },
+    "result": {
+        "item": "foodcraft:milk_tea"
+    },
+    "ingredients": [
+        {
+            "tag": "forge:foodtea"
+        }
+    ]
+}

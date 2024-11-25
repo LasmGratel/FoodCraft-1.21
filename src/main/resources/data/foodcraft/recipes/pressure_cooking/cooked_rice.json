@@ -1,0 +1,22 @@
+{
+    "type": "foodcraft:pressure_cooking",
+    "ingredients": [
+        {
+            "tag": "forge:foodmilledrice"
+        },
+        {
+            "tag": "forge:foodmilledrice"
+        },
+        {
+            "tag": "forge:foodmilledrice"
+        }
+    ],
+    "fluidInput": {
+        "fluid": "minecraft:water",
+        "amount": 1000
+    },
+    "result": {
+        "item": "foodcraft:cooked_rice",
+        "count": 1
+    }
+}

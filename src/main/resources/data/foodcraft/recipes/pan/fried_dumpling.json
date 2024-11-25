@@ -1,0 +1,13 @@
+{
+    "type": "foodcraft:pan",
+    "result": {
+        "item": "foodcraft:fried_dumpling"
+    },
+    "minTime": 250,
+    "maxTime": 350,
+    "ingredients": [
+        {
+            "item": "foodcraft:dumpling"
+        }
+    ]
+}

@@ -1,0 +1,34 @@
+{
+    "type": "foodcraft:pot",
+    "minTime": 450,
+    "maxTime": 500,
+    "staples": [
+        {
+            "item": "foodcraft:cooked_rice"
+        },
+        {
+            "tag": "forge:cooked_pork"
+        }
+    ],
+    "ingredients": [
+        {
+            "tag": "forge:cooking_oil"
+        },
+        {
+            "tag": "forge:salt"
+        },
+        {
+            "tag": "forge:sugar"
+        },
+        {
+            "tag": "forge:vinegar"
+        },
+        {
+            "tag": "forge:soy_sauce"
+        }
+    ],
+    "result": {
+        "item": "foodcraft:pork_braised_in_brown_sauce_rice",
+        "count": 1
+    }
+}

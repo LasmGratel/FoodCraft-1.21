@@ -1,0 +1,19 @@
+{
+    "type": "foodcraft:pot",
+    "minTime": 400,
+    "maxTime": 500,
+    "staples": [
+        {
+            "tag": "foodcraft:tangyuan_stuffing"
+        }
+    ],
+    "ingredients": [
+        {
+            "tag": "forge:foodstickyricedough"
+        }
+    ],
+    "result": {
+        "item": "foodcraft:tangyuan",
+        "count": 1
+    }
+}

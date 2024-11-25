@@ -1,0 +1,16 @@
+{
+    "type": "foodcraft:beverage_making",
+    "cool": true,
+    "fluidInput": {
+        "fluid": "minecraft:water",
+        "amount": 1000
+    },
+    "result": {
+        "item": "foodcraft:fanta"
+    },
+    "ingredients": [
+        {
+            "tag": "forge:dyeorange"
+        }
+    ]
+}

@@ -1,0 +1,12 @@
+{
+    "type": "foodcraft:milling",
+    "result": {
+        "id": "foodcraft:chocolate_dust",
+        "count": 1
+    },
+    "ingredients": [
+        {
+            "tag": "c:dyes/brown"
+        }
+    ]
+}

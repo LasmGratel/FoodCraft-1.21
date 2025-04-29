@@ -1,0 +1,12 @@
+{
+    "type": "foodcraft:milling",
+    "result": {
+        "id": "foodcraft:red_bean_paste",
+        "count": 2
+    },
+    "ingredients": [
+        {
+            "tag": "c:crops/adzuki_bean"
+        }
+    ]
+}

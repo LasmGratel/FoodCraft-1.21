@@ -1,0 +1,16 @@
+{
+    "type": "foodcraft:beverage_making",
+    "cool": true,
+    "fluidInput": {
+        "id": "minecraft:water",
+        "amount": 1000
+    },
+    "result": {
+        "id": "foodcraft:grape_juice"
+    },
+    "ingredients": [
+        {
+            "tag": "c:crops/grape"
+        }
+    ]
+}

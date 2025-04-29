@@ -1,0 +1,13 @@
+{
+    "type": "foodcraft:pan",
+    "result": {
+        "id": "foodcraft:fried_potato_chips"
+    },
+    "minTime": 225,
+    "maxTime": 325,
+    "ingredients": [
+        {
+            "tag": "c:foods/potato_slice"
+        }
+    ]
+}

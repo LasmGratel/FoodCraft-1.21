@@ -1,0 +1,22 @@
+{
+    "type": "foodcraft:brewing",
+    "ingredients": [
+        {
+            "tag": "c:crops/litchi"
+        },
+        {
+            "tag": "c:crops/litchi"
+        },
+        {
+            "tag": "c:crops/litchi"
+        }
+    ],
+    "fluidInput": {
+        "id": "minecraft:water",
+        "amount": 1000
+    },
+    "result": {
+        "id": "foodcraft:litchi_liqueur",
+        "count": 3
+    }
+}

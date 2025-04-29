@@ -1,0 +1,12 @@
+{
+    "type": "foodcraft:milling",
+    "result": {
+        "id": "foodcraft:sticky_rice_flour",
+        "count": 2
+    },
+    "ingredients": [
+        {
+            "tag": "c:crops/sticky_rice"
+        }
+    ]
+}

@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "foodcraft:curry",
+    {
+      "id": "c:spices/currypowder",
+      "required": false
+    }
+  ]
+}

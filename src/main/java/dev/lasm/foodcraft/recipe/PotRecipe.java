@@ -1,61 +1,70 @@
 package dev.lasm.foodcraft.recipe;
 
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import dev.lasm.foodcraft.init.ModRecipeSerializers;
 import dev.lasm.foodcraft.init.ModRecipeTypes;
-import dev.lasm.foodcraft.util.IngredientHelper;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import javax.annotation.ParametersAreNonnullByDefault;
+import net.darkhax.bookshelf.common.api.data.codecs.map.MapCodecs;
+import net.darkhax.bookshelf.common.api.data.codecs.stream.StreamCodecs;
+import net.minecraft.MethodsReturnNonnullByDefault;
+import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.core.NonNullList;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.GsonHelper;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.common.crafting.CraftingHelper;
-import net.minecraftforge.common.util.RecipeMatcher;
-import net.minecraftforge.items.wrapper.RecipeWrapper;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import net.neoforged.neoforge.common.util.RecipeMatcher;
+import net.neoforged.neoforge.items.wrapper.RecipeWrapper;
 
+@MethodsReturnNonnullByDefault
+@ParametersAreNonnullByDefault
 public class PotRecipe implements Recipe<RecipeWrapper> {
     public static final int INGREDIENT_SLOTS = 8;
     public static final int STAPLE_SLOTS = 4;
 
-    private final ResourceLocation id;
     private final String group;
-    private final NonNullList<Ingredient> staples;
-    private final NonNullList<Ingredient> ingredients;
     private final ItemStack output;
+    private final NonNullList<Ingredient> ingredients;
+    private final NonNullList<Ingredient> staples;
     private final int minTime;
     private final int maxTime;
 
-    public PotRecipe(ResourceLocation id, String group, NonNullList<Ingredient> staples,
-        NonNullList<Ingredient> ingredients, ItemStack output, int minTime, int maxTime) {
-        this.id = id;
+    public PotRecipe(String group, ItemStack output,
+        List<Ingredient> ingredients, List<Ingredient> staples, int minTime, int maxTime) {
         this.group = group;
-        this.staples = staples;
-        this.ingredients = ingredients;
         this.output = output;
+
+        if (ingredients.isEmpty()) {
+            throw new JsonParseException("No ingredients for pot recipe");
+        } else if (ingredients.size() > INGREDIENT_SLOTS) {
+            throw new JsonParseException(
+                "Too many ingredients for pot recipe! The max is 8");
+        }
+
+        if (staples.size() > STAPLE_SLOTS) {
+            throw new JsonParseException(
+                "Too many staples for pot recipe! The max is 4");
+        }
+
+        this.ingredients = NonNullList.copyOf(ingredients);
+        this.staples = NonNullList.copyOf(staples);
         this.minTime = minTime;
         this.maxTime = maxTime;
     }
 
     @Override
-    public NonNullList<Ingredient> getIngredients() {
-        return ingredients;
-    }
-
-    public NonNullList<Ingredient> getStaples() {
-        return staples;
+    public String getGroup() {
+        return group;
     }
 
     public int getMinTime() {
@@ -67,16 +76,19 @@ public class PotRecipe implements Recipe<RecipeWrapper> {
     }
 
     @Override
-    public @NotNull String getGroup() {
-        return group;
+    public RecipeSerializer<?> getSerializer() {
+        return ModRecipeSerializers.POT.get();
     }
 
     @Override
-    public boolean matches(@NotNull RecipeWrapper container, @NotNull Level level) {
+    public RecipeType<?> getType() {
+        return ModRecipeTypes.POT.get();
+    }
+
+    @Override
+    public boolean matches(RecipeWrapper container, Level level) {
         var inputs = new ArrayList<ItemStack>();
         var inputSize = 0;
-        var staples = new ArrayList<ItemStack>();
-        var stapleSize = 0;
 
         for (int j = 0; j < INGREDIENT_SLOTS; ++j) {
             var stack = container.getItem(j);
@@ -86,46 +98,44 @@ public class PotRecipe implements Recipe<RecipeWrapper> {
             }
         }
 
+        var stapleInputs = new ArrayList<ItemStack>();
+        var stapleSize = 0;
+
         for (int j = 0; j < STAPLE_SLOTS; ++j) {
-            var stack = container.getItem(INGREDIENT_SLOTS + j);
+            var stack = container.getItem(j);
             if (!stack.isEmpty()) {
                 ++stapleSize;
-                staples.add(stack);
+                stapleInputs.add(stack);
             }
         }
 
-        return inputSize == this.ingredients.size() && RecipeMatcher.findMatches(inputs, this.ingredients) != null
-            && stapleSize == this.staples.size() && RecipeMatcher.findMatches(staples, this.staples) != null;
+        return ingredients.size() <= inputSize && RecipeMatcher.findMatches(inputs, ingredients) != null
+            && staples.size() <= stapleSize && RecipeMatcher.findMatches(stapleInputs, staples) != null;
     }
 
     @Override
-    public @NotNull ItemStack assemble(@NotNull RecipeWrapper pContainer, @NotNull RegistryAccess pRegistryAccess) {
+    public ItemStack assemble(RecipeWrapper RecipeWrapper,
+        Provider provider) {
         return output.copy();
     }
 
     @Override
     public boolean canCraftInDimensions(int width, int height) {
-        return width * height >= this.ingredients.size() + this.staples.size();
+        return width * height >= ingredients.size() + staples.size();
     }
 
     @Override
-    public @NotNull ItemStack getResultItem(@Nullable RegistryAccess pRegistryAccess) {
+    public ItemStack getResultItem(Provider provider) {
         return output;
     }
 
     @Override
-    public @NotNull ResourceLocation getId() {
-        return id;
+    public NonNullList<Ingredient> getIngredients() {
+        return ingredients;
     }
 
-    @Override
-    public @NotNull RecipeSerializer<?> getSerializer() {
-        return ModRecipeSerializers.POT.get();
-    }
-
-    @Override
-    public @NotNull RecipeType<?> getType() {
-        return ModRecipeTypes.POT.get();
+    public NonNullList<Ingredient> getStaples() {
+        return staples;
     }
 
     @Override
@@ -136,75 +146,61 @@ public class PotRecipe implements Recipe<RecipeWrapper> {
         if (!(o instanceof PotRecipe potRecipe)) {
             return false;
         }
-        return minTime == potRecipe.minTime && maxTime == potRecipe.maxTime && Objects.equals(
-            getId(), potRecipe.getId()) && Objects.equals(getGroup(), potRecipe.getGroup())
-            && Objects.equals(staples, potRecipe.staples) && Objects.equals(
-            getIngredients(), potRecipe.getIngredients()) && Objects.equals(output,
-            potRecipe.output);
+      return getMinTime() == potRecipe.getMinTime() && getMaxTime() == potRecipe.getMaxTime()
+            && Objects.equals(getGroup(), potRecipe.getGroup())
+            && Objects.equals(output, potRecipe.output)
+            && Objects.equals(getIngredients(), potRecipe.getIngredients())
+            && Objects.equals(getStaples(), potRecipe.getStaples());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getGroup(), staples, getIngredients(), output, minTime,
-            maxTime);
+        return Objects.hash(getGroup(), output, getIngredients(), getStaples(), getMinTime(),
+            getMaxTime());
     }
 
     public static class Serializer implements RecipeSerializer<PotRecipe> {
+        public static final MapCodec<PotRecipe> CODEC = RecordCodecBuilder.mapCodec(instance ->
+            instance.group(Codec.STRING.optionalFieldOf("group", "").forGetter(PotRecipe::getGroup),
+                    MapCodecs.ITEM_STACK.get().fieldOf("result").forGetter((PotRecipe i) -> i.output),
+                    MapCodecs.INGREDIENT_NONEMPTY.getList("ingredients", PotRecipe::getIngredients),
+                    MapCodecs.INGREDIENT_NONEMPTY.getList("staples", PotRecipe::getStaples),
+                    MapCodecs.INT.get("minTime", PotRecipe::getMinTime, 400),
+                    MapCodecs.INT.get("maxTime", PotRecipe::getMaxTime, 1000)
+                )
+                .apply(instance, PotRecipe::new)
+        );
+
+        public static final StreamCodec<RegistryFriendlyByteBuf, PotRecipe> STREAM_CODEC = StreamCodec.of(
+            PotRecipe.Serializer::toNetwork, PotRecipe.Serializer::fromNetwork);
 
         @Override
-        public @NotNull PotRecipe fromJson(@NotNull ResourceLocation id, @NotNull JsonObject json) {
-            var group = GsonHelper.getAsString(json, "group", "");
-            var ingredients = IngredientHelper.readIngredients(GsonHelper.getAsJsonArray(json, "ingredients"));
-            var staples = IngredientHelper.readIngredients(GsonHelper.getAsJsonArray(json, "staples"));
-
-            if (ingredients.isEmpty()) {
-                throw new JsonParseException("No ingredients for pot recipe");
-            } else if (ingredients.size() > INGREDIENT_SLOTS) {
-                throw new JsonParseException(
-                    "Too many ingredients for pot recipe! The max is 8");
-            } else if (staples.size() > STAPLE_SLOTS) {
-                throw new JsonParseException(
-                    "Too many staples for pot recipe! The max is 4");
-            }
-            var output = CraftingHelper.getItemStack(GsonHelper.getAsJsonObject(json, "result"), true);
-            var minTime = GsonHelper.getAsInt(json, "minTime", 400);
-            var maxTime = GsonHelper.getAsInt(json, "minTime", 1000);
-            return new PotRecipe(id, group, staples, ingredients, output, minTime, maxTime);
+        public MapCodec<PotRecipe> codec() {
+            return CODEC;
         }
 
         @Override
-        public @Nullable PotRecipe fromNetwork(@NotNull ResourceLocation id,
-            @NotNull FriendlyByteBuf buffer) {
-            var group = buffer.readUtf();
-            var size = buffer.readVarInt();
-            var ingredients = NonNullList.withSize(size, Ingredient.EMPTY);
-            for (int i = 0; i < size; i++) {
-                ingredients.set(i, Ingredient.fromNetwork(buffer));
-            }
-            size = buffer.readVarInt();
-            var staples = NonNullList.withSize(size, Ingredient.EMPTY);
-            for (int i = 0; i < size; i++) {
-                staples.set(i, Ingredient.fromNetwork(buffer));
-            }
+        public StreamCodec<RegistryFriendlyByteBuf, PotRecipe> streamCodec() {
+            return STREAM_CODEC;
+        }
 
-            var item = buffer.readItem();
+        private static PotRecipe fromNetwork(RegistryFriendlyByteBuf buffer) {
+            var group = buffer.readUtf();
+            var ingredients = StreamCodecs.list(StreamCodecs.INGREDIENT_NON_EMPTY).decode(buffer);
+            var staples = StreamCodecs.list(StreamCodecs.INGREDIENT_NON_EMPTY).decode(buffer);
+
+            var output = ItemStack.STREAM_CODEC.decode(buffer);
             var minTime = buffer.readVarInt();
             var maxTime = buffer.readVarInt();
-            return new PotRecipe(id, group, ingredients, staples, item, minTime, maxTime);
+            return new PotRecipe(group, output, ingredients, staples, minTime, maxTime);
         }
 
-        @Override
-        public void toNetwork(@NotNull FriendlyByteBuf buffer, @NotNull PotRecipe recipe) {
+
+        public static void toNetwork(RegistryFriendlyByteBuf buffer, PotRecipe recipe) {
             buffer.writeUtf(recipe.getGroup());
-            buffer.writeVarInt(recipe.getIngredients().size());
-            for (Ingredient ingredient : recipe.getIngredients()) {
-                ingredient.toNetwork(buffer);
-            }
-            buffer.writeVarInt(recipe.getStaples().size());
-            for (Ingredient ingredient : recipe.getStaples()) {
-                ingredient.toNetwork(buffer);
-            }
-            buffer.writeItem(recipe.output);
+            StreamCodecs.list(StreamCodecs.INGREDIENT_NON_EMPTY).encode(buffer, recipe.getIngredients());
+            StreamCodecs.list(StreamCodecs.INGREDIENT_NON_EMPTY).encode(buffer, recipe.getStaples());
+            ItemStack.STREAM_CODEC.encode(buffer, recipe.output);
             buffer.writeVarInt(recipe.getMinTime());
             buffer.writeVarInt(recipe.getMaxTime());
         }

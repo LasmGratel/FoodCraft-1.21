@@ -1,0 +1,8 @@
+public VoxelShape makeShape(){
+	VoxelShape shape = Shapes.empty();
+	shape = Shapes.join(shape, Shapes.box(0, 0, 0.15625, 1, 0.05, 0.84375), BooleanOp.OR);
+	shape = Shapes.join(shape, Shapes.box(0.6875, 0.046875, 0.3125, 0.84375, 0.0625, 0.53125), BooleanOp.OR);
+	shape = Shapes.join(shape, Shapes.box(0.7619903776322987, 0.046875, 0.5646529309734643, 0.8010528776322987, 0.0625, 0.7052779309734643), BooleanOp.OR);
+
+	return shape;
+}

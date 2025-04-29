@@ -1,0 +1,22 @@
+{
+    "type": "foodcraft:pressure_cooking",
+    "ingredients": [
+        {
+            "tag": "c:foods/cooked_fish"
+        },
+        {
+            "tag": "c:crops/green_onion"
+        },
+        {
+            "tag": "c:crops/green_onion"
+        }
+    ],
+    "fluidInput": {
+        "id": "minecraft:water",
+        "amount": 1000
+    },
+    "result": {
+        "id": "foodcraft:steamed_fish",
+        "count": 1
+    }
+}

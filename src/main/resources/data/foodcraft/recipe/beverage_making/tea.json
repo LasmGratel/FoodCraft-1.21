@@ -1,0 +1,16 @@
+{
+    "type": "foodcraft:beverage_making",
+    "cool": false,
+    "fluidInput": {
+        "id": "minecraft:water",
+        "amount": 1000
+    },
+    "result": {
+        "id": "foodcraft:tea"
+    },
+    "ingredients": [
+        {
+            "tag": "minecraft:leaves"
+        }
+    ]
+}

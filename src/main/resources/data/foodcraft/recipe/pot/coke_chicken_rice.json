@@ -1,0 +1,31 @@
+{
+    "type": "foodcraft:pot",
+    "minTime": 450,
+    "maxTime": 500,
+    "staples": [
+        {
+            "tag": "c:cooked_rice"
+        },
+        {
+            "tag": "c:cola"
+        },
+        {
+            "item": "foodcraft:chicken_wing"
+        }
+    ],
+    "ingredients": [
+        {
+            "tag": "c:cooking_oil"
+        },
+        {
+            "tag": "c:salt"
+        },
+        {
+            "tag": "c:soysauce"
+        }
+    ],
+    "result": {
+        "id": "foodcraft:coke_chicken_rice",
+        "count": 1
+    }
+}

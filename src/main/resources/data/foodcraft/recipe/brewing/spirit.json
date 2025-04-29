@@ -1,0 +1,22 @@
+{
+    "type": "foodcraft:brewing",
+    "ingredients": [
+        {
+            "tag": "c:crops/rice"
+        },
+        {
+            "tag": "c:crops/rice"
+        },
+        {
+            "tag": "c:crops/rice"
+        }
+    ],
+    "fluidInput": {
+        "id": "minecraft:water",
+        "amount": 1000
+    },
+    "result": {
+        "id": "foodcraft:spirit",
+        "count": 3
+    }
+}

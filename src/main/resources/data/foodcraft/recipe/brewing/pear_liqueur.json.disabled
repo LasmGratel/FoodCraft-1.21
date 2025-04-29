@@ -1,0 +1,22 @@
+{
+    "type": "foodcraft:brewing",
+    "ingredients": [
+        {
+            "tag": "c:crops/pear"
+        },
+        {
+            "tag": "c:crops/pear"
+        },
+        {
+            "tag": "c:crops/pear"
+        }
+    ],
+    "fluidInput": {
+        "id": "minecraft:water",
+        "amount": 1000
+    },
+    "result": {
+        "id": "foodcraft:pear_liqueur",
+        "count": 3
+    }
+}

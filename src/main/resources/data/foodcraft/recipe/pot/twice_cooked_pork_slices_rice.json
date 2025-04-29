@@ -1,0 +1,34 @@
+{
+    "type": "foodcraft:pot",
+    "minTime": 350,
+    "maxTime": 450,
+    "staples": [
+        {
+            "tag": "c:cooked_rice"
+        },
+        {
+            "tag": "c:crops/facing_heaven_pepper"
+        },
+        {
+            "tag": "c:foods/cooked_pork"
+        }
+    ],
+    "ingredients": [
+        {
+            "tag": "c:cooking_oil"
+        },
+        {
+            "tag": "c:salt"
+        },
+        {
+            "tag": "c:sugar"
+        },
+        {
+            "item": "foodcraft:pixian_watercress"
+        }
+    ],
+    "result": {
+        "id": "foodcraft:twice_cooked_pork_slices_rice",
+        "count": 1
+    }
+}

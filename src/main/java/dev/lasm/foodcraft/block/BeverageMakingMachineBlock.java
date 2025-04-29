@@ -1,15 +1,26 @@
 package dev.lasm.foodcraft.block;
 
+import com.mojang.serialization.MapCodec;
+import javax.annotation.ParametersAreNonnullByDefault;
+import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 
-public class BeverageMakingMachineBlock extends BaseEntityBlock {
+@MethodsReturnNonnullByDefault
+@ParametersAreNonnullByDefault
+public class BeverageMakingMachineBlock extends BaseMachineBlock {
+    public static final MapCodec<BeverageMakingMachineBlock> CODEC = simpleCodec(BeverageMakingMachineBlock::new);
 
-    protected BeverageMakingMachineBlock(Properties properties) {
+    public BeverageMakingMachineBlock(Properties properties) {
         super(properties);
+    }
+
+    @Override
+    protected MapCodec<? extends BaseEntityBlock> codec() {
+        return CODEC;
     }
 
     @Override

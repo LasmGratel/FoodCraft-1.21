@@ -1,0 +1,17 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "tag": "c:crops/potato"
+    }
+  ],
+  "result": [
+    {
+      "count": 2,
+      "item": "foodcraft:potato_sliced"
+    }
+  ],
+  "tool": {
+    "tag": "c:tools/knives"
+  }
+}

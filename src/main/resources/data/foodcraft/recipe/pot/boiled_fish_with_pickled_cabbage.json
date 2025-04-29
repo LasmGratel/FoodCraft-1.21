@@ -1,0 +1,37 @@
+{
+    "type": "foodcraft:pot",
+    "minTime": 450,
+    "maxTime": 500,
+    "staples": [
+        {
+            "tag": "c:crops/facing_heaven_pepper"
+        },
+        {
+            "tag": "c:crops/green_onion"
+        },
+        {
+            "tag": "c:foods/cooked_fish"
+        },
+        {
+            "tag": "c:crops/cabbage"
+        }
+    ],
+    "ingredients": [
+        {
+            "tag": "c:cookingoil"
+        },
+        {
+            "tag": "c:salt"
+        },
+        {
+            "tag": "c:soysauce"
+        },
+        {
+            "tag": "foodcraft:starches"
+        }
+    ],
+    "result": {
+        "id": "foodcraft:boiled_fish_with_pickled_cabbage",
+        "count": 1
+    }
+}

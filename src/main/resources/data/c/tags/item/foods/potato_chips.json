@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "foodcraft:potato_chips",
+    {
+      "id": "pamhc2foodcore:potatochipsitem",
+      "required": false
+    }
+  ]
+}

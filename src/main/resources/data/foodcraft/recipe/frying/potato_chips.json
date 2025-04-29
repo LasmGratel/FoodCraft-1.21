@@ -1,0 +1,16 @@
+{
+    "type": "foodcraft:frying",
+    "fluidInput": {
+        "id": "foodcraft:cooking_oil",
+        "amount": 333
+    },
+    "result": {
+        "id": "foodcraft:potato_chips",
+        "count": 1
+    },
+    "ingredients": [
+        {
+            "tag": "c:foods/potato_slice"
+        }
+    ]
+}

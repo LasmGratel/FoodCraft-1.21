@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "foodcraft:tofu",
+    {
+      "id": "pamhc2foodextended:silkentofuitem",
+      "required": false
+    }
+  ]
+}

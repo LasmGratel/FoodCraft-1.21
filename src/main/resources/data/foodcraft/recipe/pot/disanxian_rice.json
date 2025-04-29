@@ -1,0 +1,37 @@
+{
+    "type": "foodcraft:pot",
+    "minTime": 450,
+    "maxTime": 500,
+    "staples": [
+        {
+            "tag": "c:cooked_rice"
+        },
+        {
+            "tag": "c:crops/green_pepper"
+        },
+        {
+            "tag": "c:crops/potato"
+        },
+        {
+            "tag": "c:crops/eggplant"
+        }
+    ],
+    "ingredients": [
+        {
+            "tag": "c:cooking_oil"
+        },
+        {
+            "tag": "c:salt"
+        },
+        {
+            "tag": "c:sugar"
+        },
+        {
+            "tag": "c:soysauce"
+        }
+    ],
+    "result": {
+        "id": "foodcraft:disanxian_rice",
+        "count": 1
+    }
+}

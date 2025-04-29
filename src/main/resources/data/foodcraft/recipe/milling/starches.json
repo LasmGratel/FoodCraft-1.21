@@ -1,0 +1,12 @@
+{
+    "type": "foodcraft:milling",
+    "result": {
+        "id": "foodcraft:starches",
+        "count": 8
+    },
+    "ingredients": [
+        {
+            "tag": "c:crops/potato"
+        }
+    ]
+}

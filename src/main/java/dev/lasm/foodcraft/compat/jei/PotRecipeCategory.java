@@ -12,30 +12,25 @@ import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IJeiHelpers;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
-import mezz.jei.api.recipe.RecipeType;
-import mezz.jei.api.recipe.category.IRecipeCategory;
+import mezz.jei.api.recipe.category.AbstractRecipeCategory;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
-import org.jetbrains.annotations.Nullable;
+import net.minecraft.world.item.crafting.RecipeHolder;
 
-public class PotRecipeCategory implements IRecipeCategory<PotRecipe> {
-    private final static ResourceLocation TEXTURES = new ResourceLocation(FoodCraft.MOD_ID, "textures/gui/jei/pot.png");
-    private final IJeiHelpers helper;
-
+public class PotRecipeCategory extends AbstractRecipeCategory<RecipeHolder<PotRecipe>> {
+    private final static ResourceLocation TEXTURES = ResourceLocation.fromNamespaceAndPath(FoodCraft.MOD_ID, "textures/gui/jei/pot.png");
     private final IDrawable background;
-    private final IDrawable icon;
 
     protected final IDrawableStatic staticFlame;
     protected final IDrawableAnimated flame;
     protected final IDrawableAnimated arrow;
 
     public PotRecipeCategory(IJeiHelpers helper) {
-        this.helper = helper;
+      super(FoodCraftJeiPlugin.POT_RECIPE, Component.translatable("block.foodcraft.pot"), helper.getGuiHelper().createDrawableIngredient(
+          VanillaTypes.ITEM_STACK, new ItemStack(ModItems.POT.get())), 144, 56);
         this.background = helper.getGuiHelper().createDrawable(TEXTURES, 17, 16, 144, 56);
-        this.icon = helper.getGuiHelper().createDrawableIngredient(
-            VanillaTypes.ITEM_STACK, new ItemStack(ModItems.AICI.get()));
 
         staticFlame = helper.getGuiHelper().createDrawable(TEXTURES, 176, 0, 14, 14);
         flame = helper.getGuiHelper().createAnimatedDrawable(staticFlame, 300, IDrawableAnimated.StartDirection.TOP, true);
@@ -44,20 +39,10 @@ public class PotRecipeCategory implements IRecipeCategory<PotRecipe> {
     }
 
     @Override
-    public RecipeType<PotRecipe> getRecipeType() {
-        return FoodCraftJeiPlugin.POT_RECIPE;
-    }
-
-    @Override
-    public void draw(PotRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics,
+    public void draw(RecipeHolder<PotRecipe> recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics,
         double mouseX, double mouseY) {
-        flame.draw(guiGraphics, 82 - 17, 58 - 16);
+        flame.draw(guiGraphics, 81 - 17, 57 - 16);
         arrow.draw(guiGraphics, 95 - 17, 21 - 16);
-    }
-
-    @Override
-    public Component getTitle() {
-        return Component.translatable("block.foodcraft.pot");
     }
 
     @Override
@@ -66,13 +51,9 @@ public class PotRecipeCategory implements IRecipeCategory<PotRecipe> {
     }
 
     @Override
-    public @Nullable IDrawable getIcon() {
-        return icon;
-    }
-
-    @Override
-    public void setRecipe(IRecipeLayoutBuilder recipeLayout, PotRecipe recipe,
+    public void setRecipe(IRecipeLayoutBuilder recipeLayout, RecipeHolder<PotRecipe> recipeHolder,
         IFocusGroup focusGroup) {
+        var recipe = recipeHolder.value();
         var recipeIngredients = recipe.getIngredients();
 
         for (var x = 0; x < recipeIngredients.size(); x++) {

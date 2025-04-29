@@ -1,0 +1,13 @@
+{
+    "type": "foodcraft:pan",
+    "result": {
+        "id": "foodcraft:popcorn"
+    },
+    "minTime": 250,
+    "maxTime": 330,
+    "ingredients": [
+        {
+            "tag": "c:crops/corn"
+        }
+    ]
+}

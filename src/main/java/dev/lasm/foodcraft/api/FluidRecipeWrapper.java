@@ -1,13 +1,16 @@
 package dev.lasm.foodcraft.api;
 
-import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fluids.IFluidTank;
-import net.minecraftforge.fluids.capability.IFluidHandler;
-import net.minecraftforge.items.IItemHandlerModifiable;
-import net.minecraftforge.items.wrapper.RecipeWrapper;
-import org.jetbrains.annotations.NotNull;
 
-public class FluidRecipeWrapper extends RecipeWrapper implements FluidAttachedContainer {
+import javax.annotation.ParametersAreNonnullByDefault;
+import net.minecraft.MethodsReturnNonnullByDefault;
+import net.neoforged.neoforge.fluids.FluidStack;
+import net.neoforged.neoforge.fluids.capability.IFluidHandler;
+import net.neoforged.neoforge.items.IItemHandlerModifiable;
+import net.neoforged.neoforge.items.wrapper.RecipeWrapper;
+
+@ParametersAreNonnullByDefault
+@MethodsReturnNonnullByDefault
+public class FluidRecipeWrapper extends RecipeWrapper implements FluidAttachedRecipeInput {
     protected final IFluidHandler fluidHandler;
 
     public FluidRecipeWrapper(IItemHandlerModifiable inv, IFluidHandler fluidHandler) {
@@ -21,7 +24,7 @@ public class FluidRecipeWrapper extends RecipeWrapper implements FluidAttachedCo
     }
 
     @Override
-    public @NotNull FluidStack getFluidInTank(int tank) {
+    public FluidStack getFluidInTank(int tank) {
         return fluidHandler.getFluidInTank(tank);
     }
 
@@ -31,7 +34,7 @@ public class FluidRecipeWrapper extends RecipeWrapper implements FluidAttachedCo
     }
 
     @Override
-    public boolean isFluidValid(int tank, @NotNull FluidStack stack) {
+    public boolean isFluidValid(int tank, FluidStack stack) {
         return fluidHandler.isFluidValid(tank, stack);
     }
 
@@ -41,12 +44,12 @@ public class FluidRecipeWrapper extends RecipeWrapper implements FluidAttachedCo
     }
 
     @Override
-    public @NotNull FluidStack drain(FluidStack resource, FluidAction action) {
+    public FluidStack drain(FluidStack resource, FluidAction action) {
         return fluidHandler.drain(resource, action);
     }
 
     @Override
-    public @NotNull FluidStack drain(int maxDrain, FluidAction action) {
+    public FluidStack drain(int maxDrain, FluidAction action) {
         return fluidHandler.drain(maxDrain, action);
     }
 }

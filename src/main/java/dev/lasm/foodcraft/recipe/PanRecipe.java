@@ -1,52 +1,61 @@
 package dev.lasm.foodcraft.recipe;
 
-import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import dev.lasm.foodcraft.init.ModRecipeSerializers;
 import dev.lasm.foodcraft.init.ModRecipeTypes;
-import dev.lasm.foodcraft.util.IngredientHelper;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
+import javax.annotation.ParametersAreNonnullByDefault;
+import net.darkhax.bookshelf.common.api.data.codecs.map.MapCodecs;
+import net.minecraft.MethodsReturnNonnullByDefault;
+import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.core.NonNullList;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.GsonHelper;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.common.crafting.CraftingHelper;
-import net.minecraftforge.common.util.RecipeMatcher;
-import net.minecraftforge.items.wrapper.RecipeWrapper;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import net.neoforged.neoforge.common.util.RecipeMatcher;
+import net.neoforged.neoforge.items.wrapper.RecipeWrapper;
 
+@MethodsReturnNonnullByDefault
+@ParametersAreNonnullByDefault
 public class PanRecipe implements Recipe<RecipeWrapper> {
     public static final int INGREDIENT_SLOTS = 1;
 
-    private final ResourceLocation id;
     private final String group;
-    private final NonNullList<Ingredient> ingredients;
     private final ItemStack output;
+    private final NonNullList<Ingredient> ingredients;
     private final int minTime;
     private final int maxTime;
 
-    public PanRecipe(ResourceLocation id, String group,
-        NonNullList<Ingredient> ingredients, ItemStack output, int minTime, int maxTime) {
-        this.id = id;
+    public PanRecipe(String group, ItemStack output,
+        List<Ingredient> ingredients, int minTime, int maxTime) {
         this.group = group;
-        this.ingredients = ingredients;
         this.output = output;
+
+        if (ingredients.isEmpty()) {
+            throw new JsonParseException("No ingredients for pan recipe");
+        } else if (ingredients.size() > INGREDIENT_SLOTS) {
+            throw new JsonParseException(
+                "Too many ingredients for pan recipe! The max is 3");
+        }
+
+        this.ingredients = NonNullList.copyOf(ingredients);
         this.minTime = minTime;
         this.maxTime = maxTime;
     }
 
     @Override
-    public NonNullList<Ingredient> getIngredients() {
-        return ingredients;
+    public String getGroup() {
+        return group;
     }
 
     public int getMinTime() {
@@ -58,12 +67,17 @@ public class PanRecipe implements Recipe<RecipeWrapper> {
     }
 
     @Override
-    public @NotNull String getGroup() {
-        return group;
+    public RecipeSerializer<?> getSerializer() {
+        return ModRecipeSerializers.PAN.get();
     }
 
     @Override
-    public boolean matches(@NotNull RecipeWrapper container, @NotNull Level level) {
+    public RecipeType<?> getType() {
+        return ModRecipeTypes.PAN.get();
+    }
+
+    @Override
+    public boolean matches(RecipeWrapper container, Level level) {
         var inputs = new ArrayList<ItemStack>();
         var inputSize = 0;
 
@@ -75,37 +89,28 @@ public class PanRecipe implements Recipe<RecipeWrapper> {
             }
         }
 
-        return inputSize == this.ingredients.size() && RecipeMatcher.findMatches(inputs, this.ingredients) != null;
+        return ingredients.size() == inputSize && RecipeMatcher.findMatches(inputs, ingredients) != null;
     }
 
     @Override
-    public @NotNull ItemStack assemble(@NotNull RecipeWrapper pContainer, @NotNull RegistryAccess pRegistryAccess) {
+    public ItemStack assemble(RecipeWrapper RecipeWrapper,
+        Provider provider) {
         return output.copy();
     }
 
     @Override
     public boolean canCraftInDimensions(int width, int height) {
-        return width * height >= this.ingredients.size();
+        return width * height >= ingredients.size();
     }
 
     @Override
-    public @NotNull ItemStack getResultItem(@Nullable RegistryAccess pRegistryAccess) {
+    public ItemStack getResultItem(Provider provider) {
         return output;
     }
 
     @Override
-    public @NotNull ResourceLocation getId() {
-        return id;
-    }
-
-    @Override
-    public @NotNull RecipeSerializer<?> getSerializer() {
-        return ModRecipeSerializers.POT.get();
-    }
-
-    @Override
-    public @NotNull RecipeType<?> getType() {
-        return ModRecipeTypes.POT.get();
+    public NonNullList<Ingredient> getIngredients() {
+        return ingredients;
     }
 
     @Override
@@ -113,65 +118,67 @@ public class PanRecipe implements Recipe<RecipeWrapper> {
         if (this == o) {
             return true;
         }
-        if (!(o instanceof PanRecipe recipe)) {
+        if (!(o instanceof PanRecipe that)) {
             return false;
         }
-        return minTime == recipe.minTime && maxTime == recipe.maxTime && Objects.equals(
-            getId(), recipe.getId()) && Objects.equals(getGroup(), recipe.getGroup())
-            && Objects.equals(
-            getIngredients(), recipe.getIngredients()) && Objects.equals(output,
-            recipe.output);
+        return getMinTime() == that.getMinTime() && getMaxTime() == that.getMaxTime()
+            && Objects.equals(getGroup(), that.getGroup())
+            && Objects.equals(output, that.output)
+            && Objects.equals(getIngredients(), that.getIngredients());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getGroup(), getIngredients(), output, minTime,
-            maxTime);
+        return Objects.hash(getGroup(), output, getIngredients(), getMinTime(), getMaxTime());
     }
 
     public static class Serializer implements RecipeSerializer<PanRecipe> {
+        public static final MapCodec<PanRecipe> CODEC = RecordCodecBuilder.mapCodec(instance ->
+            instance.group(Codec.STRING.optionalFieldOf("group", "").forGetter(PanRecipe::getGroup),
+                    MapCodecs.ITEM_STACK.get().fieldOf("result").forGetter((PanRecipe i) -> i.output),
+                    MapCodecs.INGREDIENT_NONEMPTY.getList("ingredients", PanRecipe::getIngredients),
+                    MapCodecs.INT.get("minTime", PanRecipe::getMinTime, 400),
+                    MapCodecs.INT.get("maxTime", PanRecipe::getMaxTime, 1000)
+                )
+                .apply(instance, PanRecipe::new)
+        );
+
+        public static final StreamCodec<RegistryFriendlyByteBuf, PanRecipe> STREAM_CODEC = StreamCodec.of(
+            PanRecipe.Serializer::toNetwork, PanRecipe.Serializer::fromNetwork);
 
         @Override
-        public @NotNull PanRecipe fromJson(@NotNull ResourceLocation id, @NotNull JsonObject json) {
-            var group = GsonHelper.getAsString(json, "group", "");
-            var ingredients = IngredientHelper.readIngredients(GsonHelper.getAsJsonArray(json, "ingredients"));
-
-            if (ingredients.isEmpty()) {
-                throw new JsonParseException("No ingredients for pan recipe");
-            } else if (ingredients.size() > INGREDIENT_SLOTS) {
-                throw new JsonParseException(
-                    "Too many ingredients for pan recipe! The max is 1");
-            }
-            var output = CraftingHelper.getItemStack(GsonHelper.getAsJsonObject(json, "result"), true);
-            var minTime = GsonHelper.getAsInt(json, "minTime", 400);
-            var maxTime = GsonHelper.getAsInt(json, "minTime", 1000);
-            return new PanRecipe(id, group, ingredients, output, minTime, maxTime);
+        public MapCodec<PanRecipe> codec() {
+            return CODEC;
         }
 
         @Override
-        public @Nullable PanRecipe fromNetwork(@NotNull ResourceLocation id,
-            @NotNull FriendlyByteBuf buffer) {
+        public StreamCodec<RegistryFriendlyByteBuf, PanRecipe> streamCodec() {
+            return STREAM_CODEC;
+        }
+
+        private static PanRecipe fromNetwork(RegistryFriendlyByteBuf buffer) {
             var group = buffer.readUtf();
             var size = buffer.readVarInt();
             var ingredients = NonNullList.withSize(size, Ingredient.EMPTY);
             for (int i = 0; i < size; i++) {
-                ingredients.set(i, Ingredient.fromNetwork(buffer));
+
+                ingredients.set(i, Ingredient.CONTENTS_STREAM_CODEC.decode(buffer));
             }
 
-            var item = buffer.readItem();
+            var output = ItemStack.STREAM_CODEC.decode(buffer);
             var minTime = buffer.readVarInt();
             var maxTime = buffer.readVarInt();
-            return new PanRecipe(id, group, ingredients, item, minTime, maxTime);
+            return new PanRecipe(group, output, ingredients, minTime, maxTime);
         }
 
-        @Override
-        public void toNetwork(@NotNull FriendlyByteBuf buffer, @NotNull PanRecipe recipe) {
+
+        public static void toNetwork(RegistryFriendlyByteBuf buffer, PanRecipe recipe) {
             buffer.writeUtf(recipe.getGroup());
             buffer.writeVarInt(recipe.getIngredients().size());
             for (Ingredient ingredient : recipe.getIngredients()) {
-                ingredient.toNetwork(buffer);
+                Ingredient.CONTENTS_STREAM_CODEC.encode(buffer, ingredient);
             }
-            buffer.writeItem(recipe.output);
+            ItemStack.STREAM_CODEC.encode(buffer, recipe.output);
             buffer.writeVarInt(recipe.getMinTime());
             buffer.writeVarInt(recipe.getMaxTime());
         }

@@ -1,0 +1,13 @@
+{
+    "type": "foodcraft:pan",
+    "result": {
+        "id": "foodcraft:dough_twist"
+    },
+    "minTime": 300,
+    "maxTime": 380,
+    "ingredients": [
+        {
+            "tag": "c:foods/dough_shred"
+        }
+    ]
+}

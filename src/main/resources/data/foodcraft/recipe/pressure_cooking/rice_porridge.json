@@ -1,0 +1,22 @@
+{
+    "type": "foodcraft:pressure_cooking",
+    "ingredients": [
+        {
+            "tag": "c:cooked_rice"
+        },
+        {
+            "tag": "c:cooked_rice"
+        },
+        {
+            "tag": "c:cooked_rice"
+        }
+    ],
+    "fluidInput": {
+        "id": "minecraft:water",
+        "amount": 1000
+    },
+    "result": {
+        "id": "foodcraft:rice_porridge",
+        "count": 3
+    }
+}

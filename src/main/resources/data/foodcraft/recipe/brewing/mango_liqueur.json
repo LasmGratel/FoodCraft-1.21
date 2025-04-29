@@ -1,0 +1,22 @@
+{
+    "type": "foodcraft:brewing",
+    "ingredients": [
+        {
+            "tag": "c:crops/mango"
+        },
+        {
+            "tag": "c:crops/mango"
+        },
+        {
+            "tag": "c:crops/mango"
+        }
+    ],
+    "fluidInput": {
+        "id": "minecraft:water",
+        "amount": 1000
+    },
+    "result": {
+        "id": "foodcraft:mango_liqueur",
+        "count": 3
+    }
+}

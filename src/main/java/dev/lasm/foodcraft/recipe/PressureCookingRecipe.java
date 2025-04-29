@@ -1,36 +1,39 @@
 package dev.lasm.foodcraft.recipe;
 
-import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
-import dev.lasm.foodcraft.api.FluidAttachedContainer;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import dev.lasm.foodcraft.api.FluidAttachedRecipeInput;
 import dev.lasm.foodcraft.init.ModRecipeSerializers;
 import dev.lasm.foodcraft.init.ModRecipeTypes;
 import dev.lasm.foodcraft.util.FluidHelper;
-import dev.lasm.foodcraft.util.IngredientHelper;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
+import javax.annotation.ParametersAreNonnullByDefault;
+import net.darkhax.bookshelf.common.api.data.codecs.map.MapCodecs;
+import net.minecraft.MethodsReturnNonnullByDefault;
+import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.core.NonNullList;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.GsonHelper;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.common.crafting.CraftingHelper;
-import net.minecraftforge.common.util.RecipeMatcher;
-import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fluids.capability.IFluidHandler.FluidAction;
-import org.jetbrains.annotations.NotNull;
+import net.neoforged.neoforge.common.util.RecipeMatcher;
+import net.neoforged.neoforge.fluids.FluidStack;
+import net.neoforged.neoforge.fluids.capability.IFluidHandler;
 import org.jetbrains.annotations.Nullable;
 
-public class PressureCookingRecipe implements Recipe<FluidAttachedContainer> {
+@MethodsReturnNonnullByDefault
+@ParametersAreNonnullByDefault
+public class PressureCookingRecipe implements Recipe<FluidAttachedRecipeInput> {
     public static final int INGREDIENT_SLOTS = 3;
 
-    private final ResourceLocation id;
     private final String group;
     private final ItemStack output;
     private final NonNullList<Ingredient> ingredients;
@@ -38,13 +41,19 @@ public class PressureCookingRecipe implements Recipe<FluidAttachedContainer> {
     private final int minTime;
     private final int maxTime;
 
-    public PressureCookingRecipe(ResourceLocation id, String group, ItemStack output,
-        NonNullList<Ingredient> ingredients, @Nullable FluidStack fluidInput, int minTime,
-        int maxTime) {
-        this.id = id;
+    public PressureCookingRecipe(String group, ItemStack output,
+        List<Ingredient> ingredients, @Nullable FluidStack fluidInput, int minTime, int maxTime) {
         this.group = group;
         this.output = output;
-        this.ingredients = ingredients;
+
+        if (ingredients.isEmpty()) {
+            throw new JsonParseException("No ingredients for pressure cooking recipe");
+        } else if (ingredients.size() > INGREDIENT_SLOTS) {
+            throw new JsonParseException(
+                "Too many ingredients for pressure cooking recipe! The max is 3");
+        }
+
+        this.ingredients = NonNullList.copyOf(ingredients);
         this.fluidInput = fluidInput;
         this.minTime = minTime;
         this.maxTime = maxTime;
@@ -55,23 +64,26 @@ public class PressureCookingRecipe implements Recipe<FluidAttachedContainer> {
         return group;
     }
 
-    @Override
-    public ResourceLocation getId() {
-        return id;
+    public int getMinTime() {
+        return minTime;
+    }
+
+    public int getMaxTime() {
+        return maxTime;
     }
 
     @Override
     public RecipeSerializer<?> getSerializer() {
-        return ModRecipeSerializers.BREWING.get();
+        return ModRecipeSerializers.PRESSURE_COOKING.get();
     }
 
     @Override
     public RecipeType<?> getType() {
-        return ModRecipeTypes.BREWING.get();
+        return ModRecipeTypes.PRESSURE_COOKING.get();
     }
 
     @Override
-    public boolean matches(FluidAttachedContainer container, Level level) {
+    public boolean matches(FluidAttachedRecipeInput container, Level level) {
         var inputs = new ArrayList<ItemStack>();
         var inputSize = 0;
 
@@ -84,11 +96,12 @@ public class PressureCookingRecipe implements Recipe<FluidAttachedContainer> {
         }
 
         return ingredients.size() == inputSize && RecipeMatcher.findMatches(inputs, ingredients) != null &&
-            container.drain(fluidInput, FluidAction.SIMULATE).equals(fluidInput);
+            container.drain(fluidInput, IFluidHandler.FluidAction.SIMULATE).equals(fluidInput);
     }
 
     @Override
-    public ItemStack assemble(FluidAttachedContainer container, RegistryAccess registryAccess) {
+    public ItemStack assemble(FluidAttachedRecipeInput fluidAttachedRecipeInput,
+        Provider provider) {
         return output.copy();
     }
 
@@ -98,7 +111,7 @@ public class PressureCookingRecipe implements Recipe<FluidAttachedContainer> {
     }
 
     @Override
-    public ItemStack getResultItem(@Nullable RegistryAccess pRegistryAccess) {
+    public ItemStack getResultItem(Provider provider) {
         return output;
     }
 
@@ -111,14 +124,6 @@ public class PressureCookingRecipe implements Recipe<FluidAttachedContainer> {
         return fluidInput;
     }
 
-    public int getMinTime() {
-        return minTime;
-    }
-
-    public int getMaxTime() {
-        return maxTime;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -128,70 +133,71 @@ public class PressureCookingRecipe implements Recipe<FluidAttachedContainer> {
             return false;
         }
         return getMinTime() == that.getMinTime() && getMaxTime() == that.getMaxTime()
-            && Objects.equals(getId(), that.getId()) && Objects.equals(getGroup(),
-            that.getGroup()) && Objects.equals(output, that.output) && Objects.equals(
-            getIngredients(), that.getIngredients()) && Objects.equals(getFluidInput(),
-            that.getFluidInput());
+            && Objects.equals(getGroup(), that.getGroup())
+            && Objects.equals(output, that.output)
+            && Objects.equals(getIngredients(), that.getIngredients())
+            && Objects.equals(getFluidInput(), that.getFluidInput());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getGroup(), output, getIngredients(), getFluidInput(),
-            getMinTime(),
+        return Objects.hash(getGroup(), output, getIngredients(), getFluidInput(), getMinTime(),
             getMaxTime());
     }
 
     public static class Serializer implements RecipeSerializer<PressureCookingRecipe> {
+        public static final MapCodec<PressureCookingRecipe> CODEC = RecordCodecBuilder.mapCodec(instance ->
+            instance.group(Codec.STRING.optionalFieldOf("group", "").forGetter(PressureCookingRecipe::getGroup),
+                    MapCodecs.ITEM_STACK.get().fieldOf("result").forGetter((PressureCookingRecipe i) -> i.output),
+                    MapCodecs.INGREDIENT_NONEMPTY.getList("ingredients", PressureCookingRecipe::getIngredients),
+                    FluidHelper.FLUID_STACK.get("fluidInput", PressureCookingRecipe::getFluidInput),
+                    MapCodecs.INT.get("minTime", PressureCookingRecipe::getMinTime, 400),
+                    MapCodecs.INT.get("maxTime", PressureCookingRecipe::getMaxTime, 1000)
+                )
+                .apply(instance, PressureCookingRecipe::new)
+        );
+
+        public static final StreamCodec<RegistryFriendlyByteBuf, PressureCookingRecipe> STREAM_CODEC = StreamCodec.of(
+            Serializer::toNetwork, Serializer::fromNetwork);
 
         @Override
-        public @NotNull PressureCookingRecipe fromJson(ResourceLocation id, JsonObject json) {
-            var group = GsonHelper.getAsString(json, "group", "");
-            var ingredients = IngredientHelper.readIngredients(GsonHelper.getAsJsonArray(json, "ingredients"));
-
-            if (ingredients.isEmpty()) {
-                throw new JsonParseException("No ingredients for pressure cooking recipe");
-            } else if (ingredients.size() > INGREDIENT_SLOTS) {
-                throw new JsonParseException(
-                    "Too many ingredients for pressure cooking recipe! The max is 3");
-            }
-
-            var fluidInput = FluidHelper.getFluidStack(json.getAsJsonObject("fluidInput"));
-            var output = CraftingHelper.getItemStack(GsonHelper.getAsJsonObject(json, "result"), true);
-            var minTime = GsonHelper.getAsInt(json, "minTime", 400);
-            var maxTime = GsonHelper.getAsInt(json, "minTime", 1000);
-
-            return new PressureCookingRecipe(id, group, output, ingredients, fluidInput, minTime, maxTime);
+        public MapCodec<PressureCookingRecipe> codec() {
+            return CODEC;
         }
 
         @Override
-        public @Nullable PressureCookingRecipe fromNetwork(ResourceLocation id,
-            FriendlyByteBuf buffer) {
+        public StreamCodec<RegistryFriendlyByteBuf, PressureCookingRecipe> streamCodec() {
+            return STREAM_CODEC;
+        }
+
+        private static PressureCookingRecipe fromNetwork(RegistryFriendlyByteBuf buffer) {
             var group = buffer.readUtf();
             var size = buffer.readVarInt();
             var ingredients = NonNullList.withSize(size, Ingredient.EMPTY);
             for (int i = 0; i < size; i++) {
-                ingredients.set(i, Ingredient.fromNetwork(buffer));
+
+                ingredients.set(i, Ingredient.CONTENTS_STREAM_CODEC.decode(buffer));
             }
 
-            var fluidInput = buffer.readFluidStack();
-            var output = buffer.readItem();
-
+            var fluidInput = FluidStack.STREAM_CODEC.decode(buffer);
+            var output = ItemStack.STREAM_CODEC.decode(buffer);
             var minTime = buffer.readVarInt();
             var maxTime = buffer.readVarInt();
-            return new PressureCookingRecipe(id, group, output, ingredients, fluidInput, minTime, maxTime);
+            return new PressureCookingRecipe(group, output, ingredients, fluidInput, minTime, maxTime);
         }
 
-        @Override
-        public void toNetwork(FriendlyByteBuf buffer, PressureCookingRecipe recipe) {
+
+        public static void toNetwork(RegistryFriendlyByteBuf buffer, PressureCookingRecipe recipe) {
             buffer.writeUtf(recipe.getGroup());
             buffer.writeVarInt(recipe.getIngredients().size());
             for (Ingredient ingredient : recipe.getIngredients()) {
-                ingredient.toNetwork(buffer);
+                Ingredient.CONTENTS_STREAM_CODEC.encode(buffer, ingredient);
             }
-            buffer.writeFluidStack(recipe.getFluidInput());
-            buffer.writeItem(recipe.output);
-            buffer.writeVarInt(recipe.minTime);
-            buffer.writeVarInt(recipe.maxTime);
+            FluidStack.STREAM_CODEC.encode(buffer, recipe.getFluidInput());
+            ItemStack.STREAM_CODEC.encode(buffer, recipe.output);
+            buffer.writeVarInt(recipe.getMinTime());
+            buffer.writeVarInt(recipe.getMaxTime());
         }
     }
 }
+

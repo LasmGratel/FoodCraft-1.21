@@ -1,0 +1,10 @@
+{
+    "replace": false,
+    "values": [
+        "foodcraft:cooked_rice",
+      {
+        "id": "farmersdelight:cooked_rice",
+        "required": false
+      }
+	]
+}

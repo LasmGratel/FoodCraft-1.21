@@ -1,0 +1,12 @@
+{
+    "type": "foodcraft:milling",
+    "result": {
+        "id": "foodcraft:peanut_oil",
+        "count": 1
+    },
+    "ingredients": [
+        {
+            "tag": "c:crops/peanut"
+        }
+    ]
+}

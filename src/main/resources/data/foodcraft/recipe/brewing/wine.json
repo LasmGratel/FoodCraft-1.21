@@ -1,0 +1,22 @@
+{
+    "type": "foodcraft:brewing",
+    "ingredients": [
+        {
+            "item": "foodcraft:grape_liqueur"
+        },
+        {
+            "item": "foodcraft:grape_liqueur"
+        },
+        {
+            "item": "foodcraft:grape_liqueur"
+        }
+    ],
+    "fluidInput": {
+        "id": "minecraft:water",
+        "amount": 1000
+    },
+    "result": {
+        "id": "foodcraft:wine",
+        "count": 9
+    }
+}

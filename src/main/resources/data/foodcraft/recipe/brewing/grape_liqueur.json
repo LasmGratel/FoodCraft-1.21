@@ -1,0 +1,22 @@
+{
+    "type": "foodcraft:brewing",
+    "ingredients": [
+        {
+            "tag": "c:crops/grape"
+        },
+        {
+            "tag": "c:crops/grape"
+        },
+        {
+            "tag": "c:crops/grape"
+        }
+    ],
+    "fluidInput": {
+        "id": "minecraft:water",
+        "amount": 1000
+    },
+    "result": {
+        "id": "foodcraft:grape_liqueur",
+        "count": 3
+    }
+}

@@ -1,57 +1,71 @@
 package dev.lasm.foodcraft.recipe;
 
-import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import dev.lasm.foodcraft.api.FluidAttachedRecipeInput;
 import dev.lasm.foodcraft.init.ModRecipeSerializers;
 import dev.lasm.foodcraft.init.ModRecipeTypes;
-import dev.lasm.foodcraft.util.IngredientHelper;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
+import javax.annotation.ParametersAreNonnullByDefault;
+import net.darkhax.bookshelf.common.api.data.codecs.map.MapCodecs;
+import net.minecraft.MethodsReturnNonnullByDefault;
+import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.core.NonNullList;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.GsonHelper;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.common.crafting.CraftingHelper;
-import net.minecraftforge.common.util.RecipeMatcher;
-import net.minecraftforge.items.wrapper.RecipeWrapper;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import net.neoforged.neoforge.common.util.RecipeMatcher;
 
-public class ChoppingRecipe implements Recipe<RecipeWrapper> {
+@MethodsReturnNonnullByDefault
+@ParametersAreNonnullByDefault
+public class ChoppingRecipe implements Recipe<FluidAttachedRecipeInput> {
     public static final int INGREDIENT_SLOTS = 3;
 
-    private final ResourceLocation id;
     private final String group;
-    private final NonNullList<Ingredient> ingredients;
     private final ItemStack output;
+    private final NonNullList<Ingredient> ingredients;
 
-    public ChoppingRecipe(ResourceLocation id, String group,
-        NonNullList<Ingredient> ingredients, ItemStack output) {
-        this.id = id;
+    public ChoppingRecipe(String group, ItemStack output,
+        List<Ingredient> ingredients) {
         this.group = group;
-        this.ingredients = ingredients;
         this.output = output;
+
+        if (ingredients.isEmpty()) {
+            throw new JsonParseException("No ingredients for chopping recipe");
+        } else if (ingredients.size() > INGREDIENT_SLOTS) {
+            throw new JsonParseException(
+                "Too many ingredients for chopping recipe! The max is 3");
+        }
+
+        this.ingredients = NonNullList.copyOf(ingredients);
     }
 
     @Override
-    public NonNullList<Ingredient> getIngredients() {
-        return ingredients;
-    }
-
-    @Override
-    public @NotNull String getGroup() {
+    public String getGroup() {
         return group;
     }
 
     @Override
-    public boolean matches(@NotNull RecipeWrapper container, @NotNull Level level) {
+    public RecipeSerializer<?> getSerializer() {
+        return ModRecipeSerializers.CHOPPING.get();
+    }
+
+    @Override
+    public RecipeType<?> getType() {
+        return ModRecipeTypes.CHOPPING.get();
+    }
+
+    @Override
+    public boolean matches(FluidAttachedRecipeInput container, Level level) {
         var inputs = new ArrayList<ItemStack>();
         var inputSize = 0;
 
@@ -63,37 +77,28 @@ public class ChoppingRecipe implements Recipe<RecipeWrapper> {
             }
         }
 
-        return inputSize == this.ingredients.size() && RecipeMatcher.findMatches(inputs, this.ingredients) != null;
+        return ingredients.size() == inputSize && RecipeMatcher.findMatches(inputs, ingredients) != null;
     }
 
     @Override
-    public @NotNull ItemStack assemble(@NotNull RecipeWrapper pContainer, @NotNull RegistryAccess pRegistryAccess) {
+    public ItemStack assemble(FluidAttachedRecipeInput fluidAttachedRecipeInput,
+        Provider provider) {
         return output.copy();
     }
 
     @Override
     public boolean canCraftInDimensions(int width, int height) {
-        return width * height >= this.ingredients.size();
+        return width * height >= ingredients.size();
     }
 
     @Override
-    public @NotNull ItemStack getResultItem(@Nullable RegistryAccess pRegistryAccess) {
+    public ItemStack getResultItem(Provider provider) {
         return output;
     }
 
     @Override
-    public @NotNull ResourceLocation getId() {
-        return id;
-    }
-
-    @Override
-    public @NotNull RecipeSerializer<?> getSerializer() {
-        return ModRecipeSerializers.POT.get();
-    }
-
-    @Override
-    public @NotNull RecipeType<?> getType() {
-        return ModRecipeTypes.POT.get();
+    public NonNullList<Ingredient> getIngredients() {
+        return ingredients;
     }
 
     @Override
@@ -101,60 +106,63 @@ public class ChoppingRecipe implements Recipe<RecipeWrapper> {
         if (this == o) {
             return true;
         }
-        if (!(o instanceof ChoppingRecipe recipe)) {
+        if (!(o instanceof ChoppingRecipe that)) {
             return false;
         }
-        return Objects.equals(
-            getId(), recipe.getId()) && Objects.equals(getGroup(), recipe.getGroup())
-            && Objects.equals(
-            getIngredients(), recipe.getIngredients()) && Objects.equals(output,
-            recipe.output);
+        return Objects.equals(getGroup(), that.getGroup()) && Objects.equals(output,
+            that.output) && Objects.equals(getIngredients(), that.getIngredients());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getGroup(), getIngredients(), output);
+        return Objects.hash(getGroup(), output, getIngredients());
     }
 
     public static class Serializer implements RecipeSerializer<ChoppingRecipe> {
+        public static final MapCodec<ChoppingRecipe> CODEC = RecordCodecBuilder.mapCodec(instance ->
+            instance.group(Codec.STRING.optionalFieldOf("group", "").forGetter(ChoppingRecipe::getGroup),
+                    MapCodecs.ITEM_STACK.get().fieldOf("result").forGetter((ChoppingRecipe i) -> i.output),
+                    MapCodecs.INGREDIENT_NONEMPTY.getList("ingredients", ChoppingRecipe::getIngredients)
+                )
+                .apply(instance, ChoppingRecipe::new)
+        );
+
+        public static final StreamCodec<RegistryFriendlyByteBuf, ChoppingRecipe> STREAM_CODEC = StreamCodec.of(
+            Serializer::toNetwork, Serializer::fromNetwork);
 
         @Override
-        public @NotNull ChoppingRecipe fromJson(@NotNull ResourceLocation id, @NotNull JsonObject json) {
-            var group = GsonHelper.getAsString(json, "group", "");
-            var ingredients = IngredientHelper.readIngredients(GsonHelper.getAsJsonArray(json, "ingredients"));
-
-            if (ingredients.isEmpty()) {
-                throw new JsonParseException("No ingredients for chopping recipe");
-            } else if (ingredients.size() > INGREDIENT_SLOTS) {
-                throw new JsonParseException(
-                    "Too many ingredients for chopping recipe! The max is 3");
-            }
-            var output = CraftingHelper.getItemStack(GsonHelper.getAsJsonObject(json, "result"), true);
-            return new ChoppingRecipe(id, group, ingredients, output);
+        public MapCodec<ChoppingRecipe> codec() {
+            return CODEC;
         }
 
         @Override
-        public @Nullable ChoppingRecipe fromNetwork(@NotNull ResourceLocation id,
-            @NotNull FriendlyByteBuf buffer) {
+        public StreamCodec<RegistryFriendlyByteBuf, ChoppingRecipe> streamCodec() {
+            return STREAM_CODEC;
+        }
+
+        private static ChoppingRecipe fromNetwork(RegistryFriendlyByteBuf buffer) {
             var group = buffer.readUtf();
             var size = buffer.readVarInt();
             var ingredients = NonNullList.withSize(size, Ingredient.EMPTY);
             for (int i = 0; i < size; i++) {
-                ingredients.set(i, Ingredient.fromNetwork(buffer));
+
+                ingredients.set(i, Ingredient.CONTENTS_STREAM_CODEC.decode(buffer));
             }
 
-            var item = buffer.readItem();
-            return new ChoppingRecipe(id, group, ingredients, item);
+            var output = ItemStack.STREAM_CODEC.decode(buffer);
+            return new ChoppingRecipe(group, output, ingredients);
         }
 
-        @Override
-        public void toNetwork(@NotNull FriendlyByteBuf buffer, @NotNull ChoppingRecipe recipe) {
+
+        public static void toNetwork(RegistryFriendlyByteBuf buffer, ChoppingRecipe recipe) {
             buffer.writeUtf(recipe.getGroup());
             buffer.writeVarInt(recipe.getIngredients().size());
             for (Ingredient ingredient : recipe.getIngredients()) {
-                ingredient.toNetwork(buffer);
+                Ingredient.CONTENTS_STREAM_CODEC.encode(buffer, ingredient);
             }
-            buffer.writeItem(recipe.output);
+            ItemStack.STREAM_CODEC.encode(buffer, recipe.output);
         }
+
+
     }
 }

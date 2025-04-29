@@ -6,13 +6,12 @@ import java.util.concurrent.CompletableFuture;
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.common.Tags;
+import net.neoforged.neoforge.common.Tags.Items;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import vectorwing.farmersdelight.common.tag.ForgeTags;
 
 public class ItemTags extends ItemTagsProvider {
     public ItemTags(PackOutput pOutput, CompletableFuture<Provider> pLookupProvider,
@@ -23,7 +22,7 @@ public class ItemTags extends ItemTagsProvider {
 
     @Override
     protected void addTags(@NotNull Provider provider) {
-        tag(ForgeTags.CROPS).replace(false).add(
+        tag(Tags.Items.CROPS).replace(false).add(
             // Vegetables
             ModItems.CORN.getKey(),
             ModItems.CUCUMBER.getKey(),
@@ -60,7 +59,7 @@ public class ItemTags extends ItemTagsProvider {
             ModItems.DATE.getKey()
         );
 
-        tag(ForgeTags.VEGETABLES).replace(false).add(
+        tag(ModTags.VEGETABLES).replace(false).add(
             ModItems.CORN.getKey(),
             ModItems.CUCUMBER.getKey(),
             ModItems.EGGPLANT.getKey(),
@@ -129,40 +128,40 @@ public class ItemTags extends ItemTagsProvider {
         tag(ModTags.ORANGE).replace(false).add(ModItems.ORANGE.getKey());
         tag(ModTags.DATE).replace(false).add(ModItems.DATE.getKey());
 
-        tag(ForgeTags.BERRIES).replace(false).add(ModItems.STRAWBERRY.getKey());
+        tag(Items.FOODS_BERRY).replace(false).add(ModItems.STRAWBERRY.getKey());
 
-        tag(net.minecraft.tags.ItemTags.create(new ResourceLocation("forge", "crops/corn"))).replace(false).add(ModItems.CORN.getKey());
-        tag(net.minecraft.tags.ItemTags.create(new ResourceLocation("forge", "crops/cucumber"))).replace(false).add(ModItems.CUCUMBER.getKey());
-        tag(net.minecraft.tags.ItemTags.create(new ResourceLocation("forge", "crops/eggplant"))).replace(false).add(ModItems.EGGPLANT.getKey());
-        tag(net.minecraft.tags.ItemTags.create(new ResourceLocation("forge", "crops/facing_heaven_pepper"))).replace(false).add(ModItems.FACING_HEAVEN_PEPPER.getKey());
-        tag(net.minecraft.tags.ItemTags.create(new ResourceLocation("forge", "crops/green_pepper"))).replace(false).add(ModItems.GREEN_PEPPER.getKey());
-        tag(net.minecraft.tags.ItemTags.create(new ResourceLocation("forge", "crops/peanut"))).replace(false).add(ModItems.PEANUT.getKey());
-        tag(net.minecraft.tags.ItemTags.create(new ResourceLocation("forge", "crops/rice"))).replace(false).add(ModItems.RICE.getKey());
-        tag(net.minecraft.tags.ItemTags.create(new ResourceLocation("forge", "crops/sticky_rice"))).replace(false).add(ModItems.STICKY_RICE.getKey());
-        tag(net.minecraft.tags.ItemTags.create(new ResourceLocation("forge", "crops/sweet_potato"))).replace(false).add(ModItems.SWEET_POTATO.getKey());
-        tag(net.minecraft.tags.ItemTags.create(new ResourceLocation("forge", "crops/tomato"))).replace(false).add(ModItems.TOMATO.getKey());
-        tag(net.minecraft.tags.ItemTags.create(new ResourceLocation("forge", "crops/white_radish"))).replace(false).add(ModItems.WHITE_RADISH.getKey());
-        tag(net.minecraft.tags.ItemTags.create(new ResourceLocation("forge", "crops/cabbage"))).replace(false).add(ModItems.CABBAGE.getKey());
-        tag(net.minecraft.tags.ItemTags.create(new ResourceLocation("forge", "crops/green_onion"))).replace(false).add(ModItems.GREEN_ONION.getKey());
+        tag(ModTags.commonItemTag("crops/corn")).replace(false).add(ModItems.CORN.getKey());
+        tag(ModTags.commonItemTag("crops/cucumber")).replace(false).add(ModItems.CUCUMBER.getKey());
+        tag(ModTags.commonItemTag("crops/eggplant")).replace(false).add(ModItems.EGGPLANT.getKey());
+        tag(ModTags.commonItemTag("crops/facing_heaven_pepper")).replace(false).add(ModItems.FACING_HEAVEN_PEPPER.getKey());
+        tag(ModTags.commonItemTag("crops/green_pepper")).replace(false).add(ModItems.GREEN_PEPPER.getKey());
+        tag(ModTags.commonItemTag("crops/peanut")).replace(false).add(ModItems.PEANUT.getKey());
+        tag(ModTags.commonItemTag("crops/rice")).replace(false).add(ModItems.RICE.getKey());
+        tag(ModTags.commonItemTag("crops/sticky_rice")).replace(false).add(ModItems.STICKY_RICE.getKey());
+        tag(ModTags.commonItemTag("crops/sweet_potato")).replace(false).add(ModItems.SWEET_POTATO.getKey());
+        tag(ModTags.commonItemTag("crops/tomato")).replace(false).add(ModItems.TOMATO.getKey());
+        tag(ModTags.commonItemTag("crops/white_radish")).replace(false).add(ModItems.WHITE_RADISH.getKey());
+        tag(ModTags.commonItemTag("crops/cabbage")).replace(false).add(ModItems.CABBAGE.getKey());
+        tag(ModTags.commonItemTag("crops/green_onion")).replace(false).add(ModItems.GREEN_ONION.getKey());
 
-        tag(net.minecraft.tags.ItemTags.create(new ResourceLocation("forge", "crops/strawberry"))).replace(false).add(ModItems.STRAWBERRY.getKey());
-        tag(net.minecraft.tags.ItemTags.create(new ResourceLocation("forge", "crops/grapefruit"))).replace(false).add(ModItems.GRAPEFRUIT.getKey());
-        tag(net.minecraft.tags.ItemTags.create(new ResourceLocation("forge", "crops/cherry"))).replace(false).add(ModItems.CHERRY.getKey());
-        tag(net.minecraft.tags.ItemTags.create(new ResourceLocation("forge", "crops/coconut"))).replace(false).add(ModItems.COCONUT.getKey());
-        tag(net.minecraft.tags.ItemTags.create(new ResourceLocation("forge", "crops/banana"))).replace(false).add(ModItems.BANANA.getKey());
-        tag(net.minecraft.tags.ItemTags.create(new ResourceLocation("forge", "crops/peach"))).replace(false).add(ModItems.PEACH.getKey());
-        tag(net.minecraft.tags.ItemTags.create(new ResourceLocation("forge", "crops/persimmon"))).replace(false).add(ModItems.PERSIMMON.getKey());
-        tag(net.minecraft.tags.ItemTags.create(new ResourceLocation("forge", "crops/pomegranate"))).replace(false).add(ModItems.POMEGRANATE.getKey());
-        tag(net.minecraft.tags.ItemTags.create(new ResourceLocation("forge", "crops/hawthorn"))).replace(false).add(ModItems.HAWTHORN.getKey());
-        tag(net.minecraft.tags.ItemTags.create(new ResourceLocation("forge", "crops/loquat"))).replace(false).add(ModItems.LOQUAT.getKey());
-        tag(net.minecraft.tags.ItemTags.create(new ResourceLocation("forge", "crops/lemon"))).replace(false).add(ModItems.LEMON.getKey());
-        tag(net.minecraft.tags.ItemTags.create(new ResourceLocation("forge", "crops/papaya"))).replace(false).add(ModItems.PAPAYA.getKey());
-        tag(net.minecraft.tags.ItemTags.create(new ResourceLocation("forge", "crops/longan"))).replace(false).add(ModItems.LONGAN.getKey());
-        tag(net.minecraft.tags.ItemTags.create(new ResourceLocation("forge", "crops/mango"))).replace(false).add(ModItems.MANGO.getKey());
-        tag(net.minecraft.tags.ItemTags.create(new ResourceLocation("forge", "crops/litchi"))).replace(false).add(ModItems.LITCHI.getKey());
-        tag(net.minecraft.tags.ItemTags.create(new ResourceLocation("forge", "crops/pear"))).replace(false).add(ModItems.PEAR.getKey());
-        tag(net.minecraft.tags.ItemTags.create(new ResourceLocation("forge", "crops/orange"))).replace(false).add(ModItems.ORANGE.getKey());
-        tag(net.minecraft.tags.ItemTags.create(new ResourceLocation("forge", "crops/date"))).replace(false).add(ModItems.DATE.getKey());
+        tag(ModTags.commonItemTag("crops/strawberry")).replace(false).add(ModItems.STRAWBERRY.getKey());
+        tag(ModTags.commonItemTag("crops/grapefruit")).replace(false).add(ModItems.GRAPEFRUIT.getKey());
+        tag(ModTags.commonItemTag("crops/cherry")).replace(false).add(ModItems.CHERRY.getKey());
+        tag(ModTags.commonItemTag("crops/coconut")).replace(false).add(ModItems.COCONUT.getKey());
+        tag(ModTags.commonItemTag("crops/banana")).replace(false).add(ModItems.BANANA.getKey());
+        tag(ModTags.commonItemTag("crops/peach")).replace(false).add(ModItems.PEACH.getKey());
+        tag(ModTags.commonItemTag("crops/persimmon")).replace(false).add(ModItems.PERSIMMON.getKey());
+        tag(ModTags.commonItemTag("crops/pomegranate")).replace(false).add(ModItems.POMEGRANATE.getKey());
+        tag(ModTags.commonItemTag("crops/hawthorn")).replace(false).add(ModItems.HAWTHORN.getKey());
+        tag(ModTags.commonItemTag("crops/loquat")).replace(false).add(ModItems.LOQUAT.getKey());
+        tag(ModTags.commonItemTag("crops/lemon")).replace(false).add(ModItems.LEMON.getKey());
+        tag(ModTags.commonItemTag("crops/papaya")).replace(false).add(ModItems.PAPAYA.getKey());
+        tag(ModTags.commonItemTag("crops/longan")).replace(false).add(ModItems.LONGAN.getKey());
+        tag(ModTags.commonItemTag("crops/mango")).replace(false).add(ModItems.MANGO.getKey());
+        tag(ModTags.commonItemTag("crops/litchi")).replace(false).add(ModItems.LITCHI.getKey());
+        tag(ModTags.commonItemTag("crops/pear")).replace(false).add(ModItems.PEAR.getKey());
+        tag(ModTags.commonItemTag("crops/orange")).replace(false).add(ModItems.ORANGE.getKey());
+        tag(ModTags.commonItemTag("crops/date")).replace(false).add(ModItems.DATE.getKey());
 
     }
 }

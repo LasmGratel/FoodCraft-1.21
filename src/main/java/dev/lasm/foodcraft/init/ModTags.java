@@ -9,6 +9,8 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 
 public class ModTags {
+    public static final TagKey<Item> CROPS = commonItemTag("crops");
+
     public static final TagKey<Item> STARCHES = modItemTag("starches");
     public static final TagKey<Item> COOKED_RICE = modItemTag("cooked_rice");
 
@@ -52,19 +54,19 @@ public class ModTags {
     public static final TagKey<Item> ORANGE = commonItemTag("fruits/orange");
     public static final TagKey<Item> DATE = commonItemTag("fruits/date");
 
-    private static TagKey<Item> commonItemTag(String path) {
-        return ItemTags.create(new ResourceLocation("forge", path));
+    public static TagKey<Item> commonItemTag(String path) {
+        return ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", path));
     }
 
-    private static TagKey<Item> commonBlockTag(String path) {
-        return ItemTags.create(new ResourceLocation("forge", path));
+    public static TagKey<Item> commonBlockTag(String path) {
+        return ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", path));
     }
 
-    private static TagKey<Item> modItemTag(String path) {
-        return ItemTags.create(new ResourceLocation(FoodCraft.MOD_ID, path));
+    public static TagKey<Item> modItemTag(String path) {
+        return ItemTags.create(ResourceLocation.fromNamespaceAndPath(FoodCraft.MOD_ID, path));
     }
 
-    private static TagKey<Block> modBlockTag(String path) {
-        return BlockTags.create(new ResourceLocation(FoodCraft.MOD_ID, path));
+    public static TagKey<Block> modBlockTag(String path) {
+        return BlockTags.create(ResourceLocation.fromNamespaceAndPath(FoodCraft.MOD_ID, path));
     }
 }

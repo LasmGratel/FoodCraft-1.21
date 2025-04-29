@@ -1,0 +1,22 @@
+{
+    "type": "foodcraft:brewing",
+    "ingredients": [
+        {
+            "tag": "c:crops/lemon"
+        },
+        {
+            "tag": "c:crops/lemon"
+        },
+        {
+            "tag": "c:crops/lemon"
+        }
+    ],
+    "fluidInput": {
+        "id": "minecraft:water",
+        "amount": 1000
+    },
+    "result": {
+        "id": "foodcraft:lemon_liqueur",
+        "count": 3
+    }
+}

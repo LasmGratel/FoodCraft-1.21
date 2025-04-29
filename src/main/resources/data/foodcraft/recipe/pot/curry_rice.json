@@ -1,0 +1,37 @@
+{
+    "type": "foodcraft:pot",
+    "minTime": 400,
+    "maxTime": 500,
+    "staples": [
+        {
+            "tag": "c:cooked_rice"
+        },
+        {
+            "tag": "c:spices/curry"
+        },
+        {
+            "tag": "c:crops/potato"
+        },
+        {
+            "tag": "c:foods/cooked_chicken"
+        }
+    ],
+    "ingredients": [
+        {
+            "tag": "c:cooking_oil"
+        },
+        {
+            "tag": "c:salt"
+        },
+        {
+            "item": "foodcraft:starches"
+        },
+        {
+            "tag": "c:soysauce"
+        }
+    ],
+    "result": {
+        "id": "foodcraft:curry_rice",
+        "count": 1
+    }
+}

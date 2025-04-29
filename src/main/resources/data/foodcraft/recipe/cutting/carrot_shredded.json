@@ -1,0 +1,17 @@
+{
+    "type": "farmersdelight:cutting",
+    "ingredients": [
+        {
+            "tag": "c:crops/carrot"
+        }
+    ],
+    "result": [
+        {
+            "count": 2,
+            "item": "foodcraft:carrot_shredded"
+        }
+    ],
+    "tool": {
+        "tag": "c:tools/knives"
+    }
+}

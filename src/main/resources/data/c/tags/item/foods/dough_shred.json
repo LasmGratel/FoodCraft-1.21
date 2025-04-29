@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "foodcraft:dough_shredded",
+    {
+      "id": "c:foods/pasta",
+      "required": false
+    }
+  ]
+}

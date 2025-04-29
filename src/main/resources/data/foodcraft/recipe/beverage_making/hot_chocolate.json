@@ -1,0 +1,12 @@
+{
+    "type": "foodcraft:beverage_making",
+    "cool": false,
+    "result": {
+        "id": "foodcraft:hot_chocolate"
+    },
+    "ingredients": [
+        {
+            "tag": "c:chocolatebar"
+        }
+    ]
+}

@@ -1,0 +1,22 @@
+{
+    "type": "foodcraft:pressure_cooking",
+    "ingredients": [
+        {
+            "tag": "c:mushrooms"
+        },
+        {
+            "item": "foodcraft:chicken_leg"
+        },
+        {
+            "tag": "c:salt"
+        }
+    ],
+    "fluidInput": {
+        "id": "minecraft:water",
+        "amount": 1000
+    },
+    "result": {
+        "id": "foodcraft:mushroom_chicken_soup",
+        "count": 1
+    }
+}

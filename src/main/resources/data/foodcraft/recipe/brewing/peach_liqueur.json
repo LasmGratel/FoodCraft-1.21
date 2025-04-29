@@ -1,0 +1,22 @@
+{
+    "type": "foodcraft:brewing",
+    "ingredients": [
+        {
+            "tag": "c:crops/peach"
+        },
+        {
+            "tag": "c:crops/peach"
+        },
+        {
+            "tag": "c:crops/peach"
+        }
+    ],
+    "fluidInput": {
+        "id": "minecraft:water",
+        "amount": 1000
+    },
+    "result": {
+        "id": "foodcraft:peach_liqueur",
+        "count": 3
+    }
+}

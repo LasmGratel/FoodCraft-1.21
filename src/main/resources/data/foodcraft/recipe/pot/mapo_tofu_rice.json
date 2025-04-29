@@ -1,0 +1,31 @@
+{
+    "type": "foodcraft:pot",
+    "minTime": 350,
+    "maxTime": 450,
+    "staples": [
+        {
+            "tag": "c:cooked_rice"
+        },
+        {
+            "tag": "c:foods/silken_tofu"
+        },
+        {
+            "item": "foodcraft:pixian_watercress"
+        }
+    ],
+    "ingredients": [
+        {
+            "tag": "c:cooking_oil"
+        },
+        {
+            "tag": "c:salt"
+        },
+        {
+            "item": "foodcraft:starches"
+        }
+    ],
+    "result": {
+        "id": "foodcraft:mapo_tofu_rice",
+        "count": 1
+    }
+}

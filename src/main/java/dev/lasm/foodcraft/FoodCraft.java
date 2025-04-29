@@ -1,22 +1,25 @@
 package dev.lasm.foodcraft;
 
 import com.mojang.logging.LogUtils;
+import dev.lasm.foodcraft.init.ModBlockEntityTypes;
 import dev.lasm.foodcraft.init.ModBlocks;
+import dev.lasm.foodcraft.init.ModFluids;
 import dev.lasm.foodcraft.init.ModItems;
 import dev.lasm.foodcraft.init.ModRecipeSerializers;
 import dev.lasm.foodcraft.init.ModRecipeTypes;
-import java.util.Objects;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.CreativeModeTab.ItemDisplayParameters;
+import net.minecraft.world.item.CreativeModeTab.Output;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.ModContainer;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.config.ModConfig;
+import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.DeferredRegister;
 import org.slf4j.Logger;
 
 @Mod(FoodCraft.MOD_ID)
@@ -26,15 +29,15 @@ public final class FoodCraft {
     private static final Logger LOGGER = LogUtils.getLogger();
 
     public static final DeferredRegister<CreativeModeTab> TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MOD_ID);
-    public static final RegistryObject<CreativeModeTab> CREATIVE_TAB = TABS.register("main", () ->
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> CREATIVE_TAB = TABS.register("main", () ->
             CreativeModeTab.builder().title(Component.translatable("itemGroup." + MOD_ID + ".main"))
-                .displayItems((p, o) -> o.accept(ModItems.RICE_PORRIDGE.get()))
+                .displayItems(FoodCraft::addCreative)
                 .build());
 
-    public FoodCraft() {
-        var modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+    public FoodCraft(IEventBus modEventBus, ModContainer modContainer) {
         modEventBus.addListener(this::commonSetup);
 
+        ModFluids.FLUIDS.register(modEventBus);
         // Register the Deferred Register to the mod event bus so blocks get registered
         ModBlocks.BLOCKS.register(modEventBus);
         // Register the Deferred Register to the mod event bus so items get registered
@@ -42,24 +45,19 @@ public final class FoodCraft {
         // Register the Deferred Register to the mod event bus so tabs get registered
         TABS.register(modEventBus);
 
+//        NeoForge.EVENT_BUS.register(this);
+
         ModRecipeTypes.RECIPE_TYPES.register(modEventBus);
         ModRecipeSerializers.RECIPE_SERIALIZERS.register(modEventBus);
-
-        // Register ourselves for server and other game events we are interested in
-        MinecraftForge.EVENT_BUS.register(this);
-
-        // Register the item to a creative tab
-        modEventBus.addListener(this::addCreative);
+        ModBlockEntityTypes.BLOCK_ENTITY_TYPES.register(modEventBus);
 
         // Register our mod's ForgeConfigSpec so that Forge can create and load the config file for us
-//        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+        modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
 
-    private void addCreative(BuildCreativeModeTabContentsEvent event) {
-        if (Objects.equals(event.getTabKey(), CREATIVE_TAB.getKey())) {
-            event.acceptAll(ModItems.ITEMS.getEntries().stream().map(x -> new ItemStack(x.get()))
+    private static void addCreative(ItemDisplayParameters p, Output o) {
+        o.acceptAll(ModItems.ITEMS.getEntries().stream().map(x -> new ItemStack(x.get()))
                 .toList());
-        }
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {

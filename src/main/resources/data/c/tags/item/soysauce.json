@@ -1,0 +1,11 @@
+{
+    "replace": false,
+    "values": [
+        "foodcraft:soy_sauce",
+      {
+        "id": "#c:soysauce/soysauce",
+        "required": false
+      }
+
+	]
+}

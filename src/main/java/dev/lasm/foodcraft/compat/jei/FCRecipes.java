@@ -1,12 +1,11 @@
 package dev.lasm.foodcraft.compat.jei;
 
-import dev.lasm.foodcraft.init.ModRecipeTypes;
-import dev.lasm.foodcraft.recipe.PotRecipe;
 import java.util.List;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.world.Container;
 import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.RecipeHolder;
+import net.minecraft.world.item.crafting.RecipeInput;
 import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.item.crafting.RecipeType;
 
@@ -24,7 +23,7 @@ class FCRecipes {
         }
     }
 
-    public <C extends Container, T extends Recipe<C>> List<T> getRecipes(RecipeType<T> recipeType) {
+    public <C extends RecipeInput, T extends Recipe<C>> List<RecipeHolder<T>> getRecipes(RecipeType<T> recipeType) {
         return this.recipeManager.getAllRecipesFor(recipeType);
     }
 }

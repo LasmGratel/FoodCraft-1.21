@@ -1,6 +1,8 @@
 package dev.lasm.foodcraft.compat.jei;
 
 import dev.lasm.foodcraft.FoodCraft;
+import dev.lasm.foodcraft.client.screen.BrewBarrelScreen;
+import dev.lasm.foodcraft.init.ModBlocks;
 import dev.lasm.foodcraft.init.ModRecipeTypes;
 import dev.lasm.foodcraft.recipe.BeverageMakingRecipe;
 import dev.lasm.foodcraft.recipe.BrewingRecipe;
@@ -14,6 +16,8 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.recipe.RecipeType;
+import mezz.jei.api.registration.IGuiHandlerRegistration;
+import mezz.jei.api.registration.IRecipeCatalystRegistration;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
 import net.minecraft.MethodsReturnNonnullByDefault;
@@ -51,6 +55,11 @@ public class FoodCraftJeiPlugin implements IModPlugin {
     }
 
     @Override
+    public void registerGuiHandlers(IGuiHandlerRegistration registration) {
+        registration.addRecipeClickArea(BrewBarrelScreen.class, 119, 31, 16, 16, BREWING_RECIPE);
+    }
+
+    @Override
     public void registerRecipes(IRecipeRegistration registration) {
         var modRecipes = new FCRecipes();
 
@@ -63,5 +72,17 @@ public class FoodCraftJeiPlugin implements IModPlugin {
         registration.addRecipes(PAN_RECIPE, modRecipes.getRecipes(ModRecipeTypes.PAN.get()));
         registration.addRecipes(POT_RECIPE, modRecipes.getRecipes(ModRecipeTypes.POT.get()));
         registration.addRecipes(PRESSURE_COOKING_RECIPE, modRecipes.getRecipes(ModRecipeTypes.PRESSURE_COOKING.get()));
+    }
+
+    @Override
+    public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
+        registration.addRecipeCatalyst(ModBlocks.BEVERAGE_MAKING.get(), BEVERAGE_MAKING_RECIPE);
+        registration.addRecipeCatalyst(ModBlocks.BREW_BARREL.get(), BREWING_RECIPE);
+        registration.addRecipeCatalyst(ModBlocks.CHOPPING_BOARD.get(), CHOPPING_RECIPE);
+        registration.addRecipeCatalyst(ModBlocks.FRYING_PAN.get(), FRYING_RECIPE);
+        registration.addRecipeCatalyst(ModBlocks.MILL.get(), MILLING_RECIPE);
+        registration.addRecipeCatalyst(ModBlocks.PAN.get(), PAN_RECIPE);
+        registration.addRecipeCatalyst(ModBlocks.POT.get(), POT_RECIPE);
+        registration.addRecipeCatalyst(ModBlocks.PRESSURE_COOKER.get(), PRESSURE_COOKING_RECIPE);
     }
 }

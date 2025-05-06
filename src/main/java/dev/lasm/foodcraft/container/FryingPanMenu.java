@@ -1,6 +1,6 @@
 package dev.lasm.foodcraft.container;
 
-import dev.lasm.foodcraft.block.entity.BrewBarrelBlockEntity;
+import dev.lasm.foodcraft.block.entity.FryingPanBlockEntity;
 import dev.lasm.foodcraft.init.ModBlocks;
 import dev.lasm.foodcraft.init.ModMenuTypes;
 import java.util.Objects;
@@ -18,12 +18,12 @@ import net.neoforged.neoforge.items.SlotItemHandler;
 
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
-public class BrewBarrelMenu extends AbstractContainerMenu {
+public class FryingPanMenu extends AbstractContainerMenu {
     private final ContainerLevelAccess access;
 
-    public BrewBarrelMenu(
+    public FryingPanMenu(
         int containerId, Inventory playerInv, FriendlyByteBuf data) {
-        this(containerId, playerInv,  getTileEntity(playerInv, data, BrewBarrelBlockEntity.class));
+        this(containerId, playerInv, getTileEntity(playerInv, data, FryingPanBlockEntity.class));
     }
 
     private static <T extends BlockEntity> T getTileEntity(Inventory playerInventory, FriendlyByteBuf data, Class<T> tileEntityClass) {
@@ -37,18 +37,17 @@ public class BrewBarrelMenu extends AbstractContainerMenu {
         }
     }
 
-    public BrewBarrelMenu(int containerId, Inventory playerInv, BrewBarrelBlockEntity tileEntity) {
-        super(ModMenuTypes.BREW_BARREL.get(), containerId);
+    public FryingPanMenu(int containerId, Inventory playerInv, FryingPanBlockEntity tileEntity) {
+        super(ModMenuTypes.FRYING_PAN.get(), containerId);
         this.access = ContainerLevelAccess.create(tileEntity.getLevel(), tileEntity.getBlockPos());
         var dataInventory = tileEntity.inventory;
 
-        addSlot(new SlotItemHandler(dataInventory, 0, 54, 32));
-        addSlot(new SlotItemHandler(dataInventory, 1, 78, 32));
-        addSlot(new SlotItemHandler(dataInventory, 2, 101, 32));
-        addSlot(new SlotItemHandler(dataInventory, 5, 37, 59));
+        addSlot(new SlotItemHandler(dataInventory, 0, 58, 31));
 
-        addSlot(new OutputSlotItemHandler(dataInventory, 3, 138, 32));
-        addSlot(new OutputSlotItemHandler(dataInventory, 4, 138, 59));
+        addSlot(new SlotItemHandler(dataInventory, 2, 37, 59));
+        addSlot(new SlotItemHandler(dataInventory, 3, 95, 59));
+
+        addSlot(new OutputSlotItemHandler(dataInventory, 1, 130, 31));
 
 
         for (int k = 0; k < 3; k++) {
@@ -69,7 +68,7 @@ public class BrewBarrelMenu extends AbstractContainerMenu {
 
     @Override
     public boolean stillValid(Player player) {
-        return AbstractContainerMenu.stillValid(this.access, player, ModBlocks.BREW_BARREL.get());
+        return AbstractContainerMenu.stillValid(this.access, player, ModBlocks.FRYING_PAN.get());
     }
 
 }

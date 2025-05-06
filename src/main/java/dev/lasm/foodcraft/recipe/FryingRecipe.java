@@ -96,7 +96,7 @@ public class FryingRecipe implements Recipe<FluidAttachedRecipeInput> {
         }
 
         return ingredients.size() == inputSize && RecipeMatcher.findMatches(inputs, ingredients) != null &&
-            container.drain(fluidInput, IFluidHandler.FluidAction.SIMULATE).equals(fluidInput);
+            FluidStack.matches(fluidInput, container.drain(fluidInput, IFluidHandler.FluidAction.SIMULATE));
     }
 
     @Override

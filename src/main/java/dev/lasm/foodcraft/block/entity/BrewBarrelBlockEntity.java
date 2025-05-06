@@ -2,20 +2,30 @@ package dev.lasm.foodcraft.block.entity;
 
 import dev.lasm.foodcraft.api.FluidAttachedRecipeInput;
 import dev.lasm.foodcraft.api.FluidRecipeWrapper;
+import dev.lasm.foodcraft.container.BrewBarrelMenu;
 import dev.lasm.foodcraft.init.ModBlockEntityTypes;
 import dev.lasm.foodcraft.init.ModRecipeTypes;
 import dev.lasm.foodcraft.recipe.BrewingRecipe;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.MenuProvider;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
+import net.neoforged.neoforge.common.util.Lazy;
 import net.neoforged.neoforge.fluids.capability.templates.FluidTank;
 import net.neoforged.neoforge.items.ItemStackHandler;
+import org.jetbrains.annotations.Nullable;
 
-public class BrewBarrelBlockEntity extends BaseBlockEntity {
-    private ItemStackHandler inventory;
+public class BrewBarrelBlockEntity extends BaseBlockEntity implements MenuProvider {
+    public static final int WORK_TIME = 180 * 20;
+
+    public ItemStackHandler inventory;
     private FluidTank fluidTank;
 
     private int cookingTime = 0;
@@ -24,7 +34,7 @@ public class BrewBarrelBlockEntity extends BaseBlockEntity {
 
     public BrewBarrelBlockEntity(BlockPos pos, BlockState blockState) {
         super(ModBlockEntityTypes.BREW_BARREL.get(), pos, blockState);
-        this.inventory = new ItemStackHandler(5);
+        this.inventory = new ItemStackHandler(6);
         this.fluidTank = new FluidTank(4000);
         this.quickCheck = RecipeManager.createCheck(ModRecipeTypes.BREWING.get());
     }
@@ -52,8 +62,22 @@ public class BrewBarrelBlockEntity extends BaseBlockEntity {
         tag.putInt("CookingTime", cookingTime);
     }
 
+    private final Lazy<FluidRecipeWrapper> recipeWrapperLazy = Lazy.of(() -> new FluidRecipeWrapper(inventory, fluidTank));
+
+
     public static void tick(Level level, BlockPos blockPos, BlockState blockState, BrewBarrelBlockEntity blockEntity) {
-        var recipe = blockEntity.quickCheck.getRecipeFor(new FluidRecipeWrapper(
-            blockEntity.inventory, blockEntity.fluidTank), level).orElse(null);
+        var recipe = blockEntity.quickCheck.getRecipeFor(blockEntity.recipeWrapperLazy.get(), level).orElse(null);
+        if (recipe != null) {
+        }
+    }
+
+    @Override
+    public Component getDisplayName() {
+        return Component.translatable("block.foodcraft.brew_barrel");
+    }
+
+    @Override
+    public @Nullable AbstractContainerMenu createMenu(int i, Inventory playerInv, Player player) {
+        return new BrewBarrelMenu(i, playerInv, this);
     }
 }

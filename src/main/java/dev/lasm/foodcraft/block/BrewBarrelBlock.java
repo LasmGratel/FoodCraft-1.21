@@ -3,15 +3,23 @@ package dev.lasm.foodcraft.block;
 import com.mojang.serialization.MapCodec;
 import dev.lasm.foodcraft.block.entity.BrewBarrelBlockEntity;
 import dev.lasm.foodcraft.init.ModBlockEntityTypes;
+import javax.annotation.ParametersAreNonnullByDefault;
+import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.Nullable;
 
+@ParametersAreNonnullByDefault
+@MethodsReturnNonnullByDefault
 public class BrewBarrelBlock extends BaseMachineBlock {
     public static final MapCodec<BrewBarrelBlock> CODEC = simpleCodec(BrewBarrelBlock::new);
 
@@ -35,5 +43,15 @@ public class BrewBarrelBlock extends BaseMachineBlock {
         return !level.isClientSide ? createTickerHelper(blockEntityType,
             ModBlockEntityTypes.BREW_BARREL.get(),
             BrewBarrelBlockEntity::tick) : null;
+    }
+
+    @Override
+    protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos,
+        Player player, BlockHitResult hitResult) {
+        if (!level.isClientSide && player instanceof ServerPlayer serverPlayer && level.getBlockEntity(pos) instanceof BrewBarrelBlockEntity blockEntity) {
+            serverPlayer.openMenu(blockEntity, pos);
+        }
+
+        return InteractionResult.SUCCESS;
     }
 }

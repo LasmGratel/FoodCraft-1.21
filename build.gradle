@@ -147,6 +147,7 @@ dependencies {
     runtimeOnly "maven.modrinth:emi:1.1.22+${rootProject.minecraft_version}+neoforge"
     runtimeOnly "maven.modrinth:cucumber:8.0.11"
     runtimeOnly "maven.modrinth:patchouli:1.21-87-neoforge"
+    runtimeOnly "maven.modrinth:jade:15.10.0+neoforge"
     runtimeOnly fileTree('libs') { include '*.jar' }
 
 }

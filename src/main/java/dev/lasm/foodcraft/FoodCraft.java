@@ -1,10 +1,13 @@
 package dev.lasm.foodcraft;
 
 import com.mojang.logging.LogUtils;
+import dev.lasm.foodcraft.client.screen.BrewBarrelScreen;
+import dev.lasm.foodcraft.client.screen.FryingPanScreen;
 import dev.lasm.foodcraft.init.ModBlockEntityTypes;
 import dev.lasm.foodcraft.init.ModBlocks;
 import dev.lasm.foodcraft.init.ModFluids;
 import dev.lasm.foodcraft.init.ModItems;
+import dev.lasm.foodcraft.init.ModMenuTypes;
 import dev.lasm.foodcraft.init.ModRecipeSerializers;
 import dev.lasm.foodcraft.init.ModRecipeTypes;
 import net.minecraft.core.registries.Registries;
@@ -18,6 +21,7 @@ import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.slf4j.Logger;
@@ -36,6 +40,7 @@ public final class FoodCraft {
 
     public FoodCraft(IEventBus modEventBus, ModContainer modContainer) {
         modEventBus.addListener(this::commonSetup);
+        modEventBus.addListener(this::registerScreens);
 
         ModFluids.FLUIDS.register(modEventBus);
         // Register the Deferred Register to the mod event bus so blocks get registered
@@ -50,6 +55,7 @@ public final class FoodCraft {
         ModRecipeTypes.RECIPE_TYPES.register(modEventBus);
         ModRecipeSerializers.RECIPE_SERIALIZERS.register(modEventBus);
         ModBlockEntityTypes.BLOCK_ENTITY_TYPES.register(modEventBus);
+        ModMenuTypes.MENU_TYPES.register(modEventBus);
 
         // Register our mod's ForgeConfigSpec so that Forge can create and load the config file for us
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
@@ -63,6 +69,11 @@ public final class FoodCraft {
     private void commonSetup(final FMLCommonSetupEvent event) {
         // Some common setup code
         LOGGER.info("");
+    }
+
+    private void registerScreens(RegisterMenuScreensEvent event) {
+        event.register(ModMenuTypes.BREW_BARREL.get(), BrewBarrelScreen::new);
+        event.register(ModMenuTypes.FRYING_PAN.get(), FryingPanScreen::new);
     }
 
 

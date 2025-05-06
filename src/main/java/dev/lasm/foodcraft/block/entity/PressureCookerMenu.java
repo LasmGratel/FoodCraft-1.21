@@ -1,7 +1,6 @@
 package dev.lasm.foodcraft.block.entity;
 
 import dev.lasm.foodcraft.init.ModBlocks;
-import dev.lasm.foodcraft.init.ModMenuTypes;
 import java.util.Objects;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.Container;

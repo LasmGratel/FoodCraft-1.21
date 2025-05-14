@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "foodcraft:original_ice_cream"
+    },
+    {
+      "tag": "c:orangejuice"
+    }
+  ],
+  "result": {
+    "id": "foodcraft:orange_ice_cream"
+  }
+}

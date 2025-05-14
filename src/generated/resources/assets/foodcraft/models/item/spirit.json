@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "foodcraft:item/liqueur",
+    "layer1": "foodcraft:item/liqueur_overlay"
+  }
+}

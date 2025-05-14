@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "AAA",
+    "A#A",
+    "AAA"
+  ],
+  "key": {
+    "#": {
+      "tag": "c:water"
+    },
+    "A": {
+      "tag": "c:flour"
+    }
+  },
+  "result": {
+    "id": "foodcraft:steamed_buns"
+  }
+}

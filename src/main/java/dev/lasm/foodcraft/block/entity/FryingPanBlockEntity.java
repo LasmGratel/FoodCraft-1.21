@@ -7,6 +7,7 @@ import dev.lasm.foodcraft.init.ModBlockEntityTypes;
 import dev.lasm.foodcraft.init.ModFluids;
 import dev.lasm.foodcraft.init.ModRecipeTypes;
 import dev.lasm.foodcraft.init.ModTags;
+import dev.lasm.foodcraft.network.SyncFluidTank;
 import dev.lasm.foodcraft.recipe.FryingRecipe;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup.Provider;
@@ -25,22 +26,24 @@ import net.minecraft.world.item.crafting.RecipeManager.CachedCheck;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.neoforged.neoforge.common.util.Lazy;
 import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.fluids.capability.IFluidHandler.FluidAction;
-import net.neoforged.neoforge.fluids.capability.templates.FluidTank;
 import net.neoforged.neoforge.items.ItemStackHandler;
+import net.neoforged.neoforge.items.wrapper.RangedWrapper;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class FryingPanBlockEntity extends BaseBlockEntity implements MenuProvider {
     public static final int WORK_TIME = 200;
 
     public ItemStackHandler inventory;
-    private FluidTank fluidTank;
+    public SyncFluidTank fluidTank;
 
-    private int cookingTime = 0;
-    private int burnTime = 0;
+    public int cookingTime = 0;
+    public int burnTime = 0;
+    public int maxCookingTime = 0;
+    public int maxBurnTime = 0;
 
     private RecipeHolder<FryingRecipe> lastRecipe;
 
@@ -52,20 +55,20 @@ public class FryingPanBlockEntity extends BaseBlockEntity implements MenuProvide
             @Override
             public boolean isItemValid(int slot, ItemStack stack) {
                 return switch (slot) {
-                    case 2 -> stack.is(ModTags.COOKING_OIL);
-                    case 3 -> stack.getBurnTime(RecipeType.SMELTING) > 0;
+                    case 0 -> stack.is(ModTags.COOKING_OIL);
+                    case 1 -> stack.getBurnTime(RecipeType.SMELTING) > 0;
                     default -> true;
                 };
             }
+
+            @Override
+            protected void onContentsChanged(int slot) {
+                inventoryChanged();
+            }
         };
 
-        this.fluidTank = new FluidTank(4000);
+        this.fluidTank = new SyncFluidTank(4000);
         this.quickCheck = RecipeManager.createCheck(ModRecipeTypes.FRYING.get());
-    }
-
-    @Override
-    public CompoundTag getUpdateTag(Provider registries) {
-        return super.getUpdateTag(registries);
     }
 
     @Override
@@ -76,6 +79,8 @@ public class FryingPanBlockEntity extends BaseBlockEntity implements MenuProvide
             inventory.deserializeNBT(registries, tag.getCompound("Inventory"));
         cookingTime = tag.getInt("CookingTime");
         burnTime = tag.getInt("BurnTime");
+        maxCookingTime = tag.getInt("MaxCookingTime");
+        maxBurnTime = tag.getInt("MaxBurnTime");
         if (level instanceof ServerLevel serverLevel) {
             var recipeId = ResourceLocation.tryParse(tag.getString("LastRecipe"));
             if (recipeId != null) {
@@ -91,23 +96,24 @@ public class FryingPanBlockEntity extends BaseBlockEntity implements MenuProvide
         tag.put("Inventory", inventory.serializeNBT(registries));
         tag.putInt("CookingTime", cookingTime);
         tag.putInt("BurnTime", burnTime);
+        tag.putInt("MaxCookingTime", maxCookingTime);
+        tag.putInt("MaxBurnTime", maxBurnTime);
         if (lastRecipe != null)
             tag.putString("LastRecipe", lastRecipe.id().toString());
     }
 
-    private final Lazy<FluidRecipeWrapper> recipeWrapperLazy = Lazy.of(() -> new FluidRecipeWrapper(inventory, fluidTank));
+    private final Lazy<FluidRecipeWrapper> recipeWrapperLazy = Lazy.of(() -> new FluidRecipeWrapper(new RangedWrapper(inventory, 2, 3), fluidTank));
 
-
-    public static void tick(Level level, BlockPos blockPos, BlockState blockState, FryingPanBlockEntity blockEntity) {
+    public static void tick(Level level, BlockPos blockPos, BlockState blockState, @NotNull FryingPanBlockEntity blockEntity) {
         if (blockEntity.burnTime > 0) {
             blockEntity.burnTime--;
             blockEntity.setChanged();
         }
 
-        if (blockEntity.inventory.extractItem(2, 1, true).is(ModTags.COOKING_OIL)) {
+        if (blockEntity.inventory.extractItem(0, 1, true).is(ModTags.COOKING_OIL)) {
             if (blockEntity.fluidTank.fill(new FluidStack(ModFluids.COOKING_OIL.get(), 1000), FluidAction.SIMULATE) == 1000) {
                 blockEntity.fluidTank.fill(new FluidStack(ModFluids.COOKING_OIL.get(), 1000), FluidAction.EXECUTE);
-                blockEntity.inventory.extractItem(2, 1, false);
+                blockEntity.inventory.extractItem(0, 1, false);
                 blockEntity.setChanged();
             }
         }
@@ -117,11 +123,12 @@ public class FryingPanBlockEntity extends BaseBlockEntity implements MenuProvide
                 blockEntity.cookingTime--;
                 blockEntity.setChanged();
             } else {
-                var fuel = blockEntity.inventory.extractItem(3, 1, true).getBurnTime(RecipeType.SMELTING);
+                var fuel = blockEntity.inventory.extractItem(1, 1, true).getBurnTime(RecipeType.SMELTING);
                 if (fuel > 0) {
-                    blockEntity.inventory.extractItem(3, 1, false);
+                    blockEntity.inventory.extractItem(1, 1, false);
                     blockEntity.cookingTime--;
                     blockEntity.burnTime += fuel;
+                    blockEntity.maxBurnTime = fuel;
                     blockEntity.setChanged();
                     detectLit(level, blockPos, blockState, true);
                 } else {
@@ -133,8 +140,8 @@ public class FryingPanBlockEntity extends BaseBlockEntity implements MenuProvide
         if (blockEntity.cookingTime == 0 && blockEntity.lastRecipe != null) {
             var result = blockEntity.lastRecipe.value().getResultItem(null).copy();
 
-            if (blockEntity.inventory.insertItem(1, result, true) == ItemStack.EMPTY) {
-                blockEntity.inventory.insertItem(1, result, false);
+            if (blockEntity.inventory.insertItem(3, result, true) == ItemStack.EMPTY) {
+                blockEntity.inventory.insertItem(3, result, false);
                 blockEntity.setChanged();
                 blockEntity.lastRecipe = null;
             } else {
@@ -145,24 +152,19 @@ public class FryingPanBlockEntity extends BaseBlockEntity implements MenuProvide
         if (blockEntity.lastRecipe == null) {
             var recipe = blockEntity.quickCheck.getRecipeFor(blockEntity.recipeWrapperLazy.get(), level).orElse(null);
             if (recipe != null) {
-                if (blockEntity.burnTime == 0 && blockEntity.inventory.getStackInSlot(1).isEmpty()) {
+                if (blockEntity.burnTime == 0 && blockEntity.inventory.getStackInSlot(3).isEmpty()) {
                     return; // A tricky solution
                 }
                 blockEntity.lastRecipe = recipe;
                 blockEntity.cookingTime = WORK_TIME;
-                blockEntity.inventory.extractItem(0, 1, false);
+                blockEntity.maxCookingTime = WORK_TIME;
+                blockEntity.inventory.extractItem(2, 1, false);
                 blockEntity.setChanged();
                 detectLit(level, blockPos, blockState, true);
             } else {
                 blockEntity.lastRecipe = null;
                 detectLit(level, blockPos, blockState, false);
             }
-        }
-    }
-
-    public static void detectLit(Level level, BlockPos blockPos, BlockState blockState, boolean working) {
-        if (blockState.getValue(BlockStateProperties.LIT).booleanValue() != working) {
-            level.setBlock(blockPos, blockState.setValue(BlockStateProperties.LIT, working), 3);
         }
     }
 

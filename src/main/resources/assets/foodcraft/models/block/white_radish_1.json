@@ -1,1 +1,1 @@
-{"parent":"block/crop","textures":{"crop":"foodcraft:block/white_radish_1"}}
+{"parent":"block/crop","render_type": "minecraft:cutout","textures":{"crop":"foodcraft:block/white_radish_1"}}

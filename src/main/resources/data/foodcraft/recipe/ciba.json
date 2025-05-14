@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "AAA",
+    "ABA",
+    "AAA"
+  ],
+  "key": {
+    "A": {
+      "tag": "c:flour/sticky"
+    },
+    "B": {
+      "tag": "c:water"
+    }
+  },
+  "result": {
+    "id": "foodcraft:ciba"
+  }
+}

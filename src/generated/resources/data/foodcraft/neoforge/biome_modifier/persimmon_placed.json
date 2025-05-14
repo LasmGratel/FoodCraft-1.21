@@ -1,0 +1,26 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": {
+    "type": "neoforge:and",
+    "values": [
+      {
+        "type": "neoforge:or",
+        "values": [
+          "#minecraft:is_forest"
+        ]
+      },
+      {
+        "type": "neoforge:not",
+        "value": {
+          "type": "neoforge:or",
+          "values": [
+            "#c:is_hot/overworld",
+            "#c:is_cold/overworld"
+          ]
+        }
+      }
+    ]
+  },
+  "features": "foodcraft:persimmon_placed",
+  "step": "vegetal_decoration"
+}

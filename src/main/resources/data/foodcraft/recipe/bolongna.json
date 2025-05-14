@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "foodcraft:lawei_flavor"
+    },
+    {
+      "tag": "c:foods/fried_sausage"
+    }
+  ],
+  "result": {
+    "id": "foodcraft:bolongna"
+  }
+}

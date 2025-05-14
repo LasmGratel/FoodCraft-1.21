@@ -26,12 +26,15 @@ public class ModTags {
     public static final TagKey<Item> GREEN_PEPPER = commonItemTag("vegetables/green_pepper");
     public static final TagKey<Item> PEANUT = commonItemTag("vegetables/peanut");
     public static final TagKey<Item> RICE = commonItemTag("vegetables/rice");
-    public static final TagKey<Item> STICKY_RICE = commonItemTag("vegetables/sticky_rice");
+    public static final TagKey<Item> STICKY_RICE = commonItemTag("crops/sticky_rice");
     public static final TagKey<Item> SWEET_POTATO = commonItemTag("vegetables/sweet_potato");
     public static final TagKey<Item> TOMATO = commonItemTag("vegetables/tomato");
     public static final TagKey<Item> WHITE_RADISH = commonItemTag("vegetables/white_radish");
     public static final TagKey<Item> CABBAGE = commonItemTag("vegetables/cabbage");
     public static final TagKey<Item> GREEN_ONION = commonItemTag("vegetables/green_onion");
+    public static final TagKey<Item> ADZUKI_BEAN = commonItemTag("crops/adzuki_bean");
+    public static final TagKey<Item> SOYBEAN = commonItemTag("crops/soybean");
+    public static final TagKey<Item> MUNG_BEAN = commonItemTag("crops/mung_bean");
 
     // Fruits
     public static final TagKey<Item> FRUITS = commonItemTag("fruits");

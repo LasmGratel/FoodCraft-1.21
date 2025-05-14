@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "AAA",
+    "A#A",
+    "AAA"
+  ],
+  "key": {
+    "#": {
+      "tag": "c:storage_blocks/iron"
+    },
+    "A": {
+      "tag": "c:crops/peanut"
+    }
+  },
+  "result": {
+    "id": "foodcraft:machine_casing"
+  }
+}

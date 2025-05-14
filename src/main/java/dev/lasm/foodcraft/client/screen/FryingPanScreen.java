@@ -7,22 +7,36 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.level.material.Fluids;
 import net.neoforged.neoforge.fluids.FluidStack;
+import net.neoforged.neoforge.fluids.capability.templates.FluidTank;
 
-public class FryingPanScreen extends BaseContainerScreen<FryingPanMenu> {
+public class FryingPanScreen extends BaseContainerScreen<FryingPanMenu> implements IFluidStackScreen {
 
     private static final ResourceLocation BACKGROUND_TEXTURE = ResourceLocation.fromNamespaceAndPath(
         FoodCraft.MOD_ID, "textures/gui/container/frying_pan.png");
 
+    private final FluidTank fluidTank;
+
     public FryingPanScreen(FryingPanMenu menu,
         Inventory playerInventory, Component title) {
         super(menu, playerInventory, title, BACKGROUND_TEXTURE);
+        this.fluidTank = menu.fluidTank;
     }
 
     @Override
     protected void renderTooltip(GuiGraphics guiGraphics, int x, int y) {
+        if (fluidTank != null)
+            GuiHelpersNeoForge.renderFluidTank(guiGraphics, fluidTank.getFluid(), menu.fluidTank.getCapacity(), 18 + getGuiLeft(), 14 + getGuiTop(), 11, 59);
+
+        renderLit(guiGraphics, 121, 61);
+        renderBurn(guiGraphics, 92, 30);
+
         super.renderTooltip(guiGraphics, x, y);
-        GuiHelpersNeoForge.renderFluidTank(guiGraphics, new FluidStack(Fluids.WATER, 1000), 4000, 18 + getGuiLeft(), 14 + getGuiTop(), 11, 59);
+    }
+
+    @Override
+    public void setFluid(FluidStack fluidStack) {
+        if (fluidTank != null)
+            fluidTank.setFluid(fluidStack);
     }
 }

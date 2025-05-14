@@ -1,54 +1,76 @@
 package dev.lasm.foodcraft.container;
 
 import dev.lasm.foodcraft.block.entity.BrewBarrelBlockEntity;
-import dev.lasm.foodcraft.init.ModBlocks;
 import dev.lasm.foodcraft.init.ModMenuTypes;
-import java.util.Objects;
+import dev.lasm.foodcraft.network.FluidStackPayload;
+import dev.lasm.foodcraft.network.SyncFluidTank;
 import javax.annotation.ParametersAreNonnullByDefault;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.inventory.ContainerLevelAccess;
+import net.minecraft.world.inventory.ContainerData;
+import net.minecraft.world.inventory.SimpleContainerData;
 import net.minecraft.world.inventory.Slot;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.entity.BlockEntity;
 import net.neoforged.neoforge.items.SlotItemHandler;
+import net.neoforged.neoforge.network.PacketDistributor;
 
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
-public class BrewBarrelMenu extends AbstractContainerMenu {
-    private final ContainerLevelAccess access;
+public class BrewBarrelMenu extends BaseMachineMenu<BrewBarrelBlockEntity> {
+    public final SyncFluidTank fluidTank;
+    private final ContainerData dataAccess;
 
     public BrewBarrelMenu(
         int containerId, Inventory playerInv, FriendlyByteBuf data) {
-        this(containerId, playerInv,  getTileEntity(playerInv, data, BrewBarrelBlockEntity.class));
-    }
-
-    private static <T extends BlockEntity> T getTileEntity(Inventory playerInventory, FriendlyByteBuf data, Class<T> tileEntityClass) {
-        Objects.requireNonNull(playerInventory, "playerInventory cannot be null");
-        Objects.requireNonNull(data, "data cannot be null");
-        var tileAtPos = playerInventory.player.level().getBlockEntity(data.readBlockPos());
-        if (tileAtPos != null && tileAtPos.getClass() == tileEntityClass) {
-            return (T)tileAtPos;
-        } else {
-            throw new IllegalStateException("Tile entity is not correct! " + tileAtPos);
-        }
+        this(containerId, playerInv,  getTileEntity(playerInv.player.level(), data, BrewBarrelBlockEntity.class));
     }
 
     public BrewBarrelMenu(int containerId, Inventory playerInv, BrewBarrelBlockEntity tileEntity) {
-        super(ModMenuTypes.BREW_BARREL.get(), containerId);
-        this.access = ContainerLevelAccess.create(tileEntity.getLevel(), tileEntity.getBlockPos());
+        super(ModMenuTypes.BREW_BARREL.get(), containerId, playerInv, tileEntity);
+
+        this.fluidTank = tileEntity.fluidTank;
+
+        if (!tileEntity.getLevel().isClientSide) {
+            this.fluidTank.setOnContentsChanged(() ->
+                PacketDistributor.sendToPlayer((ServerPlayer) playerInv.player, new FluidStackPayload(this.fluidTank.getFluid())));
+
+            this.dataAccess = new ContainerData() {
+                @Override
+                public int get(int i) {
+                    return switch (i) {
+                        case 0 -> tileEntity.cookingTime;
+                        case 1 -> tileEntity.maxCookingTime;
+                        default -> 0;
+                    };
+                }
+
+                @Override
+                public void set(int i, int i1) {
+                    switch (i) {
+                        case 0 -> tileEntity.cookingTime = i1;
+                        case 1 -> tileEntity.maxCookingTime = i1;
+                    }
+                }
+
+                @Override
+                public int getCount() {
+                    return 2;
+                }
+            };
+        } else {
+            dataAccess = new SimpleContainerData(4);
+        }
+
         var dataInventory = tileEntity.inventory;
 
-        addSlot(new SlotItemHandler(dataInventory, 0, 54, 32));
-        addSlot(new SlotItemHandler(dataInventory, 1, 78, 32));
-        addSlot(new SlotItemHandler(dataInventory, 2, 101, 32));
-        addSlot(new SlotItemHandler(dataInventory, 5, 37, 59));
+        addSlot(new SlotItemHandler(dataInventory, 0, 37, 59));
+        addSlot(new SlotItemHandler(dataInventory, 1, 54, 32));
+        addSlot(new SlotItemHandler(dataInventory, 2, 78, 32));
+        addSlot(new SlotItemHandler(dataInventory, 3, 101, 32));
 
-        addSlot(new OutputSlotItemHandler(dataInventory, 3, 138, 32));
-        addSlot(new OutputSlotItemHandler(dataInventory, 4, 138, 59));
+        addSlot(new OutputSlotItemHandler(dataInventory, 4, 138, 32));
+        addSlot(new NonInteractiveSlot(dataInventory, 5, 138, 59));
 
 
         for (int k = 0; k < 3; k++) {
@@ -60,16 +82,17 @@ public class BrewBarrelMenu extends AbstractContainerMenu {
         for (int l = 0; l < 9; l++) {
             this.addSlot(new Slot(playerInv, l, 8 + l * 18, 142));
         }
+
+        addDataSlots(dataAccess);
     }
 
     @Override
-    public ItemStack quickMoveStack(Player player, int i) {
-        return ItemStack.EMPTY;
+    public int getMachineSlots() {
+        return 6;
     }
 
     @Override
-    public boolean stillValid(Player player) {
-        return AbstractContainerMenu.stillValid(this.access, player, ModBlocks.BREW_BARREL.get());
+    public ContainerData getContainerData() {
+        return dataAccess;
     }
-
 }

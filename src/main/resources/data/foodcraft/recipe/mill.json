@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "AAA",
+    "D#D",
+    "ECE"
+  ],
+  "key": {
+    "#": {
+      "item": "foodcraft:machine_casing"
+    },
+    "A": {
+      "tag": "c:crops/wheat"
+    },
+    "C": {
+      "tag": "c:circuits/basic"
+    },
+    "D": {
+      "tag": "c:glass_blocks"
+    },
+    "E": {
+      "tag": "c:milk"
+    }
+  },
+  "result": {
+    "id": "foodcraft:mill"
+  }
+}

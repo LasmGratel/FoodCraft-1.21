@@ -5,28 +5,33 @@ import net.minecraft.core.Holder;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import org.jetbrains.annotations.NotNull;
 
 public class ModItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(FoodCraft.MOD_ID);
     public static final DeferredItem<Item> RICE_PORRIDGE;
 
     // Plants
-    public static final DeferredItem<Item> CORN;
-    public static final DeferredItem<Item> CUCUMBER;
-    public static final DeferredItem<Item> EGGPLANT;
-    public static final DeferredItem<Item> FACING_HEAVEN_PEPPER;
-    public static final DeferredItem<Item> GREEN_PEPPER;
-    public static final DeferredItem<Item> PEANUT;
-    public static final DeferredItem<Item> RICE;
-    public static final DeferredItem<Item> STICKY_RICE;
-    public static final DeferredItem<Item> SWEET_POTATO;
-    public static final DeferredItem<Item> TOMATO;
-    public static final DeferredItem<Item> WHITE_RADISH;
-    public static final DeferredItem<Item> CABBAGE;
-    public static final DeferredItem<Item> STRAWBERRY;
+    public static final DeferredItem<BlockItem> CORN;
+    public static final DeferredItem<BlockItem> CUCUMBER;
+    public static final DeferredItem<BlockItem> EGGPLANT;
+    public static final DeferredItem<BlockItem> FACING_HEAVEN_PEPPER;
+    public static final DeferredItem<BlockItem> GREEN_PEPPER;
+    public static final DeferredItem<BlockItem> PEANUT;
+    public static final DeferredItem<BlockItem> RICE;
+    public static final DeferredItem<BlockItem> STICKY_RICE;
+    public static final DeferredItem<BlockItem> SWEET_POTATO;
+    public static final DeferredItem<BlockItem> TOMATO;
+    public static final DeferredItem<BlockItem> WHITE_RADISH;
+    public static final DeferredItem<BlockItem> CABBAGE;
+    public static final DeferredItem<BlockItem> STRAWBERRY;
+    public static final DeferredItem<BlockItem> MUNG_BEAN;
+    public static final DeferredItem<BlockItem> SOYBEAN;
+    public static final DeferredItem<BlockItem> ADZUKI_BEAN;
     public static final DeferredItem<Item> GRAPEFRUIT;
     public static final DeferredItem<Item> CHERRY;
     public static final DeferredItem<Item> COCONUT;
@@ -219,6 +224,16 @@ public class ModItems {
     public static final DeferredItem<Item> SUGAR_WITH_WATER;
     public static final DeferredItem<Item> COCONUT_JUICE_MILK;
 
+    public static final DeferredItem<Item> WINE;
+    public static final DeferredItem<Item> SPIRIT;
+    public static final DeferredItem<Item> GRAPE_LIQUEUR;
+    public static final DeferredItem<Item> LITCHI_LIQUEUR;
+    public static final DeferredItem<Item> PEACH_LIQUEUR;
+    public static final DeferredItem<Item> MANGO_LIQUEUR;
+    public static final DeferredItem<Item> LEMON_LIQUEUR;
+    public static final DeferredItem<Item> POMEGRANATE_LIQUEUR;
+    public static final DeferredItem<Item> APPLE_LIQUEUR;
+    public static final DeferredItem<Item> GOLDEN_GRAPE_LIQUEUR;
     public static final DeferredItem<Item> GOLDEN_APPLE_LIQUEUR;
 
     public static final DeferredItem<BlockItem> MACHINE_CASING;
@@ -232,6 +247,23 @@ public class ModItems {
     public static final DeferredItem<BlockItem> PAN;
     public static final DeferredItem<BlockItem> MILL;
 
+    public static final DeferredItem<BlockItem> GRAPEFRUIT_SAPLING;
+    public static final DeferredItem<BlockItem> CHERRY_SAPLING;
+    public static final DeferredItem<BlockItem> COCONUT_SAPLING;
+    public static final DeferredItem<BlockItem> BANANA_SAPLING;
+    public static final DeferredItem<BlockItem> PEACH_SAPLING;
+    public static final DeferredItem<BlockItem> PERSIMMON_SAPLING;
+    public static final DeferredItem<BlockItem> POMEGRANATE_SAPLING;
+    public static final DeferredItem<BlockItem> HAWTHORN_SAPLING;
+    public static final DeferredItem<BlockItem> LOQUAT_SAPLING;
+    public static final DeferredItem<BlockItem> LEMON_SAPLING;
+    public static final DeferredItem<BlockItem> PAPAYA_SAPLING;
+    public static final DeferredItem<BlockItem> LONGAN_SAPLING;
+    public static final DeferredItem<BlockItem> MANGO_SAPLING;
+    public static final DeferredItem<BlockItem> LITCHI_SAPLING;
+    public static final DeferredItem<BlockItem> PEAR_SAPLING;
+    public static final DeferredItem<BlockItem> ORANGE_SAPLING;
+    public static final DeferredItem<BlockItem> DATE_SAPLING;
 
     public static Item.Properties foodItem(FoodProperties food) {
         return (new Item.Properties()).food(food);
@@ -245,24 +277,31 @@ public class ModItems {
         return ITEMS.registerSimpleBlockItem(block);
     }
 
+    public static DeferredItem<BlockItem> blockItem(Holder<Block> block, Item.Properties properties) {
+        return ITEMS.registerSimpleBlockItem(block, properties);
+    }
+
     static {
         RICE_PORRIDGE = ITEMS.register("rice_porridge", () -> new Item(foodItem(FoodValues.RICE_PORRIDGE)));
 
-        CORN = ITEMS.register("corn", () -> new Item(foodItem(FoodValues.PLANT)));
-        CUCUMBER = ITEMS.register("cucumber", () -> new Item(foodItem(FoodValues.PLANT)));
-        EGGPLANT = ITEMS.register("eggplant", () -> new Item(foodItem(FoodValues.PLANT)));
-        FACING_HEAVEN_PEPPER = ITEMS.register("facing_heaven_pepper", () -> new Item(foodItem(FoodValues.PLANT)));
-        GREEN_PEPPER = ITEMS.register("green_pepper", () -> new Item(foodItem(FoodValues.PLANT)));
-        PEANUT = ITEMS.register("peanut", () -> new Item(foodItem(FoodValues.PLANT)));
-        RICE = ITEMS.register("rice", () -> new Item(foodItem(FoodValues.PLANT)));
-        STICKY_RICE = ITEMS.register("sticky_rice", () -> new Item(foodItem(FoodValues.PLANT)));
-        SWEET_POTATO = ITEMS.register("sweet_potato", () -> new Item(foodItem(FoodValues.PLANT)));
-        TOMATO = ITEMS.register("tomato", () -> new Item(foodItem(FoodValues.PLANT)));
-        WHITE_RADISH = ITEMS.register("white_radish", () -> new Item(foodItem(FoodValues.PLANT)));
-        CABBAGE = ITEMS.register("cabbage", () -> new Item(foodItem(FoodValues.PLANT)));
+        CORN = blockItem(ModBlocks.CORN, foodItem(FoodValues.PLANT));
+        CUCUMBER = blockItem(ModBlocks.CUCUMBER, foodItem(FoodValues.PLANT));
+        EGGPLANT = blockItem(ModBlocks.EGGPLANT, foodItem(FoodValues.PLANT));
+        FACING_HEAVEN_PEPPER = blockItem(ModBlocks.FACING_HEAVEN_PEPPER, foodItem(FoodValues.PLANT));
+        GREEN_PEPPER = blockItem(ModBlocks.GREEN_PEPPER, foodItem(FoodValues.PLANT));
+        PEANUT = blockItem(ModBlocks.PEANUT, foodItem(FoodValues.PLANT));
+        RICE = blockItem(ModBlocks.RICE, foodItem(FoodValues.PLANT));
+        STICKY_RICE = blockItem(ModBlocks.STICKY_RICE, foodItem(FoodValues.PLANT));
+        SWEET_POTATO = blockItem(ModBlocks.SWEET_POTATO, foodItem(FoodValues.PLANT));
+        TOMATO = blockItem(ModBlocks.TOMATO, foodItem(FoodValues.PLANT));
+        WHITE_RADISH = blockItem(ModBlocks.WHITE_RADISH, foodItem(FoodValues.PLANT));
+        CABBAGE = blockItem(ModBlocks.CABBAGE, foodItem(FoodValues.PLANT));
+        MUNG_BEAN = blockItem(ModBlocks.MUNG_BEAN, foodItem(FoodValues.PLANT));
+        SOYBEAN = blockItem(ModBlocks.SOYBEAN, foodItem(FoodValues.PLANT));
+        ADZUKI_BEAN = blockItem(ModBlocks.ADZUKI_BEAN, foodItem(FoodValues.PLANT));
         GREEN_ONION = ITEMS.register("green_onion", () -> new Item(foodItem(FoodValues.PLANT)));
 
-        STRAWBERRY = ITEMS.register("strawberry", () -> new Item(foodItem(FoodValues.FRUIT)));
+        STRAWBERRY = blockItem(ModBlocks.STRAWBERRY, foodItem(FoodValues.FRUIT));
         GRAPEFRUIT = ITEMS.register("grapefruit", () -> new Item(foodItem(FoodValues.FRUIT)));
         CHERRY = ITEMS.register("cherry", () -> new Item(foodItem(FoodValues.FRUIT)));
         COCONUT = ITEMS.register("coconut", () -> new Item(foodItem(FoodValues.FRUIT)));
@@ -454,7 +493,29 @@ public class ModItems {
         SUGAR_WITH_WATER = ITEMS.register("sugar_with_water", () -> new Item(foodItem(FoodValues.SUGAR_WITH_WATER)));
         COCONUT_JUICE_MILK = ITEMS.register("coconut_juice_milk", () -> new Item(foodItem(FoodValues.COCONUT_JUICE_MILK)));
 
-        GOLDEN_APPLE_LIQUEUR = ITEMS.register("golden_apple_liqueur", () -> new Item(foodItem(FoodValues.LIQUEUR)));
+        WINE = ITEMS.register("wine", () -> new Item(foodItem(FoodValues.WINE)));
+        SPIRIT = ITEMS.register("spirit", () -> new Item(foodItem(FoodValues.SPIRIT)));
+
+        GRAPE_LIQUEUR = ITEMS.register("grape_liqueur", () -> new Item(foodItem(FoodValues.GRAPE_LIQUEUR)));
+        LITCHI_LIQUEUR = ITEMS.register("litchi_liqueur", () -> new Item(foodItem(FoodValues.LITCHI_LIQUEUR)));
+        PEACH_LIQUEUR = ITEMS.register("peach_liqueur", () -> new Item(foodItem(FoodValues.PEACH_LIQUEUR)));
+        MANGO_LIQUEUR = ITEMS.register("mango_liqueur", () -> new Item(foodItem(FoodValues.MANGO_LIQUEUR)));
+        LEMON_LIQUEUR = ITEMS.register("lemon_liqueur", () -> new Item(foodItem(FoodValues.LEMON_LIQUEUR)));
+        POMEGRANATE_LIQUEUR = ITEMS.register("pomegranate_liqueur", () -> new Item(foodItem(FoodValues.POMEGRANATE_LIQUEUR)));
+
+        APPLE_LIQUEUR = ITEMS.register("apple_liqueur", () -> new Item(foodItem(FoodValues.APPLE_LIQUEUR)));
+        GOLDEN_GRAPE_LIQUEUR = ITEMS.register("golden_grape_liqueur", () -> new Item(foodItem(FoodValues.GOLDEN_GRAPE_LIQUEUR)) {
+            @Override
+            public boolean isFoil(@NotNull ItemStack stack) {
+                return true;
+            }
+        });
+        GOLDEN_APPLE_LIQUEUR = ITEMS.register("golden_apple_liqueur", () -> new Item(foodItem(FoodValues.GOLDEN_APPLE_LIQUEUR)) {
+            @Override
+            public boolean isFoil(@NotNull ItemStack stack) {
+                return true;
+            }
+        });
 
         MACHINE_CASING = blockItem(ModBlocks.MACHINE_CASING);
         PRESSURE_COOKER = blockItem(ModBlocks.PRESSURE_COOKER);
@@ -466,5 +527,23 @@ public class ModItems {
         FRYING_PAN = blockItem(ModBlocks.FRYING_PAN);
         PAN = blockItem(ModBlocks.PAN);
         MILL = blockItem(ModBlocks.MILL);
+
+        GRAPEFRUIT_SAPLING = blockItem(ModBlocks.GRAPEFRUIT_SAPLING);
+        CHERRY_SAPLING = blockItem(ModBlocks.CHERRY_SAPLING);
+        COCONUT_SAPLING = blockItem(ModBlocks.COCONUT_SAPLING);
+        BANANA_SAPLING = blockItem(ModBlocks.BANANA_SAPLING);
+        PEACH_SAPLING = blockItem(ModBlocks.PEACH_SAPLING);
+        PERSIMMON_SAPLING = blockItem(ModBlocks.PERSIMMON_SAPLING);
+        POMEGRANATE_SAPLING = blockItem(ModBlocks.POMEGRANATE_SAPLING);
+        HAWTHORN_SAPLING = blockItem(ModBlocks.HAWTHORN_SAPLING);
+        LOQUAT_SAPLING = blockItem(ModBlocks.LOQUAT_SAPLING);
+        LEMON_SAPLING = blockItem(ModBlocks.LEMON_SAPLING);
+        PAPAYA_SAPLING = blockItem(ModBlocks.PAPAYA_SAPLING);
+        LONGAN_SAPLING = blockItem(ModBlocks.LONGAN_SAPLING);
+        MANGO_SAPLING = blockItem(ModBlocks.MANGO_SAPLING);
+        LITCHI_SAPLING = blockItem(ModBlocks.LITCHI_SAPLING);
+        PEAR_SAPLING = blockItem(ModBlocks.PEAR_SAPLING);
+        ORANGE_SAPLING = blockItem(ModBlocks.ORANGE_SAPLING);
+        DATE_SAPLING = blockItem(ModBlocks.DATE_SAPLING);
     }
 }

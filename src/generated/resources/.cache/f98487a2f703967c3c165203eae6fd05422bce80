@@ -1,5 +1,6 @@
-// 1.21.1	2025-04-27T17:32:17.2777589	Tags for minecraft:item mod id foodcraft
-fd5f08629ebc2359fcf476f22a28eecf508e1756 data/c/tags/item/crops.json
+// 1.21.1	2025-05-14T12:28:24.5062317	Tags for minecraft:item mod id foodcraft
+16858e2e55d7a1db4155101bc377b54d558c84ff data/c/tags/item/crops.json
+19a2c885d02cc5b7ea3e346f667cf34fe82bc5e1 data/c/tags/item/crops/adzuki_bean.json
 ff4057e97597e778a41ac01f09cb40d48085747e data/c/tags/item/crops/banana.json
 2c7fe784a0fc2968af9cf27aa2886d238c48c7c3 data/c/tags/item/crops/cabbage.json
 03634c3f7735331f8421a90c9eb618e120afc699 data/c/tags/item/crops/cherry.json
@@ -18,6 +19,7 @@ b6b8bd39eb4850da71dad3574795e1b006410efc data/c/tags/item/crops/lemon.json
 f5af6866209dc59b468273e5541c51f1cbeca4af data/c/tags/item/crops/longan.json
 0131c9f246bb6a632f43f69dd8dde47480af75f0 data/c/tags/item/crops/loquat.json
 21622dc25d7a90290372efa13257883ec4c6eb5e data/c/tags/item/crops/mango.json
+4b7be2b87eeb0edf150b2799c51391567ecfe5a4 data/c/tags/item/crops/mung_bean.json
 a730cee6be625867af69c09e6190c2eddf0bd225 data/c/tags/item/crops/orange.json
 a79d46a95be9f5127590bf3e8c629ebd2b9b19f4 data/c/tags/item/crops/papaya.json
 e3f838bd0d71a6aa08b79f04007c77e2b4ba438c data/c/tags/item/crops/peach.json
@@ -26,7 +28,8 @@ be1e04d2766cbfc7bce158063150898a4a527297 data/c/tags/item/crops/pear.json
 aafa2f84d182b9341a5d575c35a006db8fe61ee0 data/c/tags/item/crops/persimmon.json
 112c83b52ea33682cabfdc2841c666c59ac3838f data/c/tags/item/crops/pomegranate.json
 4fcd188e7787a8ac5eef214670b6cf5f6c37bf58 data/c/tags/item/crops/rice.json
-d6105994c5d97c537dc088055bd5471f74bbadf7 data/c/tags/item/crops/sticky_rice.json
+13d36a139a5b2f5caa79b108f1355bf6a527a27e data/c/tags/item/crops/soybean.json
+c987590f0c40d057947d6c934559392749f7246f data/c/tags/item/crops/sticky_rice.json
 fbf10fb6c5f14274ace07854d87a91712b28badc data/c/tags/item/crops/strawberry.json
 c7833bb902d6077e9c1c5d956d6ade13bb9f4815 data/c/tags/item/crops/sweet_potato.json
 88c945887d938edcf9a67397c10fdf13d16796af data/c/tags/item/crops/tomato.json
@@ -51,7 +54,7 @@ be1e04d2766cbfc7bce158063150898a4a527297 data/c/tags/item/fruits/pear.json
 aafa2f84d182b9341a5d575c35a006db8fe61ee0 data/c/tags/item/fruits/persimmon.json
 112c83b52ea33682cabfdc2841c666c59ac3838f data/c/tags/item/fruits/pomegranate.json
 fbf10fb6c5f14274ace07854d87a91712b28badc data/c/tags/item/fruits/strawberry.json
-2d0ac3a1eca8deab469b9d3fdda9d9abb4679c80 data/c/tags/item/vegetables.json
+afd0a0242730761dffcbd097bb3753f8d7622cfb data/c/tags/item/vegetables.json
 2c7fe784a0fc2968af9cf27aa2886d238c48c7c3 data/c/tags/item/vegetables/cabbage.json
 475f2518a383f8c2a99fc0491e4253484ab64f23 data/c/tags/item/vegetables/corn.json
 c7657b87d63443336cb495afd69c8a88db86d4cc data/c/tags/item/vegetables/cucumber.json
@@ -61,7 +64,7 @@ f19f1ff7304a169548f3ace1566e435a1a008d6c data/c/tags/item/vegetables/facing_heav
 c12d5c508c893613f77918320fe0f087021b0a9e data/c/tags/item/vegetables/green_pepper.json
 057e82aff8d2899f54dfa0ffa2909fa150744e97 data/c/tags/item/vegetables/peanut.json
 4fcd188e7787a8ac5eef214670b6cf5f6c37bf58 data/c/tags/item/vegetables/rice.json
-d6105994c5d97c537dc088055bd5471f74bbadf7 data/c/tags/item/vegetables/sticky_rice.json
 c7833bb902d6077e9c1c5d956d6ade13bb9f4815 data/c/tags/item/vegetables/sweet_potato.json
 88c945887d938edcf9a67397c10fdf13d16796af data/c/tags/item/vegetables/tomato.json
 1d222581166c65a2cd42e496127976bc9d09f433 data/c/tags/item/vegetables/white_radish.json
+473334469e22bbeef03050730110acb6cbfb9744 data/minecraft/tags/item/saplings.json

@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "foodcraft:tofu_shredded"
+    },
+    {
+      "tag": "c:crops/facing_heaven_pepper"
+    }
+  ],
+  "result": {
+    "id": "foodcraft:chili_tofu_strip"
+  }
+}

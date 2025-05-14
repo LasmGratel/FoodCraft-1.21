@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "##X",
+    "## ",
+    "   "
+  ],
+  "key": {
+    "#": {
+      "tag": "c:gems/diamond"
+    },
+    "X": {
+      "tag": "c:rods/wooden"
+    }
+  },
+  "result": {
+    "id": "foodcraft:diamond_kitchen_knife"
+  }
+}

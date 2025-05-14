@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "A#A",
+    "A#A",
+    "A#A"
+  ],
+  "key": {
+    "#": {
+      "tag": "c:water"
+    },
+    "A": {
+      "tag": "c:milled_rice"
+    }
+  },
+  "result": {
+    "id": "foodcraft:crossing_bridge_noodles"
+  }
+}

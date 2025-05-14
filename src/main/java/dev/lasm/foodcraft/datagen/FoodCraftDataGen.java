@@ -1,6 +1,7 @@
 package dev.lasm.foodcraft.datagen;
 
 import dev.lasm.foodcraft.FoodCraft;
+import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.data.DataGenerator;
@@ -33,5 +34,10 @@ public final class FoodCraftDataGen {
                 helper
             )
         );
+        var blockStateGen = new BlockStateGen(output, FoodCraft.MOD_ID, helper);
+        event.getGenerator().addProvider(event.includeClient(), blockStateGen);
+        event.getGenerator().addProvider(event.includeServer(), new WorldGenProvider(output, lookupProvider, Set.of("foodcraft")));
+        event.getGenerator().addProvider(event.includeClient(), new ItemModelGen(output, FoodCraft.MOD_ID, helper));
+        //event.getGenerator().addProvider(event.includeClient(), new LootTableProvider(output, lookupProvider));
     }
 }

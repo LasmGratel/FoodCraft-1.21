@@ -1,0 +1,31 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": {
+    "type": "neoforge:or",
+    "values": [
+      {
+        "type": "neoforge:or",
+        "values": [
+          "#minecraft:has_structure/village_plains"
+        ]
+      },
+      {
+        "type": "neoforge:and",
+        "values": [
+          {
+            "type": "neoforge:or",
+            "values": [
+              "#c:is_hot/overworld"
+            ]
+          },
+          {
+            "type": "neoforge:not",
+            "value": "#c:is_cold/overworld"
+          }
+        ]
+      }
+    ]
+  },
+  "features": "foodcraft:peach_placed",
+  "step": "vegetal_decoration"
+}

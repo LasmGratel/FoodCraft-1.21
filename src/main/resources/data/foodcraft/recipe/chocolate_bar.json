@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "c:sugar"
+    },
+    {
+      "tag": "c:dusts/chocolate"
+    }
+  ],
+  "result": {
+    "id": "foodcraft:chocolate_bar"
+  }
+}

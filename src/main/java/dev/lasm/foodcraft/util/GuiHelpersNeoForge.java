@@ -7,9 +7,11 @@ import java.util.function.Function;
 import javax.annotation.Nullable;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.Mth;
 import net.minecraft.world.inventory.InventoryMenu;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.Fluids;
@@ -123,7 +125,6 @@ public class GuiHelpersNeoForge {
         }
     }
 
-
     public static void renderOverlayedFluidTank(GuiGraphics gui, @Nullable FluidStack fluidStack, int capacity,
         int x, int y, int width, int height,
         ResourceLocation textureOverlay, int overlayTextureX, int overlayTextureY) {
@@ -131,6 +132,14 @@ public class GuiHelpersNeoForge {
         if (fluidStack != null && capacity > 0) {
             GlStateManager._enableBlend();
             gui.blit(textureOverlay, x, y, overlayTextureX, overlayTextureY, width, height);
+        }
+    }
+
+    public static void renderItemCooldown(GuiGraphics gui, int x, int y, float percentage) {
+        if (percentage > 0.0F) {
+            int i1 = y + Mth.floor(16.0F * (1.0F - percentage));
+            int j1 = i1 + Mth.ceil(16.0F * percentage);
+            gui.fill(RenderType.guiOverlay(), x, i1, x + 16, j1, Integer.MAX_VALUE);
         }
     }
 

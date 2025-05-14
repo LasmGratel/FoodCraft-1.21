@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ABA",
+    "D#D",
+    " C "
+  ],
+  "key": {
+    "#": {
+      "item": "foodcraft:machine_casing"
+    },
+    "A": {
+      "tag": "c:dusts/redstone"
+    },
+    "B": {
+      "item": "minecraft:ice"
+    },
+    "C": {
+      "tag": "c:circuits/basic"
+    },
+    "D": {
+      "tag": "c:dyes/brown"
+    }
+  },
+  "result": {
+    "id": "foodcraft:beverage_making"
+  }
+}

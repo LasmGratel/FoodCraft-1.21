@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "type": "forge:ore_dict",
+    "ore": "c:water"
+  },
+  "result": {
+    "id": "foodcraft:salt"
+  },
+  "experience": 0.4,
+  "cookingtime": 100
+}

@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "foodcraft:tofu_shredded"
+    },
+    {
+      "item": "foodcraft:white_radish_shredded"
+    },
+    {
+      "tag": "c:foods/cooked_meat"
+    },
+    {
+      "tag": "c:crops/cabbage"
+    }
+  ],
+  "result": {
+    "id": "foodcraft:chunjuan"
+  }
+}

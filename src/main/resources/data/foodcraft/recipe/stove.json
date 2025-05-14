@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "AGA",
+    "D#D",
+    "ECE"
+  ],
+  "key": {
+    "#": {
+      "item": "foodcraft:machine_casing"
+    },
+    "A": {
+      "item": "minecraft:flint_and_steel"
+    },
+    "C": {
+      "tag": "c:circuits/basic"
+    },
+    "G": {
+      "tag": "c:glass_blocks"
+    },
+    "D": {
+      "tag": "c:bricks/normal"
+    },
+    "E": {
+      "tag": "c:dusts/redstone"
+    }
+  },
+  "result": {
+    "id": "foodcraft:stove"
+  }
+}

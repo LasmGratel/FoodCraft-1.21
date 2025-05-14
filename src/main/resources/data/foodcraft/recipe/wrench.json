@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "A A",
+    " A ",
+    " A "
+  ],
+  "key": {
+    "A": {
+      "tag": "c:ingots/iron"
+    }
+  },
+  "result": {
+    "id": "foodcraft:wrench"
+  }
+}

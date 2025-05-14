@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ABA",
+    "C#C",
+    "ABA"
+  ],
+  "key": {
+    "#": {
+      "item": "foodcraft:machine_casing"
+    },
+    "A": {
+      "tag": "minecraft:planks"
+    },
+    "B": {
+      "tag": "c:circuits/basic"
+    },
+    "C": {
+      "tag": "c:dyes/brown"
+    }
+  },
+  "result": {
+    "id": "foodcraft:brew_barrel"
+  }
+}

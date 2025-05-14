@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "c:sugar"
+    },
+    {
+      "tag": "c:water"
+    }
+  ],
+  "result": {
+    "id": "foodcraft:sugar_with_water"
+  }
+}

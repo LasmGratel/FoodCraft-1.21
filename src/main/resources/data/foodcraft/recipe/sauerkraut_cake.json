@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "AAA",
+    "A#A",
+    "AAA"
+  ],
+  "key": {
+    "#": {
+      "tag": "c:flour"
+    },
+    "A": {
+      "tag": "c:crops/cabbage"
+    }
+  },
+  "result": {
+    "id": "foodcraft:sauerkraut_cake"
+  }
+}

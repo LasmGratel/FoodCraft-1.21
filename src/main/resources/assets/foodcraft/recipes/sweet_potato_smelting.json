@@ -1,9 +1,0 @@
-{
-    "type": "foodcraft:blasting",
-    "ingredient": {
-        "item": "foodcraft:sweet_potato"
-    },
-    "result": "foodcraft:cooked_sweet_potato",
-    "experience": 0.4,
-    "cookingtime": 100
-}

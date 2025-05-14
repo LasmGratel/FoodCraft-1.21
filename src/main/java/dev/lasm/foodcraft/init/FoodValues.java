@@ -1,5 +1,7 @@
 package dev.lasm.foodcraft.init;
 
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
 
 public class FoodValues {
@@ -10,7 +12,7 @@ public class FoodValues {
     // Plants
     public static final FoodProperties PLANT = new FoodProperties.Builder().nutrition(1).build();
 
-    public static final FoodProperties FRUIT = new FoodProperties.Builder().nutrition(2).saturationModifier(0.4f).build();
+    public static final FoodProperties FRUIT = new FoodProperties.Builder().nutrition(2).saturationModifier(0.1f).build();
 
     public static final FoodProperties FRUIT_ICE_CREAM = new FoodProperties.Builder().nutrition(9).saturationModifier(0.3f).build();
     public static final FoodProperties FRUIT_JAM = new FoodProperties.Builder().nutrition(9).saturationModifier(0.3f).build();
@@ -118,4 +120,36 @@ public class FoodValues {
     public static final FoodProperties COFFEE = new FoodProperties.Builder().nutrition(7).saturationModifier(0.4f).build();
     public static final FoodProperties SUGAR_WITH_WATER = new FoodProperties.Builder().nutrition(2).saturationModifier(0.4f).build();
     public static final FoodProperties COCONUT_JUICE_MILK = new FoodProperties.Builder().nutrition(8).saturationModifier(0.4f).build();
+
+    public static final FoodProperties WINE = liqueurFood().build();
+    public static final FoodProperties SPIRIT = liqueurFood().build();
+
+    public static final FoodProperties GRAPE_LIQUEUR = liqueurFood().build();
+    public static final FoodProperties LITCHI_LIQUEUR = liqueurFood().build();
+    public static final FoodProperties PEACH_LIQUEUR = liqueurFood().build();
+    public static final FoodProperties MANGO_LIQUEUR = liqueurFood().build();
+    public static final FoodProperties LEMON_LIQUEUR = liqueurFood().build();
+    public static final FoodProperties POMEGRANATE_LIQUEUR = liqueurFood().build();
+
+    public static final FoodProperties APPLE_LIQUEUR = liqueurFood().build();
+    public static final FoodProperties GOLDEN_GRAPE_LIQUEUR = liqueurFood()
+        .effect(() -> new MobEffectInstance(MobEffects.JUMP, 1800, 2), 0.5f)
+        .effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 1800, 2), 0.5f)
+        .effect(() -> new MobEffectInstance(MobEffects.DIG_SPEED, 1800, 2), 0.5f)
+        .effect(() -> new MobEffectInstance(MobEffects.HEALTH_BOOST, 1800, 2), 0.5f)
+        .effect(() -> new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 1800, 2), 0.5f)
+        .effect(() -> new MobEffectInstance(MobEffects.DAMAGE_BOOST, 1800, 2), 0.5f)
+        .build();
+
+    public static final FoodProperties GOLDEN_APPLE_LIQUEUR = liqueurFood()
+        .effect(() -> new MobEffectInstance(MobEffects.NIGHT_VISION, 1800, 2), 0.5f)
+        .effect(() -> new MobEffectInstance(MobEffects.INVISIBILITY, 900, 2), 0.5f)
+        .effect(() -> new MobEffectInstance(MobEffects.WATER_BREATHING, 1800, 2), 0.5f)
+        .effect(() -> new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 1800, 2), 0.5f)
+        .effect(() -> new MobEffectInstance(MobEffects.REGENERATION, 1800, 2), 0.5f)
+        .build();
+
+    public static FoodProperties.Builder liqueurFood() {
+        return new FoodProperties.Builder().alwaysEdible().nutrition(5).saturationModifier(0.3f);
+    }
 }

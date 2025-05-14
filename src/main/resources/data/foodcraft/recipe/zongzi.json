@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "foodcraft:zongye"
+    },
+    {
+      "tag": "c:strings"
+    },
+    {
+      "tag": "c:crops/sticky_rice"
+    },
+    {
+      "tag": "c:foods/cooked_meat"
+    }
+  ],
+  "result": {
+    "id": "foodcraft:zongzi"
+  }
+}

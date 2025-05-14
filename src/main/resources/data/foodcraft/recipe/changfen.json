@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "AAA",
+    "BBB",
+    "CDE"
+  ],
+  "key": {
+    "A": {
+      "tag": "c:milled_rice"
+    },
+    "B": {
+      "tag": "c:water"
+    },
+    "C": {
+      "tag": "c:crops/green_onion"
+    },
+    "D": {
+      "tag": "c:foods/cooked_meat"
+    },
+    "E": {
+      "tag": "c:sausage"
+    }
+  },
+  "result": {
+    "id": "foodcraft:changfen"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "foodcraft:orlean_chicken_wings"
+    },
+    {
+      "item": "foodcraft:cooked_rice"
+    }
+  ],
+  "result": {
+    "id": "foodcraft:orlean_chicken_wings_rice"
+  }
+}

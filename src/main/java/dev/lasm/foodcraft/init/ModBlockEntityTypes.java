@@ -3,6 +3,7 @@ package dev.lasm.foodcraft.init;
 import dev.lasm.foodcraft.FoodCraft;
 import dev.lasm.foodcraft.block.entity.BrewBarrelBlockEntity;
 import dev.lasm.foodcraft.block.entity.FryingPanBlockEntity;
+import dev.lasm.foodcraft.block.entity.PotBlockEntity;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -20,6 +21,11 @@ public class ModBlockEntityTypes {
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<FryingPanBlockEntity>> FRYING_PAN = BLOCK_ENTITY_TYPES.register(
         "frying_pan",
         () -> BlockEntityType.Builder.of(FryingPanBlockEntity::new, ModBlocks.FRYING_PAN.get()).build(null)
+    );
+
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<PotBlockEntity>> POT = BLOCK_ENTITY_TYPES.register(
+        "pot",
+        () -> BlockEntityType.Builder.of(PotBlockEntity::new, ModBlocks.POT.get()).build(null)
     );
 
 }

@@ -1,0 +1,27 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": {
+    "type": "neoforge:and",
+    "values": [
+      {
+        "type": "neoforge:or",
+        "values": [
+          "#minecraft:is_forest"
+        ]
+      },
+      {
+        "type": "neoforge:not",
+        "value": {
+          "type": "neoforge:or",
+          "values": [
+            "#c:is_wet/overworld",
+            "#c:is_hot/overworld",
+            "#c:is_cold/overworld"
+          ]
+        }
+      }
+    ]
+  },
+  "features": "foodcraft:pomegranate_placed",
+  "step": "vegetal_decoration"
+}

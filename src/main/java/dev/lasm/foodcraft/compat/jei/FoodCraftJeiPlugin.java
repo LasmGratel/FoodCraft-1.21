@@ -2,7 +2,12 @@ package dev.lasm.foodcraft.compat.jei;
 
 import dev.lasm.foodcraft.FoodCraft;
 import dev.lasm.foodcraft.client.screen.BrewBarrelScreen;
+import dev.lasm.foodcraft.client.screen.FryingPanScreen;
+import dev.lasm.foodcraft.container.BrewBarrelMenu;
+import dev.lasm.foodcraft.container.FryingPanMenu;
+import dev.lasm.foodcraft.container.PotMenu;
 import dev.lasm.foodcraft.init.ModBlocks;
+import dev.lasm.foodcraft.init.ModMenuTypes;
 import dev.lasm.foodcraft.init.ModRecipeTypes;
 import dev.lasm.foodcraft.recipe.BeverageMakingRecipe;
 import dev.lasm.foodcraft.recipe.BrewingRecipe;
@@ -20,6 +25,7 @@ import mezz.jei.api.registration.IGuiHandlerRegistration;
 import mezz.jei.api.registration.IRecipeCatalystRegistration;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
+import mezz.jei.api.registration.IRecipeTransferRegistration;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.RecipeHolder;
@@ -52,11 +58,20 @@ public class FoodCraftJeiPlugin implements IModPlugin {
         registry.addRecipeCategories(new FryingRecipeCategory(registry.getJeiHelpers()));
         registry.addRecipeCategories(new MillingRecipeCategory(registry.getJeiHelpers()));
         registry.addRecipeCategories(new PressureCookingRecipeCategory(registry.getJeiHelpers()));
+
+    }
+
+    @Override
+    public void registerRecipeTransferHandlers(IRecipeTransferRegistration registration) {
+        registration.addRecipeTransferHandler(PotMenu.class, ModMenuTypes.POT.get(), POT_RECIPE, 0, 12, 12, 36);
+        registration.addRecipeTransferHandler(BrewBarrelMenu.class, ModMenuTypes.BREW_BARREL.get(), BREWING_RECIPE, 1, 3, 6, 36);
+        registration.addRecipeTransferHandler(FryingPanMenu.class, ModMenuTypes.FRYING_PAN.get(), FRYING_RECIPE, 2, 1, 4, 36);
     }
 
     @Override
     public void registerGuiHandlers(IGuiHandlerRegistration registration) {
-        registration.addRecipeClickArea(BrewBarrelScreen.class, 119, 31, 16, 16, BREWING_RECIPE);
+        registration.addRecipeClickArea(BrewBarrelScreen.class, 119, 31, 28, 23, BREWING_RECIPE);
+        registration.addRecipeClickArea(FryingPanScreen.class, 92, 30, 28, 23, FRYING_RECIPE);
     }
 
     @Override

@@ -1,1 +1,0 @@
-{"type":"foodcraft:beverage_making","ingredient":{"type":"forge:ore_dict","ore":"cropPapaya"},"cool":true,"fluidInput":{"fluid":"water","amount":1000},"result":{"item":"foodcraft:papaya_juice"}}

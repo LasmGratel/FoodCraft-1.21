@@ -1,0 +1,35 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "foodcraft:rice_porridge"
+    },
+    {
+      "tag": "c:crops/wheat"
+    },
+    {
+      "tag": "c:milled_rice"
+    },
+    {
+      "tag": "c:crops/peanut"
+    },
+    {
+      "tag": "c:crops/soybean"
+    },
+    {
+      "item": "foodcraft:bacon"
+    },
+    {
+      "item": "foodcraft:sticky_rice"
+    },
+    {
+      "item": "foodcraft:bolongna"
+    },
+    {
+      "tag": "c:crops/carrot"
+    }
+  ],
+  "result": {
+    "id": "foodcraft:laba_porridge"
+  }
+}

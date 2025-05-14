@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "c:soysauce"
+    },
+    {
+      "tag": "c:foods/silken_tofu"
+    }
+  ],
+  "result": {
+    "id": "foodcraft:dehydrated_tofu"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "AAA",
+    "D#D",
+    "CCC"
+  ],
+  "key": {
+    "#": {
+      "item": "foodcraft:machine_casing"
+    },
+    "A": {
+      "tag": "c:cookingoil"
+    },
+    "C": {
+      "tag": "c:circuits/basic"
+    },
+    "D": {
+      "tag": "c:glass_blocks"
+    }
+  },
+  "result": {
+    "id": "foodcraft:frying_pan"
+  }
+}

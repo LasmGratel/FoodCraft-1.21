@@ -37,6 +37,9 @@ public class ItemTags extends ItemTagsProvider {
             ModItems.WHITE_RADISH.getKey(),
             ModItems.CABBAGE.getKey(),
             ModItems.GREEN_ONION.getKey(),
+            ModItems.ADZUKI_BEAN.getKey(),
+            ModItems.SOYBEAN.getKey(),
+            ModItems.MUNG_BEAN.getKey(),
 
             // Fruits
             ModItems.STRAWBERRY.getKey(),
@@ -67,7 +70,6 @@ public class ItemTags extends ItemTagsProvider {
             ModItems.GREEN_PEPPER.getKey(),
             ModItems.PEANUT.getKey(),
             ModItems.RICE.getKey(),
-            ModItems.STICKY_RICE.getKey(),
             ModItems.SWEET_POTATO.getKey(),
             ModItems.TOMATO.getKey(),
             ModItems.WHITE_RADISH.getKey(),
@@ -109,6 +111,10 @@ public class ItemTags extends ItemTagsProvider {
         tag(ModTags.WHITE_RADISH).replace(false).add(ModItems.WHITE_RADISH.getKey());
         tag(ModTags.CABBAGE).replace(false).add(ModItems.CABBAGE.getKey());
         tag(ModTags.GREEN_ONION).replace(false).add(ModItems.GREEN_ONION.getKey());
+        tag(ModTags.ADZUKI_BEAN).replace(false).add(ModItems.ADZUKI_BEAN.getKey());
+        tag(ModTags.SOYBEAN).replace(false).add(ModItems.SOYBEAN.getKey());
+        tag(ModTags.MUNG_BEAN).replace(false).add(ModItems.MUNG_BEAN.getKey());
+
         tag(ModTags.STRAWBERRY).replace(false).add(ModItems.STRAWBERRY.getKey());
         tag(ModTags.GRAPEFRUIT).replace(false).add(ModItems.GRAPEFRUIT.getKey());
         tag(ModTags.CHERRY).replace(false).add(ModItems.CHERRY.getKey());
@@ -163,5 +169,24 @@ public class ItemTags extends ItemTagsProvider {
         tag(ModTags.commonItemTag("crops/orange")).replace(false).add(ModItems.ORANGE.getKey());
         tag(ModTags.commonItemTag("crops/date")).replace(false).add(ModItems.DATE.getKey());
 
+        tag(net.minecraft.tags.ItemTags.SAPLINGS).replace(false).add(
+            ModItems.COCONUT_SAPLING.getKey(),
+            ModItems.GRAPEFRUIT_SAPLING.getKey(),
+            ModItems.CHERRY_SAPLING.getKey(),
+            ModItems.BANANA_SAPLING.getKey(),
+            ModItems.PEACH_SAPLING.getKey(),
+            ModItems.PERSIMMON_SAPLING.getKey(),
+            ModItems.POMEGRANATE_SAPLING.getKey(),
+            ModItems.HAWTHORN_SAPLING.getKey(),
+            ModItems.LOQUAT_SAPLING.getKey(),
+            ModItems.LEMON_SAPLING.getKey(),
+            ModItems.PAPAYA_SAPLING.getKey(),
+            ModItems.LONGAN_SAPLING.getKey(),
+            ModItems.MANGO_SAPLING.getKey(),
+            ModItems.LITCHI_SAPLING.getKey(),
+            ModItems.PEAR_SAPLING.getKey(),
+            ModItems.ORANGE_SAPLING.getKey(),
+            ModItems.DATE_SAPLING.getKey()
+        );
     }
 }

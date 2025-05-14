@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "##X",
+    "## ",
+    "   "
+  ],
+  "key": {
+    "#": {
+      "tag": "stone"
+    },
+    "X": {
+      "tag": "c:rods/wooden"
+    }
+  },
+  "result": {
+    "id": "foodcraft:stone_kitchen_knife"
+  }
+}

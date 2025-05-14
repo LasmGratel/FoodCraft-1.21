@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "AAA",
+    "D#D",
+    " C "
+  ],
+  "key": {
+    "#": {
+      "item": "foodcraft:machine_casing"
+    },
+    "A": {
+      "tag": "c:plates/iron"
+    },
+    "C": {
+      "tag": "c:circuits/basic"
+    },
+    "D": {
+      "tag": "c:glass_blocks"
+    }
+  },
+  "result": {
+    "id": "foodcraft:pan"
+  }
+}

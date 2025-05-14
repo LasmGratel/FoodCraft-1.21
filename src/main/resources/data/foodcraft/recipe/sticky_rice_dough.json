@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "c:flour/sticky"
+    },
+    {
+      "tag": "c:flour/sticky"
+    },
+    {
+      "tag": "c:crops/sticky_rice"
+    },
+    {
+      "tag": "c:water"
+    }
+  ],
+  "result": {
+    "id": "foodcraft:sticky_rice_dough"
+  }
+}

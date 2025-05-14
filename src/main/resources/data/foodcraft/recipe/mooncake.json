@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "AAA",
+    "XBX",
+    "AAA"
+  ],
+  "key": {
+    "A": {
+      "tag": "c:flour"
+    },
+    "B": {
+      "tag": "foodcraft:mooncake_stuffing"
+    },
+    "X": {
+      "tag": "c:dyes/yellow"
+    }
+  },
+  "result": {
+    "id": "foodcraft:mooncake"
+  }
+}

@@ -102,7 +102,7 @@ public class PotRecipe implements Recipe<RecipeWrapper> {
         var stapleSize = 0;
 
         for (int j = 0; j < STAPLE_SLOTS; ++j) {
-            var stack = container.getItem(j);
+            var stack = container.getItem(INGREDIENT_SLOTS + j);
             if (!stack.isEmpty()) {
                 ++stapleSize;
                 stapleInputs.add(stack);

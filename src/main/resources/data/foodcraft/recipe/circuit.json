@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "AAA",
+    "CBC",
+    "AAA"
+  ],
+  "key": {
+    "C": {
+      "tag": "c:dusts/redstone"
+    },
+    "B": {
+      "tag": "c:ingots/iron"
+    },
+    "A": {
+      "tag": "foodcraft:circuit_ingredient"
+    }
+  },
+  "result": {
+    "id": "foodcraft:circuit"
+  }
+}

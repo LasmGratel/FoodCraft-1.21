@@ -20,6 +20,8 @@ jobs:
 
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
+        with:
+          cache-read-only: true
 
       # This is needed to be able to run ./gradlew below
       # You can run `git update-index --chmod +x gradlew` then remove this step.
@@ -28,3 +30,6 @@ jobs:
 
       - name: Build with Gradle
         run: ./gradlew build
+
+      - name: Generate and submit dependency graph
+        uses: gradle/actions/dependency-submission@v4

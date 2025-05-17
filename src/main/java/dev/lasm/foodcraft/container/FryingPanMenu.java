@@ -32,8 +32,10 @@ public class FryingPanMenu extends BaseMachineMenu<FryingPanBlockEntity> {
         this.fluidTank = tileEntity.fluidTank;
 
         if (!tileEntity.getLevel().isClientSide) {
-            this.fluidTank.setOnContentsChanged(() ->
-                PacketDistributor.sendToPlayer((ServerPlayer) playerInv.player, new FluidStackPayload(this.fluidTank.getFluid())));
+            this.fluidTank.setOnContentsChanged(() -> {
+                if (!this.fluidTank.getFluid().isEmpty())
+                    PacketDistributor.sendToPlayer((ServerPlayer) playerInv.player, new FluidStackPayload(this.fluidTank.getFluid()));
+            });
 
             this.dataAccess = new ContainerData() {
                 @Override

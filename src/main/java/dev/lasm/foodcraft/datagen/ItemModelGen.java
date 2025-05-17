@@ -2,6 +2,7 @@ package dev.lasm.foodcraft.datagen;
 
 import dev.lasm.foodcraft.FoodCraft;
 import dev.lasm.foodcraft.init.ModItems;
+import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
@@ -33,6 +34,18 @@ public class ItemModelGen extends ItemModelProvider {
         overlayItem(ModItems.APPLE_LIQUEUR, overlay);
         overlayItem(ModItems.GOLDEN_GRAPE_LIQUEUR, overlay);
         overlayItem(ModItems.GOLDEN_APPLE_LIQUEUR, overlay);
+
+        var knife = ResourceLocation.fromNamespaceAndPath(FoodCraft.MOD_ID, "item/kitchen_knife");
+        basicItem(ModItems.IRON_KNIFE, knife);
+        basicItem(ModItems.GOLD_KNIFE, knife);
+        basicItem(ModItems.DIAMOND_KNIFE, knife);
+        basicItem(ModItems.EMERALD_KNIFE, knife);
+    }
+
+    public ItemModelBuilder basicItem(Holder<Item> item, ResourceLocation texture) {
+        return getBuilder(item.getRegisteredName())
+            .parent(new ModelFile.UncheckedModelFile("item/generated"))
+            .texture("layer0", texture);
     }
 
     public ItemModelBuilder overlayItem(DeferredItem<Item> itemHolder, ResourceLocation overlay) {

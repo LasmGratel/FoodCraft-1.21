@@ -1,0 +1,14 @@
+{
+    "type": "foodcraft:chopping",
+    "ingredients": [
+        [],
+        {
+            "tag": "c:dough/dough"
+        },
+        []
+    ],
+    "result": {
+        "id": "foodcraft:dough_shredded",
+        "count": 3
+    }
+}

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "foodcraft:litchi"
+    },
+    "X": {
+      "tag": "minecraft:saplings"
+    }
+  },
+  "pattern": [
+    " # ",
+    "#X#",
+    " # "
+  ],
+  "result": {
+    "count": 1,
+    "id": "foodcraft:litchi_sapling"
+  }
+}

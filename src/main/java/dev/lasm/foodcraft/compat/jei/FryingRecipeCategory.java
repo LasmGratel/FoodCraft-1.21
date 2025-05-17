@@ -58,7 +58,7 @@ public class FryingRecipeCategory extends AbstractRecipeCategory<RecipeHolder<Fr
         var recipe = recipeHolder.value();
         var recipeIngredients = recipe.getIngredients();
 
-        recipeLayout.addSlot(RecipeIngredientRole.CATALYST, 33 - 6, 48 - 7).addIngredients(
+        recipeLayout.addSlot(RecipeIngredientRole.CATALYST, 25 - 7, 21 - 8).addIngredients(
             Ingredient.of(ModTags.COOKING_OIL));
         recipeLayout.addSlot(RecipeIngredientRole.INPUT, 54 - 6, 20 - 7).addIngredients(recipeIngredients.get(0));
 

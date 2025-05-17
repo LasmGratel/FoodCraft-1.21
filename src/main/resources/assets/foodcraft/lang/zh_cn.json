@@ -1,7 +1,7 @@
 {
     "_comment": "Book",
-    "item.foodcraft.boiling_book": "沸腾中的烹调书!",
-    "item.foodcraft.boiling_book.landing": "这本书可以指导你如何成为食物工艺的烹调大师!",
+    "item.foodcraft.boiling_book.name": "沸腾的烹调书",
+    "item.foodcraft.boiling_book.landing": "这本书可以指导你如何成为食物工艺的烹调大师。",
 
     "_comment": "Blocks",
     "_comment": "Machines",
@@ -210,11 +210,11 @@
     "item.foodcraft.green_onion": "葱",
 
     "_comment": "Kitchen knife",
-    "item.foodcraft.stone_kitchen_knife": "石刀",
-    "item.foodcraft.iron_kitchen_knife": "铁刀",
-    "item.foodcraft.gold_kitchen_knife": "金刀",
-    "item.foodcraft.diamond_kitchen_knife": "钻石刀",
-    "item.foodcraft.emerald_kitchen_knife": "绿宝石刀",
+    "item.foodcraft.stone_knife": "石菜刀",
+    "item.foodcraft.iron_knife": "铁菜刀",
+    "item.foodcraft.gold_knife": "金菜刀",
+    "item.foodcraft.diamond_knife": "钻石菜刀",
+    "item.foodcraft.emerald_knife": "绿宝石菜刀",
 
     "_comment": "Sapling",
     "block.foodcraft.pear_sapling": "梨树苗",

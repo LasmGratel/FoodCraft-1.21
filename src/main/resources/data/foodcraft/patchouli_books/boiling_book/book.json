@@ -1,0 +1,8 @@
+{
+    "name": "item.foodcraft.boiling_book.name",
+    "landing_text": "item.foodcraft.boiling_book.landing",
+    "version": 1,
+    "model": "patchouli:book_red",
+    "creative_tab": "foodcraft:main",
+    "use_resource_pack": true
+}

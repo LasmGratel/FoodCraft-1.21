@@ -37,9 +37,9 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 
 @ParametersAreNonnullByDefault
 public abstract class BaseContainerScreen<T extends AbstractContainerMenu> extends AbstractContainerScreen<T> {
-    private static final ResourceLocation LIT_PROGRESS_SPRITE = ResourceLocation.fromNamespaceAndPath(
+    public static final ResourceLocation LIT_PROGRESS_SPRITE = ResourceLocation.fromNamespaceAndPath(
         FoodCraft.MOD_ID, "container/lit_progress");
-    private static final ResourceLocation BURN_PROGRESS_SPRITE = ResourceLocation.fromNamespaceAndPath(FoodCraft.MOD_ID, "container/burn_progress");
+    public static final ResourceLocation BURN_PROGRESS_SPRITE = ResourceLocation.fromNamespaceAndPath(FoodCraft.MOD_ID, "container/burn_progress");
 
     protected ResourceLocation bgTexture;
     protected int bgImgWidth;
@@ -101,17 +101,25 @@ public abstract class BaseContainerScreen<T extends AbstractContainerMenu> exten
         return 0f;
     }
 
-    public void renderLit(GuiGraphics guiGraphics, int x, int y) {
+    public void renderLit(GuiGraphics guiGraphics, ResourceLocation sprite, int x, int y) {
         if (menu instanceof MenuDataAccess menu && menu.getContainerData().get(1) > 0) {
             var j1 = Mth.ceil((getLitProgress() * 13.0F) );
-            guiGraphics.blitSprite(LIT_PROGRESS_SPRITE, 14, 14, 0, 14 - j1, getGuiLeft() + x, getGuiTop() + y - j1 + 14, 14, j1);
+            guiGraphics.blitSprite(sprite, 14, 14, 0, 14 - j1, getGuiLeft() + x, getGuiTop() + y - j1 + 14, 14, j1);
         }
     }
 
+    public void renderLit(GuiGraphics guiGraphics, int x, int y) {
+        renderLit(guiGraphics, LIT_PROGRESS_SPRITE, x, y);
+    }
+
     public void renderBurn(GuiGraphics guiGraphics, int x, int y) {
+        renderBurn(guiGraphics, BURN_PROGRESS_SPRITE, x, y);
+    }
+
+    public void renderBurn(GuiGraphics guiGraphics, ResourceLocation sprite, int x, int y) {
         if (getBurnProgress() > 0) {
             var j1 = Mth.floor(((1.0f - getBurnProgress()) * 24.0F));
-            guiGraphics.blitSprite(BURN_PROGRESS_SPRITE, 24, 16, 0, 0, getGuiLeft() + x, getGuiTop() + y, j1, 16);
+            guiGraphics.blitSprite(sprite, 24, 16, 0, 0, getGuiLeft() + x, getGuiTop() + y, j1, 16);
         }
     }
 

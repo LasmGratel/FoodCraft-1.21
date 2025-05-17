@@ -2,11 +2,13 @@ package dev.lasm.foodcraft.block.entity;
 
 import dev.lasm.foodcraft.api.FluidAttachedRecipeInput;
 import dev.lasm.foodcraft.api.FluidRecipeWrapper;
+import dev.lasm.foodcraft.api.ItemHandlerProvider;
 import dev.lasm.foodcraft.container.BrewBarrelMenu;
 import dev.lasm.foodcraft.init.ModBlockEntityTypes;
 import dev.lasm.foodcraft.init.ModRecipeTypes;
 import dev.lasm.foodcraft.network.SyncFluidTank;
 import dev.lasm.foodcraft.recipe.BrewingRecipe;
+import dev.lasm.foodcraft.util.FluidHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.nbt.CompoundTag;
@@ -22,16 +24,14 @@ import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
-import net.neoforged.neoforge.capabilities.Capabilities.FluidHandler;
-import net.neoforged.neoforge.common.Tags.Items;
+import net.minecraft.world.level.material.Fluids;
 import net.neoforged.neoforge.common.util.Lazy;
-import net.neoforged.neoforge.fluids.capability.IFluidHandler.FluidAction;
-import net.neoforged.neoforge.fluids.capability.IFluidHandlerItem;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import net.neoforged.neoforge.items.wrapper.RangedWrapper;
 import org.jetbrains.annotations.Nullable;
 
-public class BrewBarrelBlockEntity extends BaseBlockEntity implements MenuProvider {
+public class BrewBarrelBlockEntity extends BaseBlockEntity implements MenuProvider,
+    ItemHandlerProvider {
     public static final int WORK_TIME = 8000;
 
     public ItemStackHandler inventory;
@@ -49,6 +49,7 @@ public class BrewBarrelBlockEntity extends BaseBlockEntity implements MenuProvid
         super(ModBlockEntityTypes.BREW_BARREL.get(), pos, blockState);
         this.inventory = new ItemStackHandler(6);
         this.fluidTank = new SyncFluidTank(4000);
+        fluidTank.setValidator(fluidStack -> fluidStack.getFluid().isSame(Fluids.WATER));
         this.quickCheck = RecipeManager.createCheck(ModRecipeTypes.BREWING.get());
     }
 
@@ -83,20 +84,7 @@ public class BrewBarrelBlockEntity extends BaseBlockEntity implements MenuProvid
 
 
     public static void tick(Level level, BlockPos blockPos, BlockState blockState, BrewBarrelBlockEntity blockEntity) {
-        var bucketItem = blockEntity.inventory.getStackInSlot(0);
-        if (bucketItem.getCapability(FluidHandler.ITEM) instanceof IFluidHandlerItem fluidHandler) {
-
-            var fluidToDrain = fluidHandler.drain(blockEntity.fluidTank.getSpace(), FluidAction.SIMULATE);
-            if (blockEntity.fluidTank.fill(fluidToDrain, FluidAction.SIMULATE) > 0) {
-                blockEntity.fluidTank.fill(fluidToDrain, FluidAction.EXECUTE);
-                fluidHandler.drain(fluidToDrain, FluidAction.EXECUTE);
-                if (bucketItem.is(Items.BUCKETS)) {
-                    blockEntity.inventory.setStackInSlot(0, new ItemStack(
-                        net.minecraft.world.item.Items.BUCKET));
-                }
-                blockEntity.setChanged();
-            }
-        }
+        FluidHelper.handleFluidSlot(blockEntity.inventory, 0, blockEntity.fluidTank);
 
         if (blockEntity.cookingTime > 0) {
             blockEntity.cookingTime--;
@@ -119,6 +107,9 @@ public class BrewBarrelBlockEntity extends BaseBlockEntity implements MenuProvid
         if (blockEntity.lastRecipe == null) {
             var recipe = blockEntity.quickCheck.getRecipeFor(blockEntity.recipeWrapperLazy.get(), level).orElse(null);
             if (recipe != null) {
+                if (!blockEntity.inventory.insertItem(4, recipe.value().getResultItem(null), true).isEmpty()) {
+                    return; // Cannot insert
+                }
                 blockEntity.lastRecipe = recipe;
                 blockEntity.cookingTime = WORK_TIME;
                 blockEntity.maxCookingTime = WORK_TIME;
@@ -145,5 +136,10 @@ public class BrewBarrelBlockEntity extends BaseBlockEntity implements MenuProvid
     @Override
     public @Nullable AbstractContainerMenu createMenu(int i, Inventory playerInv, Player player) {
         return new BrewBarrelMenu(i, playerInv, this);
+    }
+
+    @Override
+    public ItemStackHandler getInventory() {
+        return inventory;
     }
 }

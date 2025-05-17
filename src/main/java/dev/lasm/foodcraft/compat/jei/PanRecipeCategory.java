@@ -2,6 +2,7 @@ package dev.lasm.foodcraft.compat.jei;
 
 import dev.lasm.foodcraft.FoodCraft;
 import dev.lasm.foodcraft.init.ModItems;
+import dev.lasm.foodcraft.init.ModTags;
 import dev.lasm.foodcraft.recipe.PanRecipe;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
@@ -17,6 +18,7 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeHolder;
 
 public class PanRecipeCategory extends AbstractRecipeCategory<RecipeHolder<PanRecipe>> {
@@ -55,9 +57,11 @@ public class PanRecipeCategory extends AbstractRecipeCategory<RecipeHolder<PanRe
         var recipe = recipeHolder.value();
         var recipeIngredients = recipe.getIngredients();
 
+        recipeLayout.addSlot(RecipeIngredientRole.INPUT, 15 - 12, 36 - 13).addIngredients(
+            Ingredient.of(ModTags.COOKING_OIL));
 
-        recipeLayout.addSlot(RecipeIngredientRole.INPUT, 41 - 11, 34 - 11).addIngredients(recipeIngredients.get(0));
+        recipeLayout.addSlot(RecipeIngredientRole.INPUT, 42 - 12, 36 - 13).addIngredients(recipeIngredients.get(0));
 
-        recipeLayout.addSlot(RecipeIngredientRole.OUTPUT, 104 - 11, 34 - 11).addItemStack(recipe.getResultItem(null));
+        recipeLayout.addSlot(RecipeIngredientRole.OUTPUT, 105 - 12, 36 - 13).addItemStack(recipe.getResultItem(null));
     }
 }

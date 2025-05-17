@@ -1,0 +1,14 @@
+{
+    "type": "foodcraft:chopping",
+    "ingredients": [
+        [],
+        {
+            "tag": "c:crops/white_radish"
+        },
+        []
+    ],
+    "result": {
+        "id": "foodcraft:white_radish_shredded",
+        "count": 3
+    }
+}

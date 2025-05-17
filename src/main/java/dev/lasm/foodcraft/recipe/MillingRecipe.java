@@ -4,7 +4,6 @@ import com.google.gson.JsonParseException;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import dev.lasm.foodcraft.api.FluidAttachedRecipeInput;
 import dev.lasm.foodcraft.init.ModRecipeSerializers;
 import dev.lasm.foodcraft.init.ModRecipeTypes;
 import java.util.ArrayList;
@@ -20,13 +19,14 @@ import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.RecipeInput;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 
 @MethodsReturnNonnullByDefault
 @ParametersAreNonnullByDefault
-public class MillingRecipe implements Recipe<FluidAttachedRecipeInput> {
+public class MillingRecipe implements Recipe<RecipeInput> {
     public static final int INGREDIENT_SLOTS = 1;
 
     private final String group;
@@ -64,7 +64,7 @@ public class MillingRecipe implements Recipe<FluidAttachedRecipeInput> {
     }
 
     @Override
-    public boolean matches(FluidAttachedRecipeInput container, Level level) {
+    public boolean matches(RecipeInput container, Level level) {
         var inputs = new ArrayList<ItemStack>();
         var inputSize = 0;
 
@@ -80,7 +80,7 @@ public class MillingRecipe implements Recipe<FluidAttachedRecipeInput> {
     }
 
     @Override
-    public ItemStack assemble(FluidAttachedRecipeInput fluidAttachedRecipeInput,
+    public ItemStack assemble(RecipeInput RecipeInput,
         Provider provider) {
         return output.copy();
     }

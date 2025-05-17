@@ -1,7 +1,7 @@
 {
 
-    "item.foodcraft.boiling_book": "\"Boiling\" Cooking Book!",
-    "item.foodcraft.boiling_book.landing": "This guide can train as a FoodCraft master cook!",
+    "item.foodcraft.boiling_book.name": "\"Boiling\" Cooking Book",
+    "item.foodcraft.boiling_book.landing": "This guide can train you as a FoodCraft master cook",
 
 
     "item.foodcraft.glass_cup": "Glass Cup",
@@ -186,11 +186,11 @@
     "item.foodcraft.onion": "Onion",
     "item.foodcraft.green_onion": "Green Onion",
 
-    "item.foodcraft.stone_kitchen_knife": "Stone Knife",
-    "item.foodcraft.iron_kitchen_knife": "Iron Knife",
-    "item.foodcraft.gold_kitchen_knife": "Gold Knife",
-    "item.foodcraft.diamond_kitchen_knife": "Diamond Knife",
-    "item.foodcraft.emerald_kitchen_knife": "Emerald Knife",
+    "item.foodcraft.stone_knife": "Stone Knife",
+    "item.foodcraft.iron_knife": "Iron Knife",
+    "item.foodcraft.gold_knife": "Gold Knife",
+    "item.foodcraft.diamond_knife": "Diamond Knife",
+    "item.foodcraft.emerald_knife": "Emerald Knife",
 
     "item.foodcraft.jam": "%s Jam",
 

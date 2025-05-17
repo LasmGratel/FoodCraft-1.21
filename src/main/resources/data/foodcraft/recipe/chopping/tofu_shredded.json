@@ -1,0 +1,14 @@
+{
+    "type": "foodcraft:chopping",
+    "ingredients": [
+        [],
+        {
+            "tag": "c:foods/silken_tofu"
+        },
+        []
+    ],
+    "result": {
+        "id": "foodcraft:tofu_shredded",
+        "count": 3
+    }
+}

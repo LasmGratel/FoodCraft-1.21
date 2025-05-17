@@ -26,7 +26,7 @@ public class FryingPanScreen extends BaseContainerScreen<FryingPanMenu> implemen
     @Override
     protected void renderTooltip(GuiGraphics guiGraphics, int x, int y) {
         if (fluidTank != null)
-            GuiHelpersNeoForge.renderFluidTank(guiGraphics, fluidTank.getFluid(), menu.fluidTank.getCapacity(), 18 + getGuiLeft(), 14 + getGuiTop(), 11, 59);
+            GuiHelpersNeoForge.renderFluidTank(guiGraphics, fluidTank.getFluid(), menu.fluidTank.getCapacity(), 18 + getGuiLeft(), 19 + getGuiTop(), 11, 46);
 
         renderLit(guiGraphics, 121, 61);
         renderBurn(guiGraphics, 92, 30);

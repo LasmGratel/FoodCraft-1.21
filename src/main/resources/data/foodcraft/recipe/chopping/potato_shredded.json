@@ -1,0 +1,15 @@
+{
+    "type": "foodcraft:chopping",
+    "ingredients": [
+      [],
+      {
+        "item": "foodcraft:potato_sliced"
+      },
+      []
+    ],
+    "result": {
+        "count": 2,
+        "id": "foodcraft:potato_shredded"
+      }
+    
+  }

@@ -1,0 +1,14 @@
+{
+    "type": "foodcraft:chopping",
+    "ingredients": [
+        [],
+        {
+            "tag": "c:foods/cooked_chicken"
+        },
+        []
+    ],
+    "result": {
+        "id": "foodcraft:chicken_small",
+        "count": 2
+    }
+}

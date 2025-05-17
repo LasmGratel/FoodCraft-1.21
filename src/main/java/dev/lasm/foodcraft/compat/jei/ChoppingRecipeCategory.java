@@ -38,11 +38,11 @@ public class ChoppingRecipeCategory extends AbstractRecipeCategory<RecipeHolder<
     var recipe = recipeHolder.value();
     var recipeIngredients = recipe.getIngredients();
 
-    recipeLayout.addSlot(RecipeIngredientRole.INPUT, 0, 0).addIngredients(recipeIngredients.get(0));
-    recipeLayout.addSlot(RecipeIngredientRole.INPUT, 97 - 69, 0).addIngredients(recipeIngredients.get(1));
-    recipeLayout.addSlot(RecipeIngredientRole.INPUT, 124 - 69, 0).addIngredients(recipeIngredients.get(2));
+    recipeLayout.addSlot(RecipeIngredientRole.INPUT, 1, 1).addIngredients(recipeIngredients.get(0));
+    recipeLayout.addSlot(RecipeIngredientRole.INPUT, 28, 1).addIngredients(recipeIngredients.get(1));
+    recipeLayout.addSlot(RecipeIngredientRole.INPUT, 55, 1).addIngredients(recipeIngredients.get(2));
 
-    recipeLayout.addSlot(RecipeIngredientRole.OUTPUT, 97 - 69, 53 - 20).addItemStack( recipe.getResultItem(null));
+    recipeLayout.addSlot(RecipeIngredientRole.OUTPUT, 28, 53 - 20).addItemStack( recipe.getResultItem(null));
 
   }
 }

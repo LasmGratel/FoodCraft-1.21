@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "foodcraft:orange"
+    },
+    "X": {
+      "tag": "minecraft:saplings"
+    }
+  },
+  "pattern": [
+    " # ",
+    "#X#",
+    " # "
+  ],
+  "result": {
+    "count": 1,
+    "id": "foodcraft:orange_sapling"
+  }
+}

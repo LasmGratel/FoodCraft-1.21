@@ -27,7 +27,7 @@ public class BrewBarrelScreen extends BaseContainerScreen<BrewBarrelMenu> implem
     @Override
     protected void renderTooltip(@NotNull GuiGraphics guiGraphics, int x, int y) {
         if (fluidTank != null)
-            GuiHelpersNeoForge.renderFluidTank(guiGraphics, fluidTank.getFluid(), menu.fluidTank.getCapacity(), 18 + getGuiLeft(), 14 + getGuiTop(), 11, 59);
+            GuiHelpersNeoForge.renderFluidTank(guiGraphics, fluidTank.getFluid(), menu.fluidTank.getCapacity(), 18 + getGuiLeft(), 19 + getGuiTop(), 11, 46);
 
         float f1 = menu.getContainerData().get(0);
         float f2 = menu.getContainerData().get(1);

@@ -26,6 +26,7 @@ import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.common.util.RecipeMatcher;
 import net.neoforged.neoforge.fluids.FluidStack;
+import net.neoforged.neoforge.fluids.capability.IFluidHandler;
 import net.neoforged.neoforge.fluids.capability.IFluidHandler.FluidAction;
 import org.jetbrains.annotations.Nullable;
 
@@ -86,7 +87,7 @@ public class BeverageMakingRecipe implements Recipe<FluidAttachedRecipeInput> {
         }
 
         return ingredients.size() == inputSize && RecipeMatcher.findMatches(inputs, ingredients) != null &&
-            container.drain(fluidInput, FluidAction.SIMULATE).equals(fluidInput);
+            FluidStack.matches(fluidInput, container.drain(fluidInput, IFluidHandler.FluidAction.SIMULATE));
     }
 
     @Override

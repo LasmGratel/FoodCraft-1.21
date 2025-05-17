@@ -1,9 +1,15 @@
 package dev.lasm.foodcraft;
 
 import com.mojang.logging.LogUtils;
+import dev.lasm.foodcraft.client.screen.BeverageMakingScreen;
 import dev.lasm.foodcraft.client.screen.BrewBarrelScreen;
+import dev.lasm.foodcraft.client.screen.ChoppingBoardScreen;
 import dev.lasm.foodcraft.client.screen.FryingPanScreen;
+import dev.lasm.foodcraft.client.screen.MillScreen;
+import dev.lasm.foodcraft.client.screen.PanScreen;
 import dev.lasm.foodcraft.client.screen.PotScreen;
+import dev.lasm.foodcraft.client.screen.PressureCookerScreen;
+import dev.lasm.foodcraft.client.screen.StoveScreen;
 import dev.lasm.foodcraft.init.ModBlockEntityTypes;
 import dev.lasm.foodcraft.init.ModBlocks;
 import dev.lasm.foodcraft.init.ModFeatures;
@@ -102,12 +108,25 @@ public final class FoodCraft {
             case UP -> new RangedWrapper(be.inventory, 2, 3);
             case null, default -> null;
         });
+
+        event.registerBlockEntity(ItemHandler.BLOCK, ModBlockEntityTypes.MILL.get(), (be, side) -> switch (side) {
+            case DOWN -> new RangedWrapper(be.inventory, 2, 3);
+            case UP -> new RangedWrapper(be.inventory, 1, 2);
+            case null -> null;
+            default -> new RangedWrapper(be.inventory, 0, 1);
+        });
     }
 
     private void registerScreens(RegisterMenuScreensEvent event) {
         event.register(ModMenuTypes.BREW_BARREL.get(), BrewBarrelScreen::new);
         event.register(ModMenuTypes.FRYING_PAN.get(), FryingPanScreen::new);
         event.register(ModMenuTypes.POT.get(), PotScreen::new);
+        event.register(ModMenuTypes.PAN.get(), PanScreen::new);
+        event.register(ModMenuTypes.CHOPPING_BOARD.get(), ChoppingBoardScreen::new);
+        event.register(ModMenuTypes.MILL.get(), MillScreen::new);
+        event.register(ModMenuTypes.PRESSURE_COOKER.get(), PressureCookerScreen::new);
+        event.register(ModMenuTypes.STOVE.get(), StoveScreen::new);
+        event.register(ModMenuTypes.BEVERAGE_MAKING.get(), BeverageMakingScreen::new);
     }
 
     private void registerFluidTextures(RegisterClientExtensionsEvent event) {

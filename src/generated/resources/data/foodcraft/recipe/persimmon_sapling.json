@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "foodcraft:persimmon"
+    },
+    "X": {
+      "tag": "minecraft:saplings"
+    }
+  },
+  "pattern": [
+    " # ",
+    "#X#",
+    " # "
+  ],
+  "result": {
+    "count": 1,
+    "id": "foodcraft:persimmon_sapling"
+  }
+}

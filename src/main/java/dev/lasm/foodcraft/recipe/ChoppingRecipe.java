@@ -4,10 +4,9 @@ import com.google.gson.JsonParseException;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import dev.lasm.foodcraft.api.FluidAttachedRecipeInput;
 import dev.lasm.foodcraft.init.ModRecipeSerializers;
 import dev.lasm.foodcraft.init.ModRecipeTypes;
-import java.util.ArrayList;
+import java.util.BitSet;
 import java.util.List;
 import java.util.Objects;
 import javax.annotation.ParametersAreNonnullByDefault;
@@ -20,14 +19,14 @@ import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.RecipeInput;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
-import net.neoforged.neoforge.common.util.RecipeMatcher;
 
 @MethodsReturnNonnullByDefault
 @ParametersAreNonnullByDefault
-public class ChoppingRecipe implements Recipe<FluidAttachedRecipeInput> {
+public class ChoppingRecipe implements Recipe<RecipeInput> {
     public static final int INGREDIENT_SLOTS = 3;
 
     private final String group;
@@ -65,23 +64,18 @@ public class ChoppingRecipe implements Recipe<FluidAttachedRecipeInput> {
     }
 
     @Override
-    public boolean matches(FluidAttachedRecipeInput container, Level level) {
-        var inputs = new ArrayList<ItemStack>();
-        var inputSize = 0;
-
-        for (int j = 0; j < INGREDIENT_SLOTS; ++j) {
+    public boolean matches(RecipeInput container, Level level) {
+        for (int j = 0; j < ingredients.size(); ++j) {
             var stack = container.getItem(j);
-            if (!stack.isEmpty()) {
-                ++inputSize;
-                inputs.add(stack);
+            if (!ingredients.get(j).test(stack) && !(stack.isEmpty() && ingredients.get(j).isEmpty())) {
+                return false;
             }
         }
-
-        return ingredients.size() == inputSize && RecipeMatcher.findMatches(inputs, ingredients) != null;
+        return true;
     }
 
     @Override
-    public ItemStack assemble(FluidAttachedRecipeInput fluidAttachedRecipeInput,
+    public ItemStack assemble(RecipeInput fluidAttachedRecipeInput,
         Provider provider) {
         return output.copy();
     }
@@ -122,7 +116,7 @@ public class ChoppingRecipe implements Recipe<FluidAttachedRecipeInput> {
         public static final MapCodec<ChoppingRecipe> CODEC = RecordCodecBuilder.mapCodec(instance ->
             instance.group(Codec.STRING.optionalFieldOf("group", "").forGetter(ChoppingRecipe::getGroup),
                     MapCodecs.ITEM_STACK.get().fieldOf("result").forGetter((ChoppingRecipe i) -> i.output),
-                    MapCodecs.INGREDIENT_NONEMPTY.getList("ingredients", ChoppingRecipe::getIngredients)
+                    MapCodecs.INGREDIENT.getList("ingredients", ChoppingRecipe::getIngredients)
                 )
                 .apply(instance, ChoppingRecipe::new)
         );
@@ -142,11 +136,11 @@ public class ChoppingRecipe implements Recipe<FluidAttachedRecipeInput> {
 
         private static ChoppingRecipe fromNetwork(RegistryFriendlyByteBuf buffer) {
             var group = buffer.readUtf();
-            var size = buffer.readVarInt();
-            var ingredients = NonNullList.withSize(size, Ingredient.EMPTY);
-            for (int i = 0; i < size; i++) {
-
-                ingredients.set(i, Ingredient.CONTENTS_STREAM_CODEC.decode(buffer));
+            var bitset = BitSet.valueOf(buffer.readByteArray());
+            var ingredients = NonNullList.withSize(INGREDIENT_SLOTS, Ingredient.EMPTY);
+            for (int i = 0; i < INGREDIENT_SLOTS; i++) {
+                if (!bitset.get(i))
+                    ingredients.set(i, Ingredient.CONTENTS_STREAM_CODEC.decode(buffer));
             }
 
             var output = ItemStack.STREAM_CODEC.decode(buffer);
@@ -156,9 +150,17 @@ public class ChoppingRecipe implements Recipe<FluidAttachedRecipeInput> {
 
         public static void toNetwork(RegistryFriendlyByteBuf buffer, ChoppingRecipe recipe) {
             buffer.writeUtf(recipe.getGroup());
-            buffer.writeVarInt(recipe.getIngredients().size());
+            var bitset = new BitSet(INGREDIENT_SLOTS);
+            for (int i = 0; i < INGREDIENT_SLOTS; i++) {
+                if (recipe.getIngredients().get(i).isEmpty()) {
+                    bitset.set(i);
+                }
+            }
+            buffer.writeByteArray(bitset.toByteArray());
             for (Ingredient ingredient : recipe.getIngredients()) {
-                Ingredient.CONTENTS_STREAM_CODEC.encode(buffer, ingredient);
+                if (!ingredient.isEmpty()) {
+                    Ingredient.CONTENTS_STREAM_CODEC.encode(buffer, ingredient);
+                }
             }
             ItemStack.STREAM_CODEC.encode(buffer, recipe.output);
         }

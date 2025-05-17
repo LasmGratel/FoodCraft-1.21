@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "foodcraft:papaya"
+    },
+    "X": {
+      "tag": "minecraft:saplings"
+    }
+  },
+  "pattern": [
+    " # ",
+    "#X#",
+    " # "
+  ],
+  "result": {
+    "count": 1,
+    "id": "foodcraft:papaya_sapling"
+  }
+}

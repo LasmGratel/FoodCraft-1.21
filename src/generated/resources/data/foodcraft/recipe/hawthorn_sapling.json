@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "foodcraft:hawthorn"
+    },
+    "X": {
+      "tag": "minecraft:saplings"
+    }
+  },
+  "pattern": [
+    " # ",
+    "#X#",
+    " # "
+  ],
+  "result": {
+    "count": 1,
+    "id": "foodcraft:hawthorn_sapling"
+  }
+}

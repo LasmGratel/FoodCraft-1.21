@@ -4,8 +4,11 @@ import dev.lasm.foodcraft.FoodCraft;
 import net.minecraft.core.Holder;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.DiggerItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.Tiers;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -15,7 +18,12 @@ public class ModItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(FoodCraft.MOD_ID);
     public static final DeferredItem<Item> RICE_PORRIDGE;
 
-    // Plants
+    public static final DeferredItem<Item> IRON_KNIFE;
+    public static final DeferredItem<Item> GOLD_KNIFE;
+    public static final DeferredItem<Item> DIAMOND_KNIFE;
+    public static final DeferredItem<Item> EMERALD_KNIFE;
+
+     // Plants
     public static final DeferredItem<BlockItem> CORN;
     public static final DeferredItem<BlockItem> CUCUMBER;
     public static final DeferredItem<BlockItem> EGGPLANT;
@@ -281,8 +289,16 @@ public class ModItems {
         return ITEMS.registerSimpleBlockItem(block, properties);
     }
 
+    public static Item.Properties knifeItem(Tier tier) {
+        return (new Item.Properties()).attributes(DiggerItem.createAttributes(tier, 0.5F, -2.0F));
+    }
+
     static {
         RICE_PORRIDGE = ITEMS.register("rice_porridge", () -> new Item(foodItem(FoodValues.RICE_PORRIDGE)));
+        IRON_KNIFE = ITEMS.register("iron_knife", () -> new DiggerItem(Tiers.IRON, ModTags.MINEABLE_WITH_KNIFE, knifeItem(Tiers.IRON)));
+        GOLD_KNIFE = ITEMS.register("gold_knife", () -> new DiggerItem(Tiers.GOLD, ModTags.MINEABLE_WITH_KNIFE, knifeItem(Tiers.IRON)));
+        DIAMOND_KNIFE = ITEMS.register("diamond_knife", () -> new DiggerItem(Tiers.DIAMOND, ModTags.MINEABLE_WITH_KNIFE, knifeItem(Tiers.DIAMOND)));
+        EMERALD_KNIFE = ITEMS.register("emerald_knife", () -> new DiggerItem(Tiers.NETHERITE, ModTags.MINEABLE_WITH_KNIFE, knifeItem(Tiers.NETHERITE)));
 
         CORN = blockItem(ModBlocks.CORN, foodItem(FoodValues.PLANT));
         CUCUMBER = blockItem(ModBlocks.CUCUMBER, foodItem(FoodValues.PLANT));

@@ -39,7 +39,7 @@ public class BrewingRecipeCategory extends AbstractRecipeCategory<RecipeHolder<B
         recipeLayout.addSlot(RecipeIngredientRole.INPUT, 44, 20).addIngredients(recipeIngredients.get(0));
         recipeLayout.addSlot(RecipeIngredientRole.INPUT, 68, 20).addIngredients(recipeIngredients.get(1));
         recipeLayout.addSlot(RecipeIngredientRole.INPUT, 91, 20).addIngredients(recipeIngredients.get(2));
-        recipeLayout.addSlot(RecipeIngredientRole.INPUT, 9, 5).addFluidStack(recipe.getFluidInput().getFluid(), recipe.getFluidInput().getAmount());
+        recipeLayout.addSlot(RecipeIngredientRole.CATALYST, 21 - 7, 28 - 8).addFluidStack(recipe.getFluidInput().getFluid(), recipe.getFluidInput().getAmount());
 
         recipeLayout.addSlot(RecipeIngredientRole.OUTPUT, 128, 20).addItemStack( recipe.getResultItem(null));
 

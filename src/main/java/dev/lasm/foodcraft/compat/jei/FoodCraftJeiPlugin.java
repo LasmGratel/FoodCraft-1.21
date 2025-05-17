@@ -4,7 +4,9 @@ import dev.lasm.foodcraft.FoodCraft;
 import dev.lasm.foodcraft.client.screen.BrewBarrelScreen;
 import dev.lasm.foodcraft.client.screen.FryingPanScreen;
 import dev.lasm.foodcraft.container.BrewBarrelMenu;
+import dev.lasm.foodcraft.container.ChoppingBoardMenu;
 import dev.lasm.foodcraft.container.FryingPanMenu;
+import dev.lasm.foodcraft.container.PanMenu;
 import dev.lasm.foodcraft.container.PotMenu;
 import dev.lasm.foodcraft.init.ModBlocks;
 import dev.lasm.foodcraft.init.ModMenuTypes;
@@ -63,9 +65,11 @@ public class FoodCraftJeiPlugin implements IModPlugin {
 
     @Override
     public void registerRecipeTransferHandlers(IRecipeTransferRegistration registration) {
-        registration.addRecipeTransferHandler(PotMenu.class, ModMenuTypes.POT.get(), POT_RECIPE, 0, 12, 12, 36);
+        registration.addRecipeTransferHandler(PotMenu.class, ModMenuTypes.POT.get(), POT_RECIPE, 0, 12, 13, 36);
+        registration.addRecipeTransferHandler(PanMenu.class, ModMenuTypes.PAN.get(), PAN_RECIPE, 0, 2, 4, 36);
         registration.addRecipeTransferHandler(BrewBarrelMenu.class, ModMenuTypes.BREW_BARREL.get(), BREWING_RECIPE, 1, 3, 6, 36);
         registration.addRecipeTransferHandler(FryingPanMenu.class, ModMenuTypes.FRYING_PAN.get(), FRYING_RECIPE, 2, 1, 4, 36);
+        registration.addRecipeTransferHandler(ChoppingBoardMenu.class, ModMenuTypes.CHOPPING_BOARD.get(), CHOPPING_RECIPE, 1, 3, 5, 36);
     }
 
     @Override

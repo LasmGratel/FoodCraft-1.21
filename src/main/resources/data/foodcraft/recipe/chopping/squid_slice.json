@@ -1,0 +1,14 @@
+{
+    "type": "foodcraft:chopping",
+    "ingredients": [
+        [],
+        {
+            "tag": "c:foods/raw_squid"
+        },
+        []
+    ],
+    "result": {
+        "id": "foodcraft:squid_slice",
+        "count": 2
+    }
+}

@@ -209,11 +209,11 @@ item.foodcraft.onion.name=洋葱
 item.foodcraft.green_onion.name=葱
 
 # Kitchen knife
-item.foodcraft.stone_kitchen_knife.name=石刀
-item.foodcraft.iron_kitchen_knife.name=铁刀
-item.foodcraft.gold_kitchen_knife.name=金刀
-item.foodcraft.diamond_kitchen_knife.name=钻石刀
-item.foodcraft.emerald_kitchen_knife.name=绿宝石刀
+item.foodcraft.stone_knife.name=石刀
+item.foodcraft.iron_knife.name=铁刀
+item.foodcraft.gold_knife.name=金刀
+item.foodcraft.diamond_knife.name=钻石刀
+item.foodcraft.emerald_knife.name=绿宝石刀
 
 # Sapling
 item.foodcraft.sapling.name=%s树苗

@@ -1,0 +1,11 @@
+{
+    "name": "Overcooked Food",
+    "icon": "foodcraft:overcooked_food",
+    "category": "foodcraft:misc",
+    "pages": [
+        {
+            "type": "text",
+            "text": "Oh no..."
+        }
+    ]
+}

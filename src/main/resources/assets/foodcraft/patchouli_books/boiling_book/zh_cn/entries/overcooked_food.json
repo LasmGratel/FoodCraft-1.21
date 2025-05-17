@@ -1,0 +1,14 @@
+{
+    "name": "烧焦的食物",
+    "icon": "foodcraft:overcooked_food",
+    "category": "foodcraft:misc",
+    "pages": [
+        {
+            "type": "spotlight",
+            "item": {
+                "item": "foodcraft:overcooked_food"
+            },
+            "text": "哦，不！技艺不够精悍的大厨们可能会在锅或平底锅中制作出这些黑暗料理。也许下次该早些把做好的食物拿出来..."
+        }
+    ]
+}

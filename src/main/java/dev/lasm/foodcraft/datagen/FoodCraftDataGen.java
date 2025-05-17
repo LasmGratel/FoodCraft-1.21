@@ -38,6 +38,7 @@ public final class FoodCraftDataGen {
         event.getGenerator().addProvider(event.includeClient(), blockStateGen);
         event.getGenerator().addProvider(event.includeServer(), new WorldGenProvider(output, lookupProvider, Set.of("foodcraft")));
         event.getGenerator().addProvider(event.includeClient(), new ItemModelGen(output, FoodCraft.MOD_ID, helper));
+        event.getGenerator().addProvider(event.includeServer(), new RecipeGen(output, lookupProvider));
         //event.getGenerator().addProvider(event.includeClient(), new LootTableProvider(output, lookupProvider));
     }
 }

@@ -1,14 +1,18 @@
 package dev.lasm.foodcraft.block;
 
 import com.mojang.serialization.MapCodec;
+import dev.lasm.foodcraft.api.ItemHandlerProvider;
 import dev.lasm.foodcraft.block.entity.BrewBarrelBlockEntity;
 import dev.lasm.foodcraft.init.ModBlockEntityTypes;
 import javax.annotation.ParametersAreNonnullByDefault;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.NonNullList;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -53,5 +57,20 @@ public class BrewBarrelBlock extends BaseMachineBlock {
         }
 
         return InteractionResult.SUCCESS;
+    }
+
+    public void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean isMoving) {
+        if (state.getBlock() != newState.getBlock()) {
+            BlockEntity tileEntity = level.getBlockEntity(pos);
+            if (tileEntity instanceof ItemHandlerProvider provider) {
+                var list = NonNullList.<ItemStack>create();
+                for (int i = 0; i < 5; i++) { // Skip the hint slot
+                    list.add(provider.getInventory().getStackInSlot(i));
+                }
+                Containers.dropContents(level, pos, list);
+                level.updateNeighbourForOutputSignal(pos, this);
+            }
+            super.onRemove(state, level, pos, newState, isMoving);
+        }
     }
 }

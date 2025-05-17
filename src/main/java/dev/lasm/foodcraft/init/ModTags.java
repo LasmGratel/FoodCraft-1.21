@@ -14,8 +14,19 @@ public class ModTags {
     public static final TagKey<Item> STARCHES = modItemTag("starches");
     public static final TagKey<Item> COOKED_RICE = modItemTag("cooked_rice");
 
+    public static final TagKey<Item> KNIVES = commonItemTag("tools/knife");
+
     public static final TagKey<Item> SALT = commonItemTag("salt");
     public static final TagKey<Item> COOKING_OIL = commonItemTag("cookingoil");
+    public static final TagKey<Item> WATER = commonItemTag("water");
+    public static final TagKey<Item> MILK = commonItemTag("milk");
+
+    public static final TagKey<Item> COOLANTS = modItemTag("coolants");
+    public static final TagKey<Item> COOLANTS_LOW = modItemTag("coolants/low");
+    public static final TagKey<Item> COOLANTS_MEDIUM = modItemTag("coolants/medium");
+    public static final TagKey<Item> COOLANTS_HIGH = modItemTag("coolants/high");
+
+    public static final TagKey<Block> MINEABLE_WITH_KNIFE = modBlockTag("mineable/knife");
 
     // Vegetables
     public static final TagKey<Item> VEGETABLES = commonItemTag("vegetables");

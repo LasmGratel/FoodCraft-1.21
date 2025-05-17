@@ -1,0 +1,9 @@
+{
+    "replace": false,
+    "values": [
+      "foodcraft:iron_knife",
+      "foodcraft:gold_knife",
+      "foodcraft:diamond_knife",
+      "foodcraft:emerald_knife"
+    ]
+  }

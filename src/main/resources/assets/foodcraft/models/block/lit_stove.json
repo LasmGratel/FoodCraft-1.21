@@ -1,0 +1,9 @@
+{
+    "parent": "block/orientable",
+    "textures": {
+        "top": "foodcraft:block/stove_top",
+        "front": "foodcraft:block/stove_side",
+		"down": "foodcraft:block/stove_down",
+        "side": "foodcraft:block/stove_side"
+    }
+}

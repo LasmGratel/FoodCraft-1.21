@@ -22,5 +22,9 @@ public class ModItemColors extends ItemColors {
         event.register((stack, tintIndex) -> tintIndex == 1 ? 0xffFA853D : -1, ModItems.APPLE_LIQUEUR.get());
         event.register((stack, tintIndex) -> tintIndex == 1 ? 0xffe0da42 : -1, ModItems.GOLDEN_GRAPE_LIQUEUR.get());
         event.register((stack, tintIndex) -> tintIndex == 1 ? 0xffe7e480 : -1, ModItems.GOLDEN_APPLE_LIQUEUR.get());
+        event.register((stack, tintIndex) -> tintIndex == 0 ? 0xffffffff : -1, ModItems.IRON_KNIFE.get());
+        event.register((stack, tintIndex) -> tintIndex == 0 ? 0xffCFB53B : -1, ModItems.GOLD_KNIFE.get());
+        event.register((stack, tintIndex) -> tintIndex == 0 ? 0xffb9f2ff : -1, ModItems.DIAMOND_KNIFE.get());
+        event.register((stack, tintIndex) -> tintIndex == 0 ? 0xff50c878 : -1, ModItems.EMERALD_KNIFE.get());
     }
 }

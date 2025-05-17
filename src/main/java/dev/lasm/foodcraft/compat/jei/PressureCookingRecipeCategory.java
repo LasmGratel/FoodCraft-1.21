@@ -61,6 +61,8 @@ public class PressureCookingRecipeCategory extends AbstractRecipeCategory<Recipe
             slot.addIngredients(recipeIngredients.get(x));
         }
 
+        recipeLayout.addSlot(RecipeIngredientRole.CATALYST, 11 - 7, 27 - 8).addFluidStack(recipe.getFluidInput().getFluid(), recipe.getFluidInput().getAmount());
+
         recipeLayout.addSlot(RecipeIngredientRole.OUTPUT, 131 - 6, 26 - 7).addItemStack( recipe.getResultItem(null));
     }
 }

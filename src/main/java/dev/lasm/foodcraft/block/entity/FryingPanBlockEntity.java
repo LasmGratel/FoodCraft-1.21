@@ -2,13 +2,14 @@ package dev.lasm.foodcraft.block.entity;
 
 import dev.lasm.foodcraft.api.FluidAttachedRecipeInput;
 import dev.lasm.foodcraft.api.FluidRecipeWrapper;
+import dev.lasm.foodcraft.api.ItemHandlerProvider;
 import dev.lasm.foodcraft.container.FryingPanMenu;
 import dev.lasm.foodcraft.init.ModBlockEntityTypes;
 import dev.lasm.foodcraft.init.ModFluids;
 import dev.lasm.foodcraft.init.ModRecipeTypes;
-import dev.lasm.foodcraft.init.ModTags;
 import dev.lasm.foodcraft.network.SyncFluidTank;
 import dev.lasm.foodcraft.recipe.FryingRecipe;
+import dev.lasm.foodcraft.util.FluidHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.nbt.CompoundTag;
@@ -26,15 +27,15 @@ import net.minecraft.world.item.crafting.RecipeManager.CachedCheck;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
+import net.neoforged.neoforge.capabilities.ICapabilityProvider;
 import net.neoforged.neoforge.common.util.Lazy;
-import net.neoforged.neoforge.fluids.FluidStack;
-import net.neoforged.neoforge.fluids.capability.IFluidHandler.FluidAction;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import net.neoforged.neoforge.items.wrapper.RangedWrapper;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class FryingPanBlockEntity extends BaseBlockEntity implements MenuProvider {
+public class FryingPanBlockEntity extends BaseBlockEntity implements MenuProvider,
+    ItemHandlerProvider {
     public static final int WORK_TIME = 200;
 
     public ItemStackHandler inventory;
@@ -55,7 +56,6 @@ public class FryingPanBlockEntity extends BaseBlockEntity implements MenuProvide
             @Override
             public boolean isItemValid(int slot, ItemStack stack) {
                 return switch (slot) {
-                    case 0 -> stack.is(ModTags.COOKING_OIL);
                     case 1 -> stack.getBurnTime(RecipeType.SMELTING) > 0;
                     default -> true;
                 };
@@ -68,6 +68,7 @@ public class FryingPanBlockEntity extends BaseBlockEntity implements MenuProvide
         };
 
         this.fluidTank = new SyncFluidTank(4000);
+        fluidTank.setValidator(fluidStack -> fluidStack.getFluid().isSame(ModFluids.COOKING_OIL.get()));
         this.quickCheck = RecipeManager.createCheck(ModRecipeTypes.FRYING.get());
     }
 
@@ -110,13 +111,7 @@ public class FryingPanBlockEntity extends BaseBlockEntity implements MenuProvide
             blockEntity.setChanged();
         }
 
-        if (blockEntity.inventory.extractItem(0, 1, true).is(ModTags.COOKING_OIL)) {
-            if (blockEntity.fluidTank.fill(new FluidStack(ModFluids.COOKING_OIL.get(), 1000), FluidAction.SIMULATE) == 1000) {
-                blockEntity.fluidTank.fill(new FluidStack(ModFluids.COOKING_OIL.get(), 1000), FluidAction.EXECUTE);
-                blockEntity.inventory.extractItem(0, 1, false);
-                blockEntity.setChanged();
-            }
-        }
+        FluidHelper.handleFluidSlot(blockEntity.inventory, 0, blockEntity.fluidTank);
 
         if (blockEntity.cookingTime > 0) {
             if (blockEntity.burnTime > 0) {
@@ -152,8 +147,11 @@ public class FryingPanBlockEntity extends BaseBlockEntity implements MenuProvide
         if (blockEntity.lastRecipe == null) {
             var recipe = blockEntity.quickCheck.getRecipeFor(blockEntity.recipeWrapperLazy.get(), level).orElse(null);
             if (recipe != null) {
-                if (blockEntity.burnTime == 0 && blockEntity.inventory.getStackInSlot(3).isEmpty()) {
+                if (blockEntity.burnTime == 0 && blockEntity.inventory.getStackInSlot(1).isEmpty()) {
                     return; // A tricky solution
+                }
+                if (!blockEntity.inventory.insertItem(3, recipe.value().getResultItem(null), true).isEmpty()) {
+                    return; // Cannot insert
                 }
                 blockEntity.lastRecipe = recipe;
                 blockEntity.cookingTime = WORK_TIME;
@@ -176,5 +174,10 @@ public class FryingPanBlockEntity extends BaseBlockEntity implements MenuProvide
     @Override
     public @Nullable AbstractContainerMenu createMenu(int i, Inventory playerInv, Player player) {
         return new FryingPanMenu(i, playerInv, this);
+    }
+
+    @Override
+    public ItemStackHandler getInventory() {
+        return inventory;
     }
 }

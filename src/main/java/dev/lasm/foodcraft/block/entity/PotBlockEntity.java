@@ -1,6 +1,7 @@
 package dev.lasm.foodcraft.block.entity;
 
 import dev.lasm.foodcraft.api.HeatableBlockEntity;
+import dev.lasm.foodcraft.api.ItemHandlerProvider;
 import dev.lasm.foodcraft.container.PotMenu;
 import dev.lasm.foodcraft.init.ModBlockEntityTypes;
 import dev.lasm.foodcraft.init.ModItems;
@@ -27,7 +28,8 @@ import net.neoforged.neoforge.items.wrapper.RangedWrapper;
 import net.neoforged.neoforge.items.wrapper.RecipeWrapper;
 import org.jetbrains.annotations.Nullable;
 
-public class PotBlockEntity extends BaseBlockEntity implements HeatableBlockEntity, MenuProvider {
+public class PotBlockEntity extends BaseBlockEntity implements HeatableBlockEntity, MenuProvider,
+    ItemHandlerProvider {
 
     public ItemStackHandler inventory;
     public int cookingTime = 0;
@@ -122,7 +124,8 @@ public class PotBlockEntity extends BaseBlockEntity implements HeatableBlockEnti
 
         if (blockEntity.lastRecipe == null) {
             var recipe = blockEntity.quickCheck.getRecipeFor(blockEntity.recipeWrapperLazy.get(), level).orElse(null);
-            if (recipe != null && blockEntity.isHeated(level, blockPos)) {
+            if (recipe != null && blockEntity.isHeated(level, blockPos)
+                && blockEntity.inventory.insertItem(12, recipe.value().getResultItem(null), true).isEmpty()) {
                 blockEntity.toCraft(recipe);
                 detectLit(level, blockPos, blockState, true);
             } else {
@@ -164,5 +167,10 @@ public class PotBlockEntity extends BaseBlockEntity implements HeatableBlockEnti
     @Override
     public @Nullable AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
         return new PotMenu(i, inventory, this);
+    }
+
+    @Override
+    public ItemStackHandler getInventory() {
+        return inventory;
     }
 }

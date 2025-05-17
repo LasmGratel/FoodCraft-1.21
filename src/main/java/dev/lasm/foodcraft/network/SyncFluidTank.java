@@ -20,7 +20,7 @@ public class SyncFluidTank extends FluidTank {
 
     @Override
     protected void onContentsChanged() {
-        if (onContentsChanged != null)
+        if (onContentsChanged != null && !getFluid().isEmpty())
             onContentsChanged.run();
     }
 

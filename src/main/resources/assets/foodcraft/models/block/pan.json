@@ -1,8 +1,9 @@
 {
 	"credit": "Made with Blockbench",
-    "render_type": "minecraft:cutout",
+	"render_type": "minecraft:cutout",
 	"textures": {
 		"0": "foodcraft:block/pan",
+		"1": "minecraft:block/dark_oak_log",
 		"particle": "foodcraft:block/pan"
 	},
 	"elements": [
@@ -79,7 +80,7 @@
 		{
 			"name": "Cube6",
 			"from": [7.5, 1, 10],
-			"to": [8.5, 2, 16],
+			"to": [8.5, 2, 11],
 			"rotation": {"angle": 0, "axis": "y", "origin": [16, 0, -1]},
 			"faces": {
 				"north": {"uv": [0.9, 4, 0, 4.4], "texture": "#0"},
@@ -88,6 +89,19 @@
 				"west": {"uv": [3.9, 4, 0, 4.4], "texture": "#0"},
 				"up": {"uv": [5.4, 4.5, 5, 5.5], "texture": "#0"},
 				"down": {"uv": [5.4, 4.5, 5, 5.5], "texture": "#0"}
+			}
+		},
+		{
+			"from": [7.25, 0.75, 11],
+			"to": [8.75, 2.25, 16],
+			"rotation": {"angle": 0, "axis": "x", "origin": [7, 0, 13]},
+			"faces": {
+				"north": {"uv": [11, -0.5, 11.5, 16], "rotation": 90, "texture": "#1"},
+				"east": {"uv": [11, -0.5, 11.5, 16], "rotation": 90, "texture": "#1"},
+				"south": {"uv": [0.5, 0, 0, 16], "rotation": 90, "texture": "#1"},
+				"west": {"uv": [11, -0.5, 11.5, 16], "rotation": 90, "texture": "#1"},
+				"up": {"uv": [11, 0, 11.5, 16], "texture": "#1"},
+				"down": {"uv": [11, 0, 11.5, 16], "texture": "#1"}
 			}
 		}
 	],

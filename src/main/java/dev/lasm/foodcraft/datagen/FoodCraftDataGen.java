@@ -1,11 +1,15 @@
 package dev.lasm.foodcraft.datagen;
 
 import dev.lasm.foodcraft.FoodCraft;
+import java.util.List;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
+import net.minecraft.data.loot.LootTableProvider;
+import net.minecraft.data.loot.LootTableProvider.SubProviderEntry;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.EventBusSubscriber.Bus;
@@ -39,6 +43,18 @@ public final class FoodCraftDataGen {
         event.getGenerator().addProvider(event.includeServer(), new WorldGenProvider(output, lookupProvider, Set.of("foodcraft")));
         event.getGenerator().addProvider(event.includeClient(), new ItemModelGen(output, FoodCraft.MOD_ID, helper));
         event.getGenerator().addProvider(event.includeServer(), new RecipeGen(output, lookupProvider));
+        event.getGenerator().addProvider(event.includeClient(), new LootTableProvider(
+            output,
+            // A set of required table resource locations. These are later verified to be present.
+            // It is generally not recommended for mods to validate existence,
+            // therefore we pass in an empty set.
+            Set.of(),
+            // A list of sub provider entries. See below for what values to use here.
+            List.of(new SubProviderEntry(LootGen.Crop::new, LootContextParamSets.BLOCK),
+            new SubProviderEntry(LootGen.Machine::new, LootContextParamSets.BLOCK)
+            ),
+            lookupProvider
+        ));
         //event.getGenerator().addProvider(event.includeClient(), new LootTableProvider(output, lookupProvider));
     }
 }

@@ -16,6 +16,7 @@ import net.minecraft.world.level.levelgen.feature.configurations.TreeConfigurati
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacerType;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
+import net.minecraft.world.level.levelgen.feature.trunkplacers.ForkingTrunkPlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -258,72 +259,101 @@ public class ModFeatures {
     }
 
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
+
         register(context, GRAPEFRUIT, Feature.TREE, (new TreeConfiguration.TreeConfigurationBuilder(
-            BlockStateProvider.simple(Blocks.JUNGLE_LOG), new StraightTrunkPlacer(5, 1, 3), BlockStateProvider.simple(Blocks.JUNGLE_LEAVES),
+            BlockStateProvider.simple(Blocks.OAK_LOG), new StraightTrunkPlacer(5, 2, 1), BlockStateProvider.simple(Blocks.OAK_LEAVES),
             GRAPEFRUIT_PLACER_SUPPLIER.get(),
             new TwoLayersFeatureSize(1, 0, 2))).build());
+
         register(context, CHERRY, Feature.TREE, (new TreeConfiguration.TreeConfigurationBuilder(
-            BlockStateProvider.simple(Blocks.JUNGLE_LOG), new StraightTrunkPlacer(5, 1, 3), BlockStateProvider.simple(Blocks.JUNGLE_LEAVES),
+            BlockStateProvider.simple(Blocks.CHERRY_LOG), new StraightTrunkPlacer(5, 2, 1), BlockStateProvider.simple(Blocks.CHERRY_LEAVES),
             CHERRY_PLACER_SUPPLIER.get(),
             new TwoLayersFeatureSize(1, 0, 2))).build());
+
         register(context, COCONUT, Feature.TREE, (new TreeConfiguration.TreeConfigurationBuilder(
-            BlockStateProvider.simple(Blocks.JUNGLE_LOG), new StraightTrunkPlacer(5, 1, 3), BlockStateProvider.simple(Blocks.JUNGLE_LEAVES),
+            BlockStateProvider.simple(Blocks.JUNGLE_LOG), new StraightTrunkPlacer(5, 2, 1), BlockStateProvider.simple(Blocks.JUNGLE_LEAVES),
             COCONUT_PLACER_SUPPLIER.get(),
             new TwoLayersFeatureSize(1, 0, 2))).build());
+
         register(context, BANANA, Feature.TREE, (new TreeConfiguration.TreeConfigurationBuilder(
-            BlockStateProvider.simple(Blocks.JUNGLE_LOG), new StraightTrunkPlacer(5, 1, 3), BlockStateProvider.simple(Blocks.JUNGLE_LEAVES),
+            BlockStateProvider.simple(Blocks.JUNGLE_LOG), new StraightTrunkPlacer(5, 2, 1), BlockStateProvider.simple(Blocks.JUNGLE_LEAVES),
             BANANA_PLACER_SUPPLIER.get(),
             new TwoLayersFeatureSize(1, 0, 2))).build());
+
         register(context, PEACH, Feature.TREE, (new TreeConfiguration.TreeConfigurationBuilder(
-            BlockStateProvider.simple(Blocks.JUNGLE_LOG), new StraightTrunkPlacer(5, 1, 3), BlockStateProvider.simple(Blocks.JUNGLE_LEAVES),
+            BlockStateProvider.simple(Blocks.OAK_LOG), new StraightTrunkPlacer(5, 2, 1), BlockStateProvider.simple(Blocks.OAK_LEAVES),
             PEACH_PLACER_SUPPLIER.get(),
             new TwoLayersFeatureSize(1, 0, 2))).build());
+
         register(context, PERSIMMON, Feature.TREE, (new TreeConfiguration.TreeConfigurationBuilder(
-            BlockStateProvider.simple(Blocks.JUNGLE_LOG), new StraightTrunkPlacer(5, 1, 3), BlockStateProvider.simple(Blocks.JUNGLE_LEAVES),
+            BlockStateProvider.simple(Blocks.OAK_LOG), new StraightTrunkPlacer(5, 2, 1), BlockStateProvider.simple(Blocks.OAK_LEAVES),
             PERSIMMON_PLACER_SUPPLIER.get(),
             new TwoLayersFeatureSize(1, 0, 2))).build());
+
         register(context, POMEGRANATE, Feature.TREE, (new TreeConfiguration.TreeConfigurationBuilder(
-            BlockStateProvider.simple(Blocks.JUNGLE_LOG), new StraightTrunkPlacer(5, 1, 3), BlockStateProvider.simple(Blocks.JUNGLE_LEAVES),
+            BlockStateProvider.simple(Blocks.ACACIA_LOG),
+            new ForkingTrunkPlacer(5, 2, 2),
+            BlockStateProvider.simple(Blocks.ACACIA_LEAVES),
             POMEGRANATE_PLACER_SUPPLIER.get(),
             new TwoLayersFeatureSize(1, 0, 2))).build());
+
+
         register(context, HAWTHORN, Feature.TREE, (new TreeConfiguration.TreeConfigurationBuilder(
-            BlockStateProvider.simple(Blocks.JUNGLE_LOG), new StraightTrunkPlacer(5, 1, 3), BlockStateProvider.simple(Blocks.JUNGLE_LEAVES),
+            BlockStateProvider.simple(Blocks.OAK_LOG), new StraightTrunkPlacer(5, 2, 1), BlockStateProvider.simple(Blocks.OAK_LEAVES),
             HAWTHORN_PLACER_SUPPLIER.get(),
             new TwoLayersFeatureSize(1, 0, 2))).build());
+
+
         register(context, LOQUAT, Feature.TREE, (new TreeConfiguration.TreeConfigurationBuilder(
-            BlockStateProvider.simple(Blocks.JUNGLE_LOG), new StraightTrunkPlacer(5, 1, 3), BlockStateProvider.simple(Blocks.JUNGLE_LEAVES),
+            BlockStateProvider.simple(Blocks.OAK_LOG), new StraightTrunkPlacer(5, 2, 1), BlockStateProvider.simple(Blocks.OAK_LEAVES),
             LOQUAT_PLACER_SUPPLIER.get(),
             new TwoLayersFeatureSize(1, 0, 2))).build());
+
+
         register(context, LEMON, Feature.TREE, (new TreeConfiguration.TreeConfigurationBuilder(
-            BlockStateProvider.simple(Blocks.JUNGLE_LOG), new StraightTrunkPlacer(5, 1, 3), BlockStateProvider.simple(Blocks.JUNGLE_LEAVES),
+            BlockStateProvider.simple(Blocks.OAK_LOG), new StraightTrunkPlacer(5, 2, 1), BlockStateProvider.simple(Blocks.OAK_LEAVES),
             LEMON_PLACER_SUPPLIER.get(),
             new TwoLayersFeatureSize(1, 0, 2))).build());
+
+
         register(context, PAPAYA, Feature.TREE, (new TreeConfiguration.TreeConfigurationBuilder(
-            BlockStateProvider.simple(Blocks.JUNGLE_LOG), new StraightTrunkPlacer(5, 1, 3), BlockStateProvider.simple(Blocks.JUNGLE_LEAVES),
+            BlockStateProvider.simple(Blocks.JUNGLE_LOG), new StraightTrunkPlacer(5, 2, 1), BlockStateProvider.simple(Blocks.JUNGLE_LEAVES),
             PAPAYA_PLACER_SUPPLIER.get(),
             new TwoLayersFeatureSize(1, 0, 2))).build());
+
+
         register(context, LONGAN, Feature.TREE, (new TreeConfiguration.TreeConfigurationBuilder(
-            BlockStateProvider.simple(Blocks.JUNGLE_LOG), new StraightTrunkPlacer(5, 1, 3), BlockStateProvider.simple(Blocks.JUNGLE_LEAVES),
+            BlockStateProvider.simple(Blocks.JUNGLE_LOG), new StraightTrunkPlacer(5, 2, 1), BlockStateProvider.simple(Blocks.JUNGLE_LEAVES),
             LONGAN_PLACER_SUPPLIER.get(),
             new TwoLayersFeatureSize(1, 0, 2))).build());
+
+
         register(context, MANGO, Feature.TREE, (new TreeConfiguration.TreeConfigurationBuilder(
-            BlockStateProvider.simple(Blocks.JUNGLE_LOG), new StraightTrunkPlacer(5, 1, 3), BlockStateProvider.simple(Blocks.JUNGLE_LEAVES),
+            BlockStateProvider.simple(Blocks.JUNGLE_LOG), new StraightTrunkPlacer(5, 2, 1), BlockStateProvider.simple(Blocks.JUNGLE_LEAVES),
             MANGO_PLACER_SUPPLIER.get(),
             new TwoLayersFeatureSize(1, 0, 2))).build());
+
+
         register(context, LITCHI, Feature.TREE, (new TreeConfiguration.TreeConfigurationBuilder(
-            BlockStateProvider.simple(Blocks.JUNGLE_LOG), new StraightTrunkPlacer(5, 1, 3), BlockStateProvider.simple(Blocks.JUNGLE_LEAVES),
+            BlockStateProvider.simple(Blocks.JUNGLE_LOG), new StraightTrunkPlacer(5, 2, 1), BlockStateProvider.simple(Blocks.JUNGLE_LEAVES),
             LITCHI_PLACER_SUPPLIER.get(),
             new TwoLayersFeatureSize(1, 0, 2))).build());
+
+
         register(context, PEAR, Feature.TREE, (new TreeConfiguration.TreeConfigurationBuilder(
-            BlockStateProvider.simple(Blocks.JUNGLE_LOG), new StraightTrunkPlacer(5, 1, 3), BlockStateProvider.simple(Blocks.JUNGLE_LEAVES),
+            BlockStateProvider.simple(Blocks.OAK_LOG), new StraightTrunkPlacer(5, 2, 1), BlockStateProvider.simple(Blocks.OAK_LEAVES),
             PEAR_PLACER_SUPPLIER.get(),
             new TwoLayersFeatureSize(1, 0, 2))).build());
+
+
         register(context, ORANGE, Feature.TREE, (new TreeConfiguration.TreeConfigurationBuilder(
-            BlockStateProvider.simple(Blocks.JUNGLE_LOG), new StraightTrunkPlacer(5, 1, 3), BlockStateProvider.simple(Blocks.JUNGLE_LEAVES),
+            BlockStateProvider.simple(Blocks.OAK_LOG), new StraightTrunkPlacer(5, 2, 1), BlockStateProvider.simple(Blocks.OAK_LEAVES),
             ORANGE_PLACER_SUPPLIER.get(),
             new TwoLayersFeatureSize(1, 0, 2))).build());
+
+
         register(context, DATE, Feature.TREE, (new TreeConfiguration.TreeConfigurationBuilder(
-            BlockStateProvider.simple(Blocks.JUNGLE_LOG), new StraightTrunkPlacer(5, 1, 3), BlockStateProvider.simple(Blocks.JUNGLE_LEAVES),
+            BlockStateProvider.simple(Blocks.ACACIA_LOG), new ForkingTrunkPlacer(5, 2, 2), BlockStateProvider.simple(Blocks.ACACIA_LEAVES),
             DATE_PLACER_SUPPLIER.get(),
             new TwoLayersFeatureSize(1, 0, 2))).build());
     }

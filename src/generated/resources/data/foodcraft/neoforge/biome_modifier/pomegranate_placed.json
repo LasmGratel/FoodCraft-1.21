@@ -6,19 +6,12 @@
       {
         "type": "neoforge:or",
         "values": [
-          "#minecraft:is_forest"
+          "#c:is_hot/overworld"
         ]
       },
       {
         "type": "neoforge:not",
-        "value": {
-          "type": "neoforge:or",
-          "values": [
-            "#c:is_wet/overworld",
-            "#c:is_hot/overworld",
-            "#c:is_cold/overworld"
-          ]
-        }
+        "value": "#c:is_wet/overworld"
       }
     ]
   },

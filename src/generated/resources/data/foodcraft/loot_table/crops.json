@@ -1,0 +1,936 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:alternatives",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "chance": 0.0035,
+                  "condition": "minecraft:random_chance"
+                },
+                {
+                  "condition": "minecraft:location_check",
+                  "predicate": {
+                    "biomes": {
+                      "type": "neoforge:and",
+                      "values": [
+                        {
+                          "type": "neoforge:or",
+                          "values": [
+                            "#c:is_plains",
+                            "#minecraft:is_forest"
+                          ]
+                        },
+                        {
+                          "type": "neoforge:not",
+                          "value": {
+                            "type": "neoforge:or",
+                            "values": [
+                              "#c:is_cold/overworld",
+                              "#c:is_wet/overworld"
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              ],
+              "functions": [
+                {
+                  "enchantment": "minecraft:fortune",
+                  "formula": "minecraft:uniform_bonus_count",
+                  "function": "minecraft:apply_bonus",
+                  "parameters": {
+                    "bonusMultiplier": 2
+                  }
+                }
+              ],
+              "name": "foodcraft:corn"
+            },
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "chance": 0.0035,
+                  "condition": "minecraft:random_chance"
+                },
+                {
+                  "condition": "minecraft:location_check",
+                  "predicate": {
+                    "biomes": {
+                      "type": "neoforge:and",
+                      "values": [
+                        {
+                          "type": "neoforge:not",
+                          "value": "#c:is_cold/overworld"
+                        },
+                        {
+                          "type": "neoforge:or",
+                          "values": [
+                            "#c:is_plains",
+                            "#minecraft:is_forest",
+                            "#minecraft:is_river"
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                }
+              ],
+              "functions": [
+                {
+                  "enchantment": "minecraft:fortune",
+                  "formula": "minecraft:uniform_bonus_count",
+                  "function": "minecraft:apply_bonus",
+                  "parameters": {
+                    "bonusMultiplier": 2
+                  }
+                }
+              ],
+              "name": "foodcraft:cucumber"
+            },
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "chance": 0.0035,
+                  "condition": "minecraft:random_chance"
+                },
+                {
+                  "condition": "minecraft:location_check",
+                  "predicate": {
+                    "biomes": {
+                      "type": "neoforge:and",
+                      "values": [
+                        {
+                          "type": "neoforge:not",
+                          "value": "#c:is_cold/overworld"
+                        },
+                        {
+                          "type": "neoforge:or",
+                          "values": [
+                            "#c:is_plains",
+                            "#minecraft:is_forest"
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                }
+              ],
+              "functions": [
+                {
+                  "enchantment": "minecraft:fortune",
+                  "formula": "minecraft:uniform_bonus_count",
+                  "function": "minecraft:apply_bonus",
+                  "parameters": {
+                    "bonusMultiplier": 2
+                  }
+                }
+              ],
+              "name": "foodcraft:eggplant"
+            },
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "chance": 0.0035,
+                  "condition": "minecraft:random_chance"
+                },
+                {
+                  "condition": "minecraft:location_check",
+                  "predicate": {
+                    "biomes": {
+                      "type": "neoforge:and",
+                      "values": [
+                        {
+                          "type": "neoforge:or",
+                          "values": [
+                            "#c:is_hot/overworld"
+                          ]
+                        },
+                        {
+                          "type": "neoforge:not",
+                          "value": "#c:is_wet/overworld"
+                        }
+                      ]
+                    }
+                  }
+                }
+              ],
+              "functions": [
+                {
+                  "enchantment": "minecraft:fortune",
+                  "formula": "minecraft:uniform_bonus_count",
+                  "function": "minecraft:apply_bonus",
+                  "parameters": {
+                    "bonusMultiplier": 2
+                  }
+                }
+              ],
+              "name": "foodcraft:facing_heaven_pepper"
+            },
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "chance": 0.0035,
+                  "condition": "minecraft:random_chance"
+                },
+                {
+                  "condition": "minecraft:location_check",
+                  "predicate": {
+                    "biomes": {
+                      "type": "neoforge:and",
+                      "values": [
+                        {
+                          "type": "neoforge:not",
+                          "value": "#c:is_cold/overworld"
+                        },
+                        {
+                          "type": "neoforge:or",
+                          "values": [
+                            "#c:is_plains",
+                            "#minecraft:is_forest"
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                }
+              ],
+              "functions": [
+                {
+                  "enchantment": "minecraft:fortune",
+                  "formula": "minecraft:uniform_bonus_count",
+                  "function": "minecraft:apply_bonus",
+                  "parameters": {
+                    "bonusMultiplier": 2
+                  }
+                }
+              ],
+              "name": "foodcraft:green_pepper"
+            },
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "chance": 0.0035,
+                  "condition": "minecraft:random_chance"
+                },
+                {
+                  "condition": "minecraft:location_check",
+                  "predicate": {
+                    "biomes": {
+                      "type": "neoforge:and",
+                      "values": [
+                        {
+                          "type": "neoforge:not",
+                          "value": "#c:is_cold/overworld"
+                        },
+                        {
+                          "type": "neoforge:or",
+                          "values": [
+                            "#minecraft:is_savanna",
+                            "#c:is_desert",
+                            "#c:is_plains"
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                }
+              ],
+              "functions": [
+                {
+                  "enchantment": "minecraft:fortune",
+                  "formula": "minecraft:uniform_bonus_count",
+                  "function": "minecraft:apply_bonus",
+                  "parameters": {
+                    "bonusMultiplier": 2
+                  }
+                }
+              ],
+              "name": "foodcraft:peanut"
+            },
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "chance": 0.0035,
+                  "condition": "minecraft:random_chance"
+                },
+                {
+                  "condition": "minecraft:location_check",
+                  "predicate": {
+                    "biomes": {
+                      "type": "neoforge:and",
+                      "values": [
+                        {
+                          "type": "neoforge:not",
+                          "value": "#c:is_cold/overworld"
+                        },
+                        {
+                          "type": "neoforge:or",
+                          "values": [
+                            "#c:is_wet/overworld",
+                            "#minecraft:is_river",
+                            "#c:is_swamp"
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                }
+              ],
+              "functions": [
+                {
+                  "enchantment": "minecraft:fortune",
+                  "formula": "minecraft:uniform_bonus_count",
+                  "function": "minecraft:apply_bonus",
+                  "parameters": {
+                    "bonusMultiplier": 2
+                  }
+                }
+              ],
+              "name": "foodcraft:rice"
+            },
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "chance": 0.0035,
+                  "condition": "minecraft:random_chance"
+                },
+                {
+                  "condition": "minecraft:location_check",
+                  "predicate": {
+                    "biomes": {
+                      "type": "neoforge:and",
+                      "values": [
+                        {
+                          "type": "neoforge:not",
+                          "value": "#c:is_cold/overworld"
+                        },
+                        {
+                          "type": "neoforge:or",
+                          "values": [
+                            "#c:is_wet/overworld",
+                            "#minecraft:is_river",
+                            "#c:is_swamp"
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                }
+              ],
+              "functions": [
+                {
+                  "enchantment": "minecraft:fortune",
+                  "formula": "minecraft:uniform_bonus_count",
+                  "function": "minecraft:apply_bonus",
+                  "parameters": {
+                    "bonusMultiplier": 2
+                  }
+                }
+              ],
+              "name": "foodcraft:sticky_rice"
+            },
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "chance": 0.0035,
+                  "condition": "minecraft:random_chance"
+                },
+                {
+                  "condition": "minecraft:location_check",
+                  "predicate": {
+                    "biomes": {
+                      "type": "neoforge:and",
+                      "values": [
+                        {
+                          "type": "neoforge:not",
+                          "value": "#c:is_cold/overworld"
+                        },
+                        {
+                          "type": "neoforge:or",
+                          "values": [
+                            "#c:is_plains",
+                            "#minecraft:is_savanna"
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                }
+              ],
+              "functions": [
+                {
+                  "enchantment": "minecraft:fortune",
+                  "formula": "minecraft:uniform_bonus_count",
+                  "function": "minecraft:apply_bonus",
+                  "parameters": {
+                    "bonusMultiplier": 2
+                  }
+                }
+              ],
+              "name": "foodcraft:sweet_potato"
+            },
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "chance": 0.0035,
+                  "condition": "minecraft:random_chance"
+                },
+                {
+                  "condition": "minecraft:location_check",
+                  "predicate": {
+                    "biomes": {
+                      "type": "neoforge:and",
+                      "values": [
+                        {
+                          "type": "neoforge:not",
+                          "value": "#c:is_cold/overworld"
+                        },
+                        {
+                          "type": "neoforge:or",
+                          "values": [
+                            "#c:is_plains",
+                            "#minecraft:is_forest"
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                }
+              ],
+              "functions": [
+                {
+                  "enchantment": "minecraft:fortune",
+                  "formula": "minecraft:uniform_bonus_count",
+                  "function": "minecraft:apply_bonus",
+                  "parameters": {
+                    "bonusMultiplier": 2
+                  }
+                }
+              ],
+              "name": "foodcraft:tomato"
+            },
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "chance": 0.0035,
+                  "condition": "minecraft:random_chance"
+                },
+                {
+                  "condition": "minecraft:location_check",
+                  "predicate": {
+                    "biomes": {
+                      "type": "neoforge:not",
+                      "value": {
+                        "type": "neoforge:or",
+                        "values": [
+                          "#c:is_hot/overworld",
+                          "#c:is_cold/overworld"
+                        ]
+                      }
+                    }
+                  }
+                }
+              ],
+              "functions": [
+                {
+                  "enchantment": "minecraft:fortune",
+                  "formula": "minecraft:uniform_bonus_count",
+                  "function": "minecraft:apply_bonus",
+                  "parameters": {
+                    "bonusMultiplier": 2
+                  }
+                }
+              ],
+              "name": "foodcraft:white_radish"
+            },
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "chance": 0.0035,
+                  "condition": "minecraft:random_chance"
+                },
+                {
+                  "condition": "minecraft:location_check",
+                  "predicate": {
+                    "biomes": {
+                      "type": "neoforge:or",
+                      "values": [
+                        {
+                          "type": "neoforge:or",
+                          "values": [
+                            "#c:is_cold/overworld"
+                          ]
+                        },
+                        {
+                          "type": "neoforge:and",
+                          "values": [
+                            {
+                              "type": "neoforge:not",
+                              "value": {
+                                "type": "neoforge:or",
+                                "values": [
+                                  "#c:is_hot/overworld",
+                                  "#c:is_cold/overworld"
+                                ]
+                              }
+                            },
+                            {
+                              "type": "neoforge:not",
+                              "value": "#c:is_hot/overworld"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                }
+              ],
+              "functions": [
+                {
+                  "enchantment": "minecraft:fortune",
+                  "formula": "minecraft:uniform_bonus_count",
+                  "function": "minecraft:apply_bonus",
+                  "parameters": {
+                    "bonusMultiplier": 2
+                  }
+                }
+              ],
+              "name": "foodcraft:cabbage"
+            },
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "chance": 0.0035,
+                  "condition": "minecraft:random_chance"
+                },
+                {
+                  "condition": "minecraft:location_check",
+                  "predicate": {
+                    "biomes": {
+                      "type": "neoforge:not",
+                      "value": {
+                        "type": "neoforge:or",
+                        "values": [
+                          "#c:is_hot/overworld",
+                          "#c:is_cold/overworld"
+                        ]
+                      }
+                    }
+                  }
+                }
+              ],
+              "functions": [
+                {
+                  "enchantment": "minecraft:fortune",
+                  "formula": "minecraft:uniform_bonus_count",
+                  "function": "minecraft:apply_bonus",
+                  "parameters": {
+                    "bonusMultiplier": 2
+                  }
+                }
+              ],
+              "name": "foodcraft:grape"
+            },
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "chance": 0.0035,
+                  "condition": "minecraft:random_chance"
+                },
+                {
+                  "condition": "minecraft:location_check",
+                  "predicate": {
+                    "biomes": {
+                      "type": "neoforge:not",
+                      "value": {
+                        "type": "neoforge:or",
+                        "values": [
+                          "#c:is_hot/overworld",
+                          "#c:is_cold/overworld"
+                        ]
+                      }
+                    }
+                  }
+                }
+              ],
+              "functions": [
+                {
+                  "enchantment": "minecraft:fortune",
+                  "formula": "minecraft:uniform_bonus_count",
+                  "function": "minecraft:apply_bonus",
+                  "parameters": {
+                    "bonusMultiplier": 2
+                  }
+                }
+              ],
+              "name": "foodcraft:strawberry"
+            },
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "chance": 0.0035,
+                  "condition": "minecraft:random_chance"
+                },
+                {
+                  "condition": "minecraft:location_check",
+                  "predicate": {
+                    "biomes": {
+                      "type": "neoforge:and",
+                      "values": [
+                        {
+                          "type": "neoforge:not",
+                          "value": "#c:is_cold/overworld"
+                        },
+                        {
+                          "type": "neoforge:or",
+                          "values": [
+                            "#c:is_plains",
+                            "#minecraft:is_savanna",
+                            "#minecraft:is_forest"
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                }
+              ],
+              "functions": [
+                {
+                  "enchantment": "minecraft:fortune",
+                  "formula": "minecraft:uniform_bonus_count",
+                  "function": "minecraft:apply_bonus",
+                  "parameters": {
+                    "bonusMultiplier": 2
+                  }
+                }
+              ],
+              "name": "foodcraft:mung_bean"
+            },
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "chance": 0.0035,
+                  "condition": "minecraft:random_chance"
+                },
+                {
+                  "condition": "minecraft:location_check",
+                  "predicate": {
+                    "biomes": {
+                      "type": "neoforge:and",
+                      "values": [
+                        {
+                          "type": "neoforge:not",
+                          "value": "#c:is_cold/overworld"
+                        },
+                        {
+                          "type": "neoforge:or",
+                          "values": [
+                            "#c:is_plains",
+                            "#minecraft:is_savanna",
+                            "#minecraft:is_forest"
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                }
+              ],
+              "functions": [
+                {
+                  "enchantment": "minecraft:fortune",
+                  "formula": "minecraft:uniform_bonus_count",
+                  "function": "minecraft:apply_bonus",
+                  "parameters": {
+                    "bonusMultiplier": 2
+                  }
+                }
+              ],
+              "name": "foodcraft:soybean"
+            },
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "chance": 0.0035,
+                  "condition": "minecraft:random_chance"
+                },
+                {
+                  "condition": "minecraft:location_check",
+                  "predicate": {
+                    "biomes": {
+                      "type": "neoforge:and",
+                      "values": [
+                        {
+                          "type": "neoforge:not",
+                          "value": "#c:is_cold/overworld"
+                        },
+                        {
+                          "type": "neoforge:or",
+                          "values": [
+                            "#c:is_plains",
+                            "#minecraft:is_savanna",
+                            "#minecraft:is_forest"
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                }
+              ],
+              "functions": [
+                {
+                  "enchantment": "minecraft:fortune",
+                  "formula": "minecraft:uniform_bonus_count",
+                  "function": "minecraft:apply_bonus",
+                  "parameters": {
+                    "bonusMultiplier": 2
+                  }
+                }
+              ],
+              "name": "foodcraft:adzuki_bean"
+            },
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "chance": 0.0035,
+                  "condition": "minecraft:random_chance"
+                },
+                {
+                  "condition": "minecraft:location_check",
+                  "predicate": {
+                    "biomes": {
+                      "type": "neoforge:and",
+                      "values": [
+                        {
+                          "type": "neoforge:or",
+                          "values": [
+                            "#minecraft:is_forest",
+                            "#c:is_plains",
+                            "#c:is_hill"
+                          ]
+                        },
+                        {
+                          "type": "neoforge:or",
+                          "values": [
+                            "#c:is_overworld"
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                }
+              ],
+              "functions": [
+                {
+                  "enchantment": "minecraft:fortune",
+                  "formula": "minecraft:uniform_bonus_count",
+                  "function": "minecraft:apply_bonus",
+                  "parameters": {
+                    "bonusMultiplier": 2
+                  }
+                }
+              ],
+              "name": "foodcraft:green_onion"
+            },
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "chance": 8.0E-4,
+                  "condition": "minecraft:random_chance"
+                }
+              ],
+              "name": "foodcraft:corn"
+            },
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "chance": 8.0E-4,
+                  "condition": "minecraft:random_chance"
+                }
+              ],
+              "name": "foodcraft:cucumber"
+            },
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "chance": 8.0E-4,
+                  "condition": "minecraft:random_chance"
+                }
+              ],
+              "name": "foodcraft:eggplant"
+            },
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "chance": 8.0E-4,
+                  "condition": "minecraft:random_chance"
+                }
+              ],
+              "name": "foodcraft:facing_heaven_pepper"
+            },
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "chance": 8.0E-4,
+                  "condition": "minecraft:random_chance"
+                }
+              ],
+              "name": "foodcraft:green_pepper"
+            },
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "chance": 8.0E-4,
+                  "condition": "minecraft:random_chance"
+                }
+              ],
+              "name": "foodcraft:peanut"
+            },
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "chance": 8.0E-4,
+                  "condition": "minecraft:random_chance"
+                }
+              ],
+              "name": "foodcraft:rice"
+            },
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "chance": 8.0E-4,
+                  "condition": "minecraft:random_chance"
+                }
+              ],
+              "name": "foodcraft:sticky_rice"
+            },
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "chance": 8.0E-4,
+                  "condition": "minecraft:random_chance"
+                }
+              ],
+              "name": "foodcraft:sweet_potato"
+            },
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "chance": 8.0E-4,
+                  "condition": "minecraft:random_chance"
+                }
+              ],
+              "name": "foodcraft:tomato"
+            },
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "chance": 8.0E-4,
+                  "condition": "minecraft:random_chance"
+                }
+              ],
+              "name": "foodcraft:grape"
+            },
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "chance": 8.0E-4,
+                  "condition": "minecraft:random_chance"
+                }
+              ],
+              "name": "foodcraft:white_radish"
+            },
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "chance": 8.0E-4,
+                  "condition": "minecraft:random_chance"
+                }
+              ],
+              "name": "foodcraft:cabbage"
+            },
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "chance": 8.0E-4,
+                  "condition": "minecraft:random_chance"
+                }
+              ],
+              "name": "foodcraft:strawberry"
+            },
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "chance": 8.0E-4,
+                  "condition": "minecraft:random_chance"
+                }
+              ],
+              "name": "foodcraft:mung_bean"
+            },
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "chance": 8.0E-4,
+                  "condition": "minecraft:random_chance"
+                }
+              ],
+              "name": "foodcraft:soybean"
+            },
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "chance": 8.0E-4,
+                  "condition": "minecraft:random_chance"
+                }
+              ],
+              "name": "foodcraft:adzuki_bean"
+            }
+          ]
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "foodcraft:crops"
+}

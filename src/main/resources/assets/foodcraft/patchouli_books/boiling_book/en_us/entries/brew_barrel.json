@@ -1,0 +1,15 @@
+{
+    "name": "Brew Barrel",
+    "icon": "foodcraft:brew_barrel",
+    "category": "foodcraft:machines",
+    "pages": [
+        {
+            "type": "text",
+            "text": "Brew Barrel machine can be used to create wines."
+        },
+        {
+            "type": "crafting",
+            "recipe": "foodcraft:brew_barrel"
+        }
+    ]
+}

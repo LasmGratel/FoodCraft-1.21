@@ -17,6 +17,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.SaplingBlock;
 import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.SugarCaneBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
 import net.minecraft.world.level.material.MapColor;
@@ -89,9 +90,12 @@ public class ModBlocks {
     public static final DeferredBlock<ModCropBlock> WHITE_RADISH;
     public static final DeferredBlock<ModCropBlock> CABBAGE;
     public static final DeferredBlock<ModCropBlock> STRAWBERRY;
+    public static final DeferredBlock<ModCropBlock> GRAPE;
     public static final DeferredBlock<ModCropBlock> MUNG_BEAN;
     public static final DeferredBlock<ModCropBlock> SOYBEAN;
     public static final DeferredBlock<ModCropBlock> ADZUKI_BEAN;
+
+    public static final DeferredBlock<SugarCaneBlock> GREEN_ONION;
 
     public static Properties miscBlock() {
         return Properties.ofFullCopy(Blocks.IRON_BLOCK);
@@ -182,8 +186,11 @@ public class ModBlocks {
         WHITE_RADISH = BLOCKS.register("white_radish", () -> new ModCropBlock(cropBlock(), ModItems.WHITE_RADISH));
         CABBAGE = BLOCKS.register("cabbage", () -> new ModCropBlock(cropBlock(), ModItems.CABBAGE));
         STRAWBERRY = BLOCKS.register("strawberry", () -> new ModCropBlock(cropBlock(), ModItems.STRAWBERRY));
+        GRAPE = BLOCKS.register("grape", () -> new ModCropBlock(cropBlock(), ModItems.GRAPE));
         MUNG_BEAN = BLOCKS.register("mung_bean", () -> new ModCropBlock(cropBlock(), ModItems.MUNG_BEAN));
         SOYBEAN = BLOCKS.register("soybean", () -> new ModCropBlock(cropBlock(), ModItems.SOYBEAN));
         ADZUKI_BEAN = BLOCKS.register("adzuki_bean", () -> new ModCropBlock(cropBlock(), ModItems.ADZUKI_BEAN));
+
+        GREEN_ONION = BLOCKS.register("green_onion", () -> new SugarCaneBlock(Properties.ofFullCopy(Blocks.SUGAR_CANE)));
     }
 }

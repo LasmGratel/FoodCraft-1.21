@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "XXX",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "tag": "c:flour"
+    },
+    "X": {
+      "tag": "c:eggs"
+    }
+  },
+  "result": {
+    "id": "foodcraft:cookie",
+    "count": 3
+  }
+}

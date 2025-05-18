@@ -1,0 +1,15 @@
+{
+    "name": "Stove",
+    "icon": "foodcraft:stove",
+    "category": "foodcraft:machines",
+    "pages": [
+        {
+            "type": "text",
+            "text": "Stove is an external heater."
+        },
+        {
+            "type": "crafting",
+            "recipe": "foodcraft:stove"
+        }
+    ]
+}

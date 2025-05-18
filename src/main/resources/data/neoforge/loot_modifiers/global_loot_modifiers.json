@@ -1,0 +1,11 @@
+{
+    "replace": false,
+    "entries": [
+        "foodcraft:crops_from_grass",
+        "foodcraft:fruits_from_oak",
+        "foodcraft:fruits_from_acacia",
+        "foodcraft:fruits_from_cherry",
+        "foodcraft:fruits_from_jungle",
+        "foodcraft:snacks_from_chest"
+    ]
+}

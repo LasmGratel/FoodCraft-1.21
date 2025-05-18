@@ -1,0 +1,39 @@
+{
+    "name": "来自三次元的饮料",
+    "icon": "foodcraft:cola",
+    "category": "foodcraft:drinks",
+    "pages": [
+        {
+            "type": "text",
+            "text": "律师函警告！"
+        },
+        {
+            "type": "spotlight",
+            "item": {
+                "item": "foodcraft:cola"
+            },
+            "text": "谁知道它是哪家公司生产的？也许是功夫可乐。"
+        },
+        {
+            "type": "spotlight",
+            "item": {
+                "item": "foodcraft:sprite"
+            },
+            "text": "加了气泡的白糖兑水，我不知道为什么会起这个名字。"
+        },
+        {
+            "type": "spotlight",
+            "item": {
+                "item": "foodcraft:fanta"
+            },
+            "text": "希望没有人在意它的历史..."
+        },
+        {
+            "type": "spotlight",
+            "item": {
+                "item": "foodcraft:sugar_with_water"
+            },
+            "text": "大家最喜欢喝的。"
+        }
+    ]
+}

@@ -14,6 +14,8 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -112,12 +114,14 @@ public class PanBlockEntity extends BaseBlockEntity implements HeatableBlockEnti
                         blockEntity.overcooked = true;
                         blockEntity.inventory.insertItem(3, new ItemStack(ModItems.OVERCOOKED_FOOD.get()), false);
                         blockEntity.inventory.getStackInSlot(2).setCount(0);
+                        level.playSound(null, blockPos, SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS, 1.0f, 1.0f);
                     }
                 } else {
                     if (!blockEntity.cooked) {
                         blockEntity.inventory.setStackInSlot(2, blockEntity.lastRecipe.value()
                             .getResultItem(null).copy());
                         blockEntity.cooked = true;
+                        level.playSound(null, blockPos, SoundEvents.ITEM_PICKUP, SoundSource.BLOCKS, 1.0f, 1.0f);
                     }
                 }
             }

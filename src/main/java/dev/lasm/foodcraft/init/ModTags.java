@@ -51,6 +51,7 @@ public class ModTags {
     public static final TagKey<Item> FRUITS = commonItemTag("fruits");
     public static final TagKey<Item> STRAWBERRY = commonItemTag("fruits/strawberry");
     public static final TagKey<Item> GRAPEFRUIT = commonItemTag("fruits/grapefruit");
+    public static final TagKey<Item> GRAPE = commonItemTag("fruits/grape");
     public static final TagKey<Item> CHERRY = commonItemTag("fruits/cherry");
     public static final TagKey<Item> COCONUT = commonItemTag("fruits/coconut");
     public static final TagKey<Item> BANANA = commonItemTag("fruits/banana");
@@ -67,6 +68,8 @@ public class ModTags {
     public static final TagKey<Item> PEAR = commonItemTag("fruits/pear");
     public static final TagKey<Item> ORANGE = commonItemTag("fruits/orange");
     public static final TagKey<Item> DATE = commonItemTag("fruits/date");
+
+    public static final TagKey<Item> JUICES = commonItemTag("juices");
 
     public static TagKey<Item> commonItemTag(String path) {
         return ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", path));

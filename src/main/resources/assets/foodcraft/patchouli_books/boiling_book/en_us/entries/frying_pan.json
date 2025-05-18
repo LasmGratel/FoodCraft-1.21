@@ -1,0 +1,15 @@
+{
+    "name": "Frying Pan",
+    "icon": "foodcraft:frying_pan",
+    "category": "foodcraft:machines",
+    "pages": [
+        {
+            "type": "text",
+            "text": "Frying Pan can be used to fry foods."
+        },
+        {
+            "type": "crafting",
+            "recipe": "foodcraft:frying_pan"
+        }
+    ]
+}

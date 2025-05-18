@@ -1,0 +1,13 @@
+{
+    "replace": false,
+    "values": [
+        "foodcraft:machine_casing",
+        "foodcraft:pressure_cooker",
+        "foodcraft:pot",
+        "foodcraft:stove",
+        "foodcraft:beverage_making",
+        "foodcraft:frying_pan",
+        "foodcraft:pan",
+        "foodcraft:mill"
+    ]
+}

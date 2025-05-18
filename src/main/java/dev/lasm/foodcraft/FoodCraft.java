@@ -95,6 +95,13 @@ public final class FoodCraft {
     }
 
     private void registerCapabilities(RegisterCapabilitiesEvent event) {
+        event.registerBlockEntity(FluidHandler.BLOCK, ModBlockEntityTypes.BEVERAGE_MAKING.get(), (be, side) -> be.fluidTank);
+        event.registerBlockEntity(ItemHandler.BLOCK, ModBlockEntityTypes.BEVERAGE_MAKING.get(), (be, side) -> switch (side) {
+            case DOWN -> new RangedWrapper(be.inventory, 4, 5);
+            case UP -> new RangedWrapper(be.inventory, 0, 4);
+            case null, default -> null;
+        });
+
         event.registerBlockEntity(FluidHandler.BLOCK, ModBlockEntityTypes.BREW_BARREL.get(), (be, side) -> be.fluidTank);
         event.registerBlockEntity(ItemHandler.BLOCK, ModBlockEntityTypes.BREW_BARREL.get(), (be, side) -> switch (side) {
             case DOWN -> new RangedWrapper(be.inventory, 4, 5);
@@ -115,6 +122,27 @@ public final class FoodCraft {
             case null -> null;
             default -> new RangedWrapper(be.inventory, 0, 1);
         });
+
+        event.registerBlockEntity(ItemHandler.BLOCK, ModBlockEntityTypes.PAN.get(), (be, side) -> switch (side) {
+            case DOWN -> new RangedWrapper(be.inventory, 2, 3);
+            case UP -> new RangedWrapper(be.inventory, 0, 2);
+            case null, default -> null;
+        });
+
+        event.registerBlockEntity(ItemHandler.BLOCK, ModBlockEntityTypes.POT.get(), (be, side) -> switch (side) {
+            case DOWN -> new RangedWrapper(be.inventory, 12, 14);
+            case UP -> new RangedWrapper(be.inventory, 0, 12);
+            case null, default -> null;
+        });
+
+        event.registerBlockEntity(FluidHandler.BLOCK, ModBlockEntityTypes.PRESSURE_COOKER.get(), (be, side) -> be.fluidTank);
+        event.registerBlockEntity(ItemHandler.BLOCK, ModBlockEntityTypes.PRESSURE_COOKER.get(), (be, side) -> switch (side) {
+            case DOWN -> new RangedWrapper(be.inventory, 3, 4);
+            case UP -> new RangedWrapper(be.inventory, 0, 3);
+            case null, default -> null;
+        });
+
+        event.registerBlockEntity(ItemHandler.BLOCK, ModBlockEntityTypes.STOVE.get(), (be, side) -> be.inventory);
     }
 
     private void registerScreens(RegisterMenuScreensEvent event) {

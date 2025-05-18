@@ -26,6 +26,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluids;
 import net.neoforged.neoforge.common.util.Lazy;
+import net.neoforged.neoforge.fluids.capability.IFluidHandler.FluidAction;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import net.neoforged.neoforge.items.wrapper.RangedWrapper;
 import org.jetbrains.annotations.Nullable;
@@ -117,6 +118,7 @@ public class BrewBarrelBlockEntity extends BaseBlockEntity implements MenuProvid
                 blockEntity.inventory.extractItem(2, 1, false);
                 blockEntity.inventory.extractItem(3, 1, false);
 
+                blockEntity.fluidTank.drain(recipe.value().getFluidInput(), FluidAction.EXECUTE);
                 blockEntity.inventory.setStackInSlot(5, recipe.value().getResultItem(null).copy());
                 blockEntity.setChanged();
                 detectLit(level, blockPos, blockState, true);

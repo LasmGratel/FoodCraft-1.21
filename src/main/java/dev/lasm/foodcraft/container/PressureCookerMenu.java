@@ -70,12 +70,14 @@ public class PressureCookerMenu extends BaseMachineMenu<PressureCookerBlockEntit
 
         var dataInventory = tileEntity.inventory;
 
-        addSlot(new SlotItemHandler(dataInventory, 0, 37, 59));
-        addSlot(new SlotItemHandler(dataInventory, 1, 95, 59));
 
-        addSlot(new SlotItemHandler(dataInventory, 2, 58, 31));
 
-        addSlot(new OutputSlotItemHandler(dataInventory, 3, 130, 31));
+        addSlot(new SlotItemHandler(dataInventory, 0, 95, 59));
+        addSlot(new SlotItemHandler(dataInventory, 1, 37, 59));
+        addSlot(new SlotItemHandler(dataInventory, 2, 47, 31));
+        addSlot(new SlotItemHandler(dataInventory, 3, 71, 31));
+        addSlot(new SlotItemHandler(dataInventory, 4, 95, 31));
+        addSlot(new OutputSlotItemHandler(dataInventory, 5, 145, 31));
 
 
         for (int k = 0; k < 3; k++) {

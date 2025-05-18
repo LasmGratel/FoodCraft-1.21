@@ -1,0 +1,16 @@
+// 1.21.1	2025-05-18T17:39:17.4217144	Loot Tables
+50f2f14d3ee77e753618b25f827178cbebadc7be data/foodcraft/loot_table/acacia_tree_drops.json
+846c142fbd210e85bc3a6264bfd74088df5b7780 data/foodcraft/loot_table/blocks/beverage_making.json
+332fd6a5c21f715e166c6f16835bfe4ff6b7ae0d data/foodcraft/loot_table/blocks/brew_barrel.json
+d6874d0411d618cfc2bd5c6547a418256dd19567 data/foodcraft/loot_table/blocks/chopping_board.json
+5ed9553461e28af36a734d95a61c1310f142a215 data/foodcraft/loot_table/blocks/frying_pan.json
+2e2c083aac896bd957389316a9d20ae896866958 data/foodcraft/loot_table/blocks/machine_casing.json
+1a10ea11dea6105d89f0bc4ae69f8b9a903b455f data/foodcraft/loot_table/blocks/mill.json
+9b58fcd4b709a6cde8c5c2bec4a2a2cf567b97b8 data/foodcraft/loot_table/blocks/pan.json
+8a58fa7c46977634b87fa696d1bd0f4eb18322cb data/foodcraft/loot_table/blocks/pot.json
+ae0584b07bd6af9ec6208622d967d4413689719e data/foodcraft/loot_table/blocks/pressure_cooker.json
+f5d165dafbcf4b9486caf416a03d8211a21a0e2f data/foodcraft/loot_table/blocks/stove.json
+e89c7b441bd2fda5f877f6a39a3a03d89e89eb9b data/foodcraft/loot_table/cherry_tree_drops.json
+5385c6785f7ad8ad6bffa66e3a592a5ac4427382 data/foodcraft/loot_table/crops.json
+d9cf6dd44d27e23a0a639a5619fe12adef94a9ad data/foodcraft/loot_table/jungle_tree_drops.json
+5ac69e8174ccd0578d19059a2967efc6a684dc63 data/foodcraft/loot_table/oak_tree_drops.json

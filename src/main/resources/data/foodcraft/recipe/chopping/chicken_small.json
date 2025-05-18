@@ -3,7 +3,7 @@
     "ingredients": [
         [],
         {
-            "tag": "c:foods/cooked_chicken"
+            "item": "foodcraft:chicken_medium"
         },
         []
     ],

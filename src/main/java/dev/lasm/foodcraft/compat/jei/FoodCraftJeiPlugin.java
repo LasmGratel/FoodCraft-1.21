@@ -3,11 +3,14 @@ package dev.lasm.foodcraft.compat.jei;
 import dev.lasm.foodcraft.FoodCraft;
 import dev.lasm.foodcraft.client.screen.BrewBarrelScreen;
 import dev.lasm.foodcraft.client.screen.FryingPanScreen;
+import dev.lasm.foodcraft.container.BeverageMakingMenu;
 import dev.lasm.foodcraft.container.BrewBarrelMenu;
 import dev.lasm.foodcraft.container.ChoppingBoardMenu;
 import dev.lasm.foodcraft.container.FryingPanMenu;
+import dev.lasm.foodcraft.container.MillMenu;
 import dev.lasm.foodcraft.container.PanMenu;
 import dev.lasm.foodcraft.container.PotMenu;
+import dev.lasm.foodcraft.container.PressureCookerMenu;
 import dev.lasm.foodcraft.init.ModBlocks;
 import dev.lasm.foodcraft.init.ModMenuTypes;
 import dev.lasm.foodcraft.init.ModRecipeTypes;
@@ -70,6 +73,9 @@ public class FoodCraftJeiPlugin implements IModPlugin {
         registration.addRecipeTransferHandler(BrewBarrelMenu.class, ModMenuTypes.BREW_BARREL.get(), BREWING_RECIPE, 1, 3, 6, 36);
         registration.addRecipeTransferHandler(FryingPanMenu.class, ModMenuTypes.FRYING_PAN.get(), FRYING_RECIPE, 2, 1, 4, 36);
         registration.addRecipeTransferHandler(ChoppingBoardMenu.class, ModMenuTypes.CHOPPING_BOARD.get(), CHOPPING_RECIPE, 1, 3, 5, 36);
+        registration.addRecipeTransferHandler(PressureCookerMenu.class, ModMenuTypes.PRESSURE_COOKER.get(), PRESSURE_COOKING_RECIPE, 2, 3, 6, 36);
+        registration.addRecipeTransferHandler(BeverageMakingMenu.class, ModMenuTypes.BEVERAGE_MAKING.get(), BEVERAGE_MAKING_RECIPE, 3, 1, 5, 36);
+        registration.addRecipeTransferHandler(MillMenu.class, ModMenuTypes.MILL.get(), MILLING_RECIPE, 1, 1, 3, 36);
     }
 
     @Override

@@ -51,6 +51,7 @@ public class ItemTags extends ItemTagsProvider {
             ModItems.PERSIMMON.getKey(),
             ModItems.POMEGRANATE.getKey(),
             ModItems.HAWTHORN.getKey(),
+            ModItems.GRAPE.getKey(),
             ModItems.LOQUAT.getKey(),
             ModItems.LEMON.getKey(),
             ModItems.PAPAYA.getKey(),
@@ -80,6 +81,7 @@ public class ItemTags extends ItemTagsProvider {
         tag(ModTags.FRUITS).replace(false).add(
             ModItems.STRAWBERRY.getKey(),
             ModItems.GRAPEFRUIT.getKey(),
+            ModItems.GRAPE.getKey(),
             ModItems.CHERRY.getKey(),
             ModItems.COCONUT.getKey(),
             ModItems.BANANA.getKey(),
@@ -96,6 +98,28 @@ public class ItemTags extends ItemTagsProvider {
             ModItems.PEAR.getKey(),
             ModItems.ORANGE.getKey(),
             ModItems.DATE.getKey()
+        );
+
+        tag(ModTags.JUICES).replace(false).add(
+            ModItems.STRAWBERRY_JUICE.getKey(),
+            ModItems.GRAPEFRUIT_JUICE.getKey(),
+            ModItems.GRAPE_JUICE.getKey(),
+            ModItems.CHERRY_JUICE.getKey(),
+            ModItems.COCONUT_JUICE.getKey(),
+            ModItems.BANANA_JUICE.getKey(),
+            ModItems.PEACH_JUICE.getKey(),
+            ModItems.PERSIMMON_JUICE.getKey(),
+            ModItems.POMEGRANATE_JUICE.getKey(),
+            ModItems.HAWTHORN_JUICE.getKey(),
+            ModItems.LOQUAT_JUICE.getKey(),
+            ModItems.LEMON_JUICE.getKey(),
+            ModItems.PAPAYA_JUICE.getKey(),
+            ModItems.LONGAN_JUICE.getKey(),
+            ModItems.MANGO_JUICE.getKey(),
+            ModItems.LITCHI_JUICE.getKey(),
+            ModItems.PEAR_JUICE.getKey(),
+            ModItems.ORANGE_JUICE.getKey(),
+            ModItems.DATE_JUICE.getKey()
         );
 
         tag(ModTags.CORN).replace(false).add(ModItems.CORN.getKey());
@@ -117,6 +141,7 @@ public class ItemTags extends ItemTagsProvider {
 
         tag(ModTags.STRAWBERRY).replace(false).add(ModItems.STRAWBERRY.getKey());
         tag(ModTags.GRAPEFRUIT).replace(false).add(ModItems.GRAPEFRUIT.getKey());
+        tag(ModTags.GRAPE).replace(false).add(ModItems.GRAPE.getKey());
         tag(ModTags.CHERRY).replace(false).add(ModItems.CHERRY.getKey());
         tag(ModTags.COCONUT).replace(false).add(ModItems.COCONUT.getKey());
         tag(ModTags.BANANA).replace(false).add(ModItems.BANANA.getKey());
@@ -168,6 +193,64 @@ public class ItemTags extends ItemTagsProvider {
         tag(ModTags.commonItemTag("crops/pear")).replace(false).add(ModItems.PEAR.getKey());
         tag(ModTags.commonItemTag("crops/orange")).replace(false).add(ModItems.ORANGE.getKey());
         tag(ModTags.commonItemTag("crops/date")).replace(false).add(ModItems.DATE.getKey());
+        tag(ModTags.commonItemTag("crops/grape")).replace(false).add(ModItems.GRAPE.getKey());
+
+        // 为 STRAWBERRY_JUICE 添加 Tag (strawberry_juice -> strawberryjuice)
+        tag(ModTags.commonItemTag("juices/strawberryjuice")).replace(false).add(ModItems.STRAWBERRY_JUICE.getKey());
+
+// 为 GRAPEFRUIT_JUICE 添加 Tag (grapefruit_juice -> grapefruitjuice)
+        tag(ModTags.commonItemTag("juices/grapefruitjuice")).replace(false).add(ModItems.GRAPEFRUIT_JUICE.getKey());
+
+// 为 GRAPE_JUICE 添加 Tag (grape_juice -> grapejuice)
+        tag(ModTags.commonItemTag("juices/grapejuice")).replace(false).add(ModItems.GRAPE_JUICE.getKey());
+
+// 为 CHERRY_JUICE 添加 Tag (cherry_juice -> cherryjuice)
+        tag(ModTags.commonItemTag("juices/cherryjuice")).replace(false).add(ModItems.CHERRY_JUICE.getKey());
+
+// 为 COCONUT_JUICE 添加 Tag (coconut_juice -> coconutjuice)
+        tag(ModTags.commonItemTag("juices/coconutjuice")).replace(false).add(ModItems.COCONUT_JUICE.getKey());
+
+// 为 BANANA_JUICE 添加 Tag (banana_juice -> bananajuice)
+        tag(ModTags.commonItemTag("juices/bananajuice")).replace(false).add(ModItems.BANANA_JUICE.getKey());
+
+// 为 PEACH_JUICE 添加 Tag (peach_juice -> peachjuice)
+        tag(ModTags.commonItemTag("juices/peachjuice")).replace(false).add(ModItems.PEACH_JUICE.getKey());
+
+// 为 PERSIMMON_JUICE 添加 Tag (persimmon_juice -> persimmonjuice)
+        tag(ModTags.commonItemTag("juices/persimmonjuice")).replace(false).add(ModItems.PERSIMMON_JUICE.getKey());
+
+// 为 POMEGRANATE_JUICE 添加 Tag (pomegranate_juice -> pomegranatejuice)
+        tag(ModTags.commonItemTag("juices/pomegranatejuice")).replace(false).add(ModItems.POMEGRANATE_JUICE.getKey());
+
+// 为 HAWTHORN_JUICE 添加 Tag (hawthorn_juice -> hawthornjuice)
+        tag(ModTags.commonItemTag("juices/hawthornjuice")).replace(false).add(ModItems.HAWTHORN_JUICE.getKey());
+
+// 为 LOQUAT_JUICE 添加 Tag (loquat_juice -> loquatjuice)
+        tag(ModTags.commonItemTag("juices/loquatjuice")).replace(false).add(ModItems.LOQUAT_JUICE.getKey());
+
+// 为 LEMON_JUICE 添加 Tag (lemon_juice -> lemonjuice)
+        tag(ModTags.commonItemTag("juices/lemonjuice")).replace(false).add(ModItems.LEMON_JUICE.getKey());
+
+// 为 PAPAYA_JUICE 添加 Tag (papaya_juice -> papayajuice)
+        tag(ModTags.commonItemTag("juices/papayajuice")).replace(false).add(ModItems.PAPAYA_JUICE.getKey());
+
+// 为 LONGAN_JUICE 添加 Tag (longan_juice -> longanjuice)
+        tag(ModTags.commonItemTag("juices/longanjuice")).replace(false).add(ModItems.LONGAN_JUICE.getKey()); // 修正：这里应该是 LONGAN_JUICE
+
+// 为 MANGO_JUICE 添加 Tag (mango_juice -> mangojuice)
+        tag(ModTags.commonItemTag("juices/mangojuice")).replace(false).add(ModItems.MANGO_JUICE.getKey());
+
+// 为 LITCHI_JUICE 添加 Tag (litchi_juice -> litchijuice)
+        tag(ModTags.commonItemTag("juices/litchijuice")).replace(false).add(ModItems.LITCHI_JUICE.getKey());
+
+// 为 PEAR_JUICE 添加 Tag (pear_juice -> pearjuice)
+        tag(ModTags.commonItemTag("juices/pearjuice")).replace(false).add(ModItems.PEAR_JUICE.getKey());
+
+// 为 ORANGE_JUICE 添加 Tag (orange_juice -> orangejuice)
+        tag(ModTags.commonItemTag("juices/orangejuice")).replace(false).add(ModItems.ORANGE_JUICE.getKey());
+
+// 为 DATE_JUICE 添加 Tag (date_juice -> datejuice)
+        tag(ModTags.commonItemTag("juices/datejuice")).replace(false).add(ModItems.DATE_JUICE.getKey());
 
         tag(net.minecraft.tags.ItemTags.SAPLINGS).replace(false).add(
             ModItems.COCONUT_SAPLING.getKey(),

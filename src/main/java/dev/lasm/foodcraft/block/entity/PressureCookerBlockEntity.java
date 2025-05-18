@@ -11,6 +11,7 @@ import dev.lasm.foodcraft.recipe.PressureCookingRecipe;
 import dev.lasm.foodcraft.util.FluidHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup.Provider;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -28,6 +29,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluids;
 import net.neoforged.neoforge.common.util.Lazy;
+import net.neoforged.neoforge.fluids.capability.IFluidHandler.FluidAction;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import net.neoforged.neoforge.items.wrapper.RangedWrapper;
 import org.jetbrains.annotations.NotNull;
@@ -50,12 +52,12 @@ public class PressureCookerBlockEntity extends BaseBlockEntity implements MenuPr
     private final CachedCheck<FluidAttachedRecipeInput, PressureCookingRecipe> quickCheck;
 
     public PressureCookerBlockEntity(BlockPos pos, BlockState blockState) {
-        super(ModBlockEntityTypes.FRYING_PAN.get(), pos, blockState);
-        this.inventory = new ItemStackHandler(4) {
+        super(ModBlockEntityTypes.PRESSURE_COOKER.get(), pos, blockState);
+        this.inventory = new ItemStackHandler(6) {
             @Override
             public boolean isItemValid(int slot, ItemStack stack) {
                 return switch (slot) {
-                    case 1 -> stack.getBurnTime(RecipeType.SMELTING) > 0;
+                    case 0 -> stack.getBurnTime(RecipeType.SMELTING) > 0;
                     default -> true;
                 };
             }
@@ -66,7 +68,7 @@ public class PressureCookerBlockEntity extends BaseBlockEntity implements MenuPr
             }
         };
 
-        this.fluidTank = new SyncFluidTank(4000);
+        this.fluidTank = new SyncFluidTank(8000);
         fluidTank.setValidator(fluidStack -> fluidStack.getFluid().isSame(Fluids.WATER));
         this.quickCheck = RecipeManager.createCheck(ModRecipeTypes.PRESSURE_COOKING.get());
     }
@@ -102,7 +104,7 @@ public class PressureCookerBlockEntity extends BaseBlockEntity implements MenuPr
             tag.putString("LastRecipe", lastRecipe.id().toString());
     }
 
-    private final Lazy<FluidRecipeWrapper> recipeWrapperLazy = Lazy.of(() -> new FluidRecipeWrapper(new RangedWrapper(inventory, 2, 3), fluidTank));
+    private final Lazy<FluidRecipeWrapper> recipeWrapperLazy = Lazy.of(() -> new FluidRecipeWrapper(new RangedWrapper(inventory, 2, 5), fluidTank));
 
     public static void tick(Level level, BlockPos blockPos, BlockState blockState, @NotNull PressureCookerBlockEntity blockEntity) {
         if (blockEntity.burnTime > 0) {
@@ -110,16 +112,16 @@ public class PressureCookerBlockEntity extends BaseBlockEntity implements MenuPr
             blockEntity.setChanged();
         }
 
-        FluidHelper.handleFluidSlot(blockEntity.inventory, 0, blockEntity.fluidTank);
+        FluidHelper.handleFluidSlot(blockEntity.inventory, 1, blockEntity.fluidTank);
 
         if (blockEntity.cookingTime > 0) {
             if (blockEntity.burnTime > 0) {
                 blockEntity.cookingTime--;
                 blockEntity.setChanged();
             } else {
-                var fuel = blockEntity.inventory.extractItem(1, 1, true).getBurnTime(RecipeType.SMELTING);
+                var fuel = blockEntity.inventory.extractItem(0, 1, true).getBurnTime(RecipeType.SMELTING);
                 if (fuel > 0) {
-                    blockEntity.inventory.extractItem(1, 1, false);
+                    blockEntity.inventory.extractItem(0, 1, false);
                     blockEntity.cookingTime--;
                     blockEntity.burnTime += fuel;
                     blockEntity.maxBurnTime = fuel;
@@ -134,8 +136,8 @@ public class PressureCookerBlockEntity extends BaseBlockEntity implements MenuPr
         if (blockEntity.cookingTime == 0 && blockEntity.lastRecipe != null) {
             var result = blockEntity.lastRecipe.value().getResultItem(null).copy();
 
-            if (blockEntity.inventory.insertItem(3, result, true) == ItemStack.EMPTY) {
-                blockEntity.inventory.insertItem(3, result, false);
+            if (blockEntity.inventory.insertItem(5, result, true) == ItemStack.EMPTY) {
+                blockEntity.inventory.insertItem(5, result, false);
                 blockEntity.setChanged();
                 blockEntity.lastRecipe = null;
             } else {
@@ -146,13 +148,20 @@ public class PressureCookerBlockEntity extends BaseBlockEntity implements MenuPr
         if (blockEntity.lastRecipe == null) {
             var recipe = blockEntity.quickCheck.getRecipeFor(blockEntity.recipeWrapperLazy.get(), level).orElse(null);
             if (recipe != null) {
-                if (blockEntity.burnTime == 0 && blockEntity.inventory.getStackInSlot(3).isEmpty()) {
+                if (blockEntity.burnTime == 0 && blockEntity.inventory.getStackInSlot(0).isEmpty()) {
                     return; // A tricky solution
+                }
+                if (!blockEntity.inventory.insertItem(5, recipe.value().getResultItem(null), true).isEmpty()) {
+                    return; // Cannot insert
                 }
                 blockEntity.lastRecipe = recipe;
                 blockEntity.cookingTime = WORK_TIME;
                 blockEntity.maxCookingTime = WORK_TIME;
                 blockEntity.inventory.extractItem(2, 1, false);
+                blockEntity.inventory.extractItem(3, 1, false);
+                blockEntity.inventory.extractItem(4, 1, false);
+
+                blockEntity.fluidTank.drain(recipe.value().getFluidInput(), FluidAction.EXECUTE);
                 blockEntity.setChanged();
                 detectLit(level, blockPos, blockState, true);
             } else {

@@ -1,0 +1,32 @@
+{
+    "name": "Real World Drinks",
+    "icon": "foodcraft:cola",
+    "category": "foodcraft:drinks",
+    "pages": [
+        {
+            "type": "text",
+            "text": "Won't this receive copyright complaint?"
+        },
+        {
+            "type": "spotlight",
+            "item": {
+                "item": "foodcraft:cola"
+            },
+            "text": "Maybe it is Kungfu Cola, who knows?"
+        },
+        {
+            "type": "spotlight",
+            "item": {
+                "item": "foodcraft:sprite"
+            },
+            "text": "When I say Sprite I meant TextureAtlasSprite, not Sprite from some random companies"
+        },
+        {
+            "type": "spotlight",
+            "item": {
+                "item": "foodcraft:fanta"
+            },
+            "text": "Hope nobody cares about the history of Fanta."
+        }
+    ]
+}

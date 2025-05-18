@@ -6,7 +6,7 @@
       {
         "type": "neoforge:or",
         "values": [
-          "#minecraft:has_structure/village_plains"
+          "#c:is_plains"
         ]
       },
       {

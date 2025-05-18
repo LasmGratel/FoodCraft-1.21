@@ -1,5 +1,5 @@
-// 1.21.1	2025-05-14T12:28:24.5062317	Tags for minecraft:item mod id foodcraft
-16858e2e55d7a1db4155101bc377b54d558c84ff data/c/tags/item/crops.json
+// 1.21.1	2025-05-18T17:39:17.424714	Tags for minecraft:item mod id foodcraft
+e26006235142534fe97a576817ccea1854aaa8af data/c/tags/item/crops.json
 19a2c885d02cc5b7ea3e346f667cf34fe82bc5e1 data/c/tags/item/crops/adzuki_bean.json
 ff4057e97597e778a41ac01f09cb40d48085747e data/c/tags/item/crops/banana.json
 2c7fe784a0fc2968af9cf27aa2886d238c48c7c3 data/c/tags/item/crops/cabbage.json
@@ -10,6 +10,7 @@ c7657b87d63443336cb495afd69c8a88db86d4cc data/c/tags/item/crops/cucumber.json
 ffb5d30832450fcaba5daba240eb838cc2a2fe89 data/c/tags/item/crops/date.json
 2396b55271b210d9d45be5a3f9a1e0c800ca71ad data/c/tags/item/crops/eggplant.json
 f19f1ff7304a169548f3ace1566e435a1a008d6c data/c/tags/item/crops/facing_heaven_pepper.json
+72858dd169fc7cd1a9fbbc414f1ac65a5c5bc39a data/c/tags/item/crops/grape.json
 232b8b49368344b0055d51afac2afcc1ef784d9b data/c/tags/item/crops/grapefruit.json
 31518fe0e3ec3649df9b82b0c7b07c9d692feb40 data/c/tags/item/crops/green_onion.json
 c12d5c508c893613f77918320fe0f087021b0a9e data/c/tags/item/crops/green_pepper.json
@@ -35,11 +36,12 @@ c7833bb902d6077e9c1c5d956d6ade13bb9f4815 data/c/tags/item/crops/sweet_potato.jso
 88c945887d938edcf9a67397c10fdf13d16796af data/c/tags/item/crops/tomato.json
 1d222581166c65a2cd42e496127976bc9d09f433 data/c/tags/item/crops/white_radish.json
 fbf10fb6c5f14274ace07854d87a91712b28badc data/c/tags/item/foods/berry.json
-3680952569d3c45ae163423df0c6225d46cba2e2 data/c/tags/item/fruits.json
+da27811c0ca7c0454c0abba782edcb68d4edb1a9 data/c/tags/item/fruits.json
 ff4057e97597e778a41ac01f09cb40d48085747e data/c/tags/item/fruits/banana.json
 03634c3f7735331f8421a90c9eb618e120afc699 data/c/tags/item/fruits/cherry.json
 c6d78e6e3f6b796aeb79bb816581247ed186e177 data/c/tags/item/fruits/coconut.json
 ffb5d30832450fcaba5daba240eb838cc2a2fe89 data/c/tags/item/fruits/date.json
+72858dd169fc7cd1a9fbbc414f1ac65a5c5bc39a data/c/tags/item/fruits/grape.json
 232b8b49368344b0055d51afac2afcc1ef784d9b data/c/tags/item/fruits/grapefruit.json
 3600cc99cc784406f64fc000142fa9a286b9f557 data/c/tags/item/fruits/hawthorn.json
 b6b8bd39eb4850da71dad3574795e1b006410efc data/c/tags/item/fruits/lemon.json
@@ -54,6 +56,26 @@ be1e04d2766cbfc7bce158063150898a4a527297 data/c/tags/item/fruits/pear.json
 aafa2f84d182b9341a5d575c35a006db8fe61ee0 data/c/tags/item/fruits/persimmon.json
 112c83b52ea33682cabfdc2841c666c59ac3838f data/c/tags/item/fruits/pomegranate.json
 fbf10fb6c5f14274ace07854d87a91712b28badc data/c/tags/item/fruits/strawberry.json
+7bd70991b9382d56ef39b46c0337310f555f667c data/c/tags/item/juices.json
+26542306b19a6ce698e9b13c77a3269e830cd5fa data/c/tags/item/juices/bananajuice.json
+94dd766cd4fbd9fe81c7e17ad7848c14263c5f2f data/c/tags/item/juices/cherryjuice.json
+4654116144f16bf0dc4661d736824863fc6f1850 data/c/tags/item/juices/coconutjuice.json
+45e0905cccafaf575b6cbf2359948e7a00228e10 data/c/tags/item/juices/datejuice.json
+b67e8a23e929bffca91c9d34719abdd5945c71ce data/c/tags/item/juices/grapefruitjuice.json
+8d9865f30632a192ba8fdde0ff169fa4fcad03b4 data/c/tags/item/juices/grapejuice.json
+55797da1cfcd5b75091a0c971f0293a0116fa840 data/c/tags/item/juices/hawthornjuice.json
+9dec0706ece432ff31e91130d385f5ad23f92133 data/c/tags/item/juices/lemonjuice.json
+7ddbf88cc1465d16ff099385e85a766fe4890a10 data/c/tags/item/juices/litchijuice.json
+949470f75deeeb0298a1d4e586f88672f02d1858 data/c/tags/item/juices/longanjuice.json
+1b98aa3610e25eb56453a82ce2543ac2ec6af307 data/c/tags/item/juices/loquatjuice.json
+56455826b139bc6fc3900245f1b4a440e5916027 data/c/tags/item/juices/mangojuice.json
+0ce7c442a477abaef80dfcd76ce7085679e6bc3e data/c/tags/item/juices/orangejuice.json
+06ca590f2099513242965f010151166a81e47d78 data/c/tags/item/juices/papayajuice.json
+41ae39c619e4024a2aa2319f180004fda4bd2292 data/c/tags/item/juices/peachjuice.json
+fb6f2a9e8517b609fdca6d540149012ffe672966 data/c/tags/item/juices/pearjuice.json
+bd5002233417821cd46243eb5fcbea2f11521e89 data/c/tags/item/juices/persimmonjuice.json
+4e2fdbc2e4d45873edb10fed17837f77ce02d989 data/c/tags/item/juices/pomegranatejuice.json
+9711b826478425fc54326c263ee2cd957372bb8d data/c/tags/item/juices/strawberryjuice.json
 afd0a0242730761dffcbd097bb3753f8d7622cfb data/c/tags/item/vegetables.json
 2c7fe784a0fc2968af9cf27aa2886d238c48c7c3 data/c/tags/item/vegetables/cabbage.json
 475f2518a383f8c2a99fc0491e4253484ab64f23 data/c/tags/item/vegetables/corn.json

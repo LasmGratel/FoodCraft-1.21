@@ -1,0 +1,5 @@
+{
+    "name": "饮料",
+    "description": "通常需要$(l:beverage_making)饮料制作机$()或$(l:brew_barrel)酿桶$()制作",
+    "icon": "foodcraft:cola"
+}

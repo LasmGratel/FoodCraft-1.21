@@ -1,0 +1,60 @@
+{
+    "name": "Fruit Wine",
+    "icon": "foodcraft:peach_liqueur",
+    "category": "foodcraft:drinks",
+    "pages": [
+        {
+            "type": "text",
+            "text": "These wines are made from fruits and does no effects."
+        },
+        {
+            "type": "spotlight",
+            "item": {
+                "item": "foodcraft:grape_liqueur"
+            },
+            "text": ""
+        },
+        {
+            "type": "spotlight",
+            "item": {
+                "item": "foodcraft:litchi_liqueur"
+            },
+            "text": ""
+        },
+        {
+            "type": "spotlight",
+            "item": {
+                "item": "foodcraft:mango_liqueur"
+            },
+            "text": ""
+        },
+        {
+            "type": "spotlight",
+            "item": {
+                "item": "foodcraft:peach_liqueur"
+            },
+            "text": ""
+        },
+        {
+            "type": "spotlight",
+            "item": {
+                "item": "foodcraft:lemon_liqueur"
+            },
+            "text": ""
+        },
+        {
+            "type": "spotlight",
+            "item": {
+                "item": "foodcraft:pomegranate_liqueur"
+            },
+            "text": ""
+        },
+        {
+            "type": "spotlight",
+            "item": {
+                "item": "foodcraft:apple_liqueur"
+            },
+            "text": ""
+        }
+    ]
+}

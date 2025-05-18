@@ -1,0 +1,15 @@
+{
+    "name": "Beverage Making",
+    "icon": "foodcraft:beverage_making",
+    "category": "foodcraft:machines",
+    "pages": [
+        {
+            "type": "text",
+            "text": "Beverage Making machine can be used to create drinks."
+        },
+        {
+            "type": "crafting",
+            "recipe": "foodcraft:beverage_making"
+        }
+    ]
+}

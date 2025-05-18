@@ -30,7 +30,7 @@ public class PressureCookerScreen extends BaseContainerScreen<PressureCookerMenu
         super.renderTooltip(guiGraphics, x, y);
 
         renderLit(guiGraphics, 121, 61);
-        renderBurn(guiGraphics, 92, 30);
+        renderBurn(guiGraphics, 118, 30);
     }
 
     @Override

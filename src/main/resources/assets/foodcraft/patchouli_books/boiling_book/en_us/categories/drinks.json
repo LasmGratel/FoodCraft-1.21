@@ -1,0 +1,5 @@
+{
+    "name": "Drinks",
+    "description": "Drinks in this mod, usually require a $(l:beverage_making)Beverage Making$() machine to do.",
+    "icon": "foodcraft:cola"
+}

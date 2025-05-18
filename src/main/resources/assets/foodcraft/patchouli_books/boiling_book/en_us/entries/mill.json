@@ -1,0 +1,15 @@
+{
+    "name": "Mill",
+    "icon": "foodcraft:mill",
+    "category": "foodcraft:machines",
+    "pages": [
+        {
+            "type": "text",
+            "text": "Mill can be used to mill ingredients."
+        },
+        {
+            "type": "crafting",
+            "recipe": "foodcraft:mill"
+        }
+    ]
+}

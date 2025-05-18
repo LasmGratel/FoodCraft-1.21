@@ -1,14 +1,19 @@
 package dev.lasm.foodcraft.init;
 
 import dev.lasm.foodcraft.FoodCraft;
+import java.util.List;
 import net.minecraft.core.Holder;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.BoneMealItem;
 import net.minecraft.world.item.DiggerItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.Tiers;
+import net.minecraft.world.item.component.ItemLore;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -22,6 +27,7 @@ public class ModItems {
     public static final DeferredItem<Item> GOLD_KNIFE;
     public static final DeferredItem<Item> DIAMOND_KNIFE;
     public static final DeferredItem<Item> EMERALD_KNIFE;
+    public static final DeferredItem<Item> WRENCH;
 
      // Plants
     public static final DeferredItem<BlockItem> CORN;
@@ -40,6 +46,7 @@ public class ModItems {
     public static final DeferredItem<BlockItem> MUNG_BEAN;
     public static final DeferredItem<BlockItem> SOYBEAN;
     public static final DeferredItem<BlockItem> ADZUKI_BEAN;
+    public static final DeferredItem<BlockItem> GRAPE;
     public static final DeferredItem<Item> GRAPEFRUIT;
     public static final DeferredItem<Item> CHERRY;
     public static final DeferredItem<Item> COCONUT;
@@ -57,8 +64,29 @@ public class ModItems {
     public static final DeferredItem<Item> PEAR;
     public static final DeferredItem<Item> ORANGE;
     public static final DeferredItem<Item> DATE;
-    public static final DeferredItem<Item> GREEN_ONION;
+    public static final DeferredItem<BlockItem> GREEN_ONION;
 
+    public static final DeferredItem<Item> GRAPEFRUIT_JUICE;
+    public static final DeferredItem<Item> CHERRY_JUICE;
+    public static final DeferredItem<Item> COCONUT_JUICE;
+    public static final DeferredItem<Item> BANANA_JUICE;
+    public static final DeferredItem<Item> PEACH_JUICE;
+    public static final DeferredItem<Item> PERSIMMON_JUICE;
+    public static final DeferredItem<Item> POMEGRANATE_JUICE;
+    public static final DeferredItem<Item> HAWTHORN_JUICE;
+    public static final DeferredItem<Item> LOQUAT_JUICE;
+    public static final DeferredItem<Item> LEMON_JUICE;
+    public static final DeferredItem<Item> PAPAYA_JUICE;
+    public static final DeferredItem<Item> LONGAN_JUICE;
+    public static final DeferredItem<Item> MANGO_JUICE;
+    public static final DeferredItem<Item> LITCHI_JUICE;
+    public static final DeferredItem<Item> PEAR_JUICE;
+    public static final DeferredItem<Item> ORANGE_JUICE;
+    public static final DeferredItem<Item> DATE_JUICE;
+    public static final DeferredItem<Item> STRAWBERRY_JUICE;
+    public static final DeferredItem<Item> GRAPE_JUICE;
+
+    public static final DeferredItem<Item> ORIGINAL_ICE_CREAM;
     public static final DeferredItem<Item> GRAPEFRUIT_ICE_CREAM;
     public static final DeferredItem<Item> CHERRY_ICE_CREAM;
     public static final DeferredItem<Item> COCONUT_ICE_CREAM;
@@ -76,6 +104,8 @@ public class ModItems {
     public static final DeferredItem<Item> PEAR_ICE_CREAM;
     public static final DeferredItem<Item> ORANGE_ICE_CREAM;
     public static final DeferredItem<Item> DATE_ICE_CREAM;
+    public static final DeferredItem<Item> STRAWBERRY_ICE_CREAM;
+    public static final DeferredItem<Item> GRAPE_ICE_CREAM;
 
     public static final DeferredItem<Item> GRAPEFRUIT_JAM;
     public static final DeferredItem<Item> CHERRY_JAM;
@@ -315,7 +345,9 @@ public class ModItems {
         MUNG_BEAN = blockItem(ModBlocks.MUNG_BEAN, foodItem(FoodValues.PLANT));
         SOYBEAN = blockItem(ModBlocks.SOYBEAN, foodItem(FoodValues.PLANT));
         ADZUKI_BEAN = blockItem(ModBlocks.ADZUKI_BEAN, foodItem(FoodValues.PLANT));
-        GREEN_ONION = ITEMS.register("green_onion", () -> new Item(foodItem(FoodValues.PLANT)));
+        GRAPE = blockItem(ModBlocks.GRAPE, foodItem(FoodValues.PLANT));
+
+        GREEN_ONION = blockItem(ModBlocks.GREEN_ONION);
 
         STRAWBERRY = blockItem(ModBlocks.STRAWBERRY, foodItem(FoodValues.FRUIT));
         GRAPEFRUIT = ITEMS.register("grapefruit", () -> new Item(foodItem(FoodValues.FRUIT)));
@@ -336,6 +368,7 @@ public class ModItems {
         ORANGE = ITEMS.register("orange", () -> new Item(foodItem(FoodValues.FRUIT)));
         DATE = ITEMS.register("date", () -> new Item(foodItem(FoodValues.FRUIT)));
 
+        ORIGINAL_ICE_CREAM = ITEMS.register("original_ice_cream", () -> new Item(foodItem(FoodValues.ORIGINAL_ICE_CREAM)));
         GRAPEFRUIT_ICE_CREAM = ITEMS.register("grapefruit_ice_cream", () -> new Item(foodItem(FoodValues.FRUIT_ICE_CREAM)));
         CHERRY_ICE_CREAM = ITEMS.register("cherry_ice_cream", () -> new Item(foodItem(FoodValues.FRUIT_ICE_CREAM)));
         COCONUT_ICE_CREAM = ITEMS.register("coconut_ice_cream", () -> new Item(foodItem(FoodValues.FRUIT_ICE_CREAM)));
@@ -353,6 +386,8 @@ public class ModItems {
         PEAR_ICE_CREAM = ITEMS.register("pear_ice_cream", () -> new Item(foodItem(FoodValues.FRUIT_ICE_CREAM)));
         ORANGE_ICE_CREAM = ITEMS.register("orange_ice_cream", () -> new Item(foodItem(FoodValues.FRUIT_ICE_CREAM)));
         DATE_ICE_CREAM = ITEMS.register("date_ice_cream", () -> new Item(foodItem(FoodValues.FRUIT_ICE_CREAM)));
+        STRAWBERRY_ICE_CREAM = ITEMS.register("strawberry_ice_cream", () -> new Item(foodItem(FoodValues.FRUIT_ICE_CREAM)));
+        GRAPE_ICE_CREAM = ITEMS.register("grape_ice_cream", () -> new Item(foodItem(FoodValues.FRUIT_ICE_CREAM)));
 
         GRAPEFRUIT_JAM = ITEMS.register("grapefruit_jam", () -> new Item(foodItem(FoodValues.FRUIT_JAM)));
         CHERRY_JAM = ITEMS.register("cherry_jam", () -> new Item(foodItem(FoodValues.FRUIT_JAM)));
@@ -402,7 +437,14 @@ public class ModItems {
         LAWEI_FLAVOR = ITEMS.register("lawei_flavor", () -> new Item(miscItem()));
         WHITE_RADISH_SHREDDED = ITEMS.register("white_radish_shredded", () -> new Item(miscItem()));
         RED_BEAN_PASTE = ITEMS.register("red_bean_paste", () -> new Item(miscItem()));
-        JINKELA = ITEMS.register("jinkela", () -> new Item(miscItem()));
+        WRENCH = ITEMS.register("wrench", () -> new Item(miscItem()));
+        JINKELA = ITEMS.register("jinkela", () -> new BoneMealItem(miscItem().component(
+            DataComponents.LORE, new ItemLore(List.of(Component.translatable("item.foodcraft.jinkela.lore"))))) {
+            @Override
+            public boolean isFoil(@NotNull ItemStack stack) {
+                return true;
+            }
+        });
         OVERCOOKED_FOOD = ITEMS.register("overcooked_food", () -> new Item(miscItem()));
 
         EGG_CUSTARD = ITEMS.register("egg_custard", () -> new Item(foodItem(FoodValues.EGG_CUSTARD)));
@@ -496,6 +538,25 @@ public class ModItems {
         CHOCOLATE_MILK = ITEMS.register("chocolate_milk", () -> new Item(foodItem(FoodValues.CHOCOLATE_MILK)));
         CARROT_JUICE = ITEMS.register("carrot_juice", () -> new Item(foodItem(FoodValues.CARROT_JUICE)));
         APPLE_JUICE = ITEMS.register("apple_juice", () -> new Item(foodItem(FoodValues.APPLE_JUICE)));
+        GRAPEFRUIT_JUICE = ITEMS.register("grapefruit_juice", () -> new Item(foodItem(FoodValues.FRUIT_JUICE)));
+        CHERRY_JUICE = ITEMS.register("cherry_juice", () -> new Item(foodItem(FoodValues.FRUIT_JUICE)));
+        COCONUT_JUICE = ITEMS.register("coconut_juice", () -> new Item(foodItem(FoodValues.FRUIT_JUICE)));
+        BANANA_JUICE = ITEMS.register("banana_juice", () -> new Item(foodItem(FoodValues.FRUIT_JUICE)));
+        PEACH_JUICE = ITEMS.register("peach_juice", () -> new Item(foodItem(FoodValues.FRUIT_JUICE)));
+        PERSIMMON_JUICE = ITEMS.register("persimmon_juice", () -> new Item(foodItem(FoodValues.FRUIT_JUICE)));
+        POMEGRANATE_JUICE = ITEMS.register("pomegranate_juice", () -> new Item(foodItem(FoodValues.FRUIT_JUICE)));
+        HAWTHORN_JUICE = ITEMS.register("hawthorn_juice", () -> new Item(foodItem(FoodValues.FRUIT_JUICE)));
+        LOQUAT_JUICE = ITEMS.register("loquat_juice", () -> new Item(foodItem(FoodValues.FRUIT_JUICE)));
+        LEMON_JUICE = ITEMS.register("lemon_juice", () -> new Item(foodItem(FoodValues.FRUIT_JUICE)));
+        PAPAYA_JUICE = ITEMS.register("papaya_juice", () -> new Item(foodItem(FoodValues.FRUIT_JUICE)));
+        LONGAN_JUICE = ITEMS.register("longan_juice", () -> new Item(foodItem(FoodValues.FRUIT_JUICE)));
+        MANGO_JUICE = ITEMS.register("mango_juice", () -> new Item(foodItem(FoodValues.FRUIT_JUICE)));
+        LITCHI_JUICE = ITEMS.register("litchi_juice", () -> new Item(foodItem(FoodValues.FRUIT_JUICE)));
+        PEAR_JUICE = ITEMS.register("pear_juice", () -> new Item(foodItem(FoodValues.FRUIT_JUICE)));
+        ORANGE_JUICE = ITEMS.register("orange_juice", () -> new Item(foodItem(FoodValues.FRUIT_JUICE)));
+        DATE_JUICE = ITEMS.register("date_juice", () -> new Item(foodItem(FoodValues.FRUIT_JUICE)));
+        STRAWBERRY_JUICE = ITEMS.register("strawberry_juice", () -> new Item(foodItem(FoodValues.FRUIT_JUICE)));
+        GRAPE_JUICE = ITEMS.register("grape_juice", () -> new Item(foodItem(FoodValues.FRUIT_JUICE)));
         GOLDEN_GRAPE_JUICE = ITEMS.register("golden_grape_juice", () -> new Item(foodItem(FoodValues.GOLDEN_GRAPE_JUICE)));
         GOLDEN_APPLE_JUICE = ITEMS.register("golden_apple_juice", () -> new Item(foodItem(FoodValues.GOLDEN_APPLE_JUICE)));
         SOYBEAN_MILK = ITEMS.register("soybean_milk", () -> new Item(foodItem(FoodValues.SOYBEAN_MILK)));

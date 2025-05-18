@@ -157,6 +157,7 @@
     "item.foodcraft.longan": "Longan",
 
     "block.foodcraft.eggplant": "Eggplant",
+    "item.foodcraft.grapefruit": "Grapefruit",
     "block.foodcraft.cucumber": "Cucumber",
     "block.foodcraft.cabbage": "Cabbage",
     "item.foodcraft.lettuce": "Lettuce",
@@ -164,7 +165,7 @@
     "item.foodcraft.spinach": "Spinach",
     "item.foodcraft.celery": "Celery",
     "block.foodcraft.tomato": "Tomato",
-    "item.foodcraft.rice": "Rice",
+    "block.foodcraft.rice": "Rice",
     "block.foodcraft.sticky_rice": "Sticky Rice",
     "item.foodcraft.glutinous_rice": "Sticky Rice",
     "item.foodcraft.black_rice": "Black Rice",
@@ -326,7 +327,7 @@
 
     "container.drink_machine": "Drink Machine",
 
-    "itemGroup.foodcraft.main": "FoodCraft|Machine",
+    "itemGroup.foodcraft.main": "FoodCraft",
 
     "tooltip.fcrfood.heal": "Heal amount: %s",
     "tooltip.fcrfood.duration": "Eat duration: %s second(s)",

@@ -53,6 +53,7 @@ public final class FoodCraft {
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> CREATIVE_TAB = TABS.register("main", () ->
             CreativeModeTab.builder().title(Component.translatable("itemGroup." + MOD_ID + ".main"))
                 .displayItems(FoodCraft::addCreative)
+                .icon(() -> new ItemStack(ModItems.STEAMED_FISH.get()))
                 .build());
 
     public FoodCraft(IEventBus modEventBus, ModContainer modContainer) {

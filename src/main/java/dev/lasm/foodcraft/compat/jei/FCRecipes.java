@@ -19,7 +19,7 @@ class FCRecipes {
         if (level != null) {
             this.recipeManager = level.getRecipeManager();
         } else {
-            throw new NullPointerException("minecraft world must not be null.");
+            throw new NullPointerException("Minecraft world must not be null.");
         }
     }
 

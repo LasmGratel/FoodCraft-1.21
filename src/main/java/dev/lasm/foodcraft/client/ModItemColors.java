@@ -3,11 +3,14 @@ package dev.lasm.foodcraft.client;
 import dev.lasm.foodcraft.FoodCraft;
 import dev.lasm.foodcraft.init.ModItems;
 import net.minecraft.client.color.item.ItemColors;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
 
-@EventBusSubscriber(modid = FoodCraft.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(value = Dist.CLIENT, modid = FoodCraft.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
+@OnlyIn(Dist.CLIENT)
 public class ModItemColors extends ItemColors {
     @SubscribeEvent
     public static void registerItemColors(RegisterColorHandlersEvent.Item event) {

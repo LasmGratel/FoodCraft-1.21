@@ -1,7 +1,7 @@
 plugins {
     id 'java-library'
     id 'maven-publish'
-    id 'net.neoforged.moddev' version '2.0.88'
+    id 'net.neoforged.moddev' version '2.0.144'
     id 'idea'
 }
 
@@ -144,13 +144,13 @@ configurations {
 }
 
 dependencies {
-    implementation group: 'net.darkhax.bookshelf', name: 'bookshelf-neoforge-1.21.1', version: '21.1.59'
+    implementation "net.darkhax.bookshelf:bookshelf-neoforge-1.21.1:21.1.59"
 
     implementation "maven.modrinth:farmers-delight:1.21.1-1.2.7"
 
-    compileOnly "mezz.jei:jei-${rootProject.minecraft_version}-common-api:${rootProject.jei_version}"
-    compileOnly "mezz.jei:jei-${rootProject.minecraft_version}-neoforge-api:${rootProject.jei_version}"
-    runtimeOnly "mezz.jei:jei-${rootProject.minecraft_version}-neoforge:${rootProject.jei_version}"
+    implementation "mezz.jei:jei-${rootProject.minecraft_version}-common-api:${rootProject.jei_version}"
+    implementation "mezz.jei:jei-${rootProject.minecraft_version}-neoforge-api:${rootProject.jei_version}"
+    implementation "mezz.jei:jei-${rootProject.minecraft_version}-neoforge:${rootProject.jei_version}"
     runtimeOnly "maven.modrinth:emi:1.1.22+${rootProject.minecraft_version}+neoforge"
     runtimeOnly "maven.modrinth:cucumber:8.0.11"
     runtimeOnly "maven.modrinth:patchouli:1.21-87-neoforge"
@@ -202,6 +202,7 @@ publishing {
 
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
+    options.compilerArgs << "-Xlint:deprecation"
 }
 
 // IDEA no longer automatically downloads sources/javadoc jars for dependencies, so we need to explicitly enable the behavior.
